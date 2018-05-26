@@ -1,6 +1,11 @@
 FROM node:8-alpine
-# contains latest npm and global grun cli with newman
+
+LABEL vendor="cloud kats" \
+	maintainer="cloudkats@gmail.com"
+
 RUN npm i npm@latest -g \
 	&& npm install -g grunt-cli \
 	&& npm install newman --global \
-	&& apk add --update zip
+	&& apk add --update zip \
+	&& rm -rf /var/lib/apt/lists/* \
+	&& rm -rf /var/cache/apk/*
