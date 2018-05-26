@@ -3,8 +3,8 @@
 set -e
 
 DOCKER=`which docker`
-docker_image="cloudkats/node"
-tag="8"
+docker_image="cloudkats/$PROJECT"
+tag="$TAG"
 
 build_docker() {
     echo "> Build docker with Node"
@@ -13,7 +13,7 @@ build_docker() {
         echo Could not find the 'docker' executable
         exit 1
     fi
-    $DOCKER build -t $docker_image:$tag ../node
+    $DOCKER build -t $docker_image:$tag ../$PROJECT
     echo "$docker_image ready"
 }
 
