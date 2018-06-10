@@ -1,0 +1,17 @@
+#!/bin/bash
+
+set -e
+
+DOCKER=`which docker`
+docker_image="cloudkats/$PROJECT"
+tag="$TAG"
+
+run_docker() {
+    if [ -z "$DOCKER" ];then
+        echo Could not find the 'docker' executable
+        exit 1
+    fi
+    $DOCKER run -it $docker_image:$tag "/bin/sh"
+}
+
+run_docker
