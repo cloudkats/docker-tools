@@ -1,6 +1,8 @@
 #!/bin/bash
 
-set -e
+set -euo
+: PROJECT
+: TAG
 
 DOCKER=`which docker`
 docker_image="cloudkats/$PROJECT"

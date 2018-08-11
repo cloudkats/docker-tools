@@ -3,7 +3,7 @@ FROM node:8-alpine
 LABEL vendor="cloud kats" \
 	maintainer="cloudkats@gmail.com"
 
-ENV PACKAGES "zip jq"
+ENV PACKAGES "zip jq git"
 
 RUN npm i npm@latest -g \
 	&& npm install -g grunt-cli \
