@@ -11,7 +11,7 @@ run_docker() {
         echo Could not find the 'docker' executable
         exit 1
     fi
-    $DOCKER run -it --rm $docker_image:$tag "/bin/sh"
+    $DOCKER run -it --rm $docker_image:$tag "/bin/bash"
 }
 
 run_docker
