@@ -10,4 +10,4 @@ RUN cd cloud-custodian/tools/c7n_mailer && \
     pip install -r ./requirements.txt && \
     pip install -e .
 
-ENTRYPOINT ["c7n-mailer"]
+# ENTRYPOINT ["c7n-mailer"]
