@@ -8,6 +8,15 @@ jenkins:
 
     some settings are still injected from init.groovy.d scripts.
   numExecutors: 1
+  primaryView:
+    all:
+      name: "all"
+  views:
+  - all:
+      name: "all"
+  agentProtocols:
+  - "JNLP4-connect"
+  - "Ping"
   scmCheckoutRetryCount: 2
   mode: NORMAL
   crumbIssuer:
@@ -19,7 +28,7 @@ jenkins:
       allowsSignup: false
       enableCaptcha: true
       users:
-        - id: demoAdmin
+        - id: padmin
           password: ${ADMIN_PASSWORD:-passw0rd}
   authorizationStrategy:
     globalMatrix:
@@ -28,7 +37,8 @@ jenkins:
         - "Job/Read:authenticated"
         - "View/Read:anonymous"
         - "Overall/Administer:authenticated"
-
+# TODO: do agent security as well
+# 
 tool:
   git:
     installations:

@@ -1,12 +1,18 @@
 # Jenkins image for ECS Fargate
 
+[Repoisotory](https://github.com/cloudkats/docker-tools/tree/master/jenkins-ecs)
+
+## Description
+
+Jenkins master docker with buch of plugins pre installed
+
 ## Configurations
 
 The image has several supported configurations, which can be accessed via the following tags:
 
 Environment    | Configuration
 -------------- | -------------
-JENKINS_URL    | Jenkins url to work with
+JENKINS_URL    | Url for the Jenkins server, can be used as a replacement to -url option, or to set alternate jenkins URL
 JENKINS_EMAIL  | Current email
 BUILD_URL      |
 ADMIN_PASSWORD | Administrato password
@@ -16,6 +22,6 @@ Durint the download, the configuration is updated as per defined environment var
 
 ## References
 
-[Jenkins Docker Examples](https://github.com/ik-jenkins/jenkins-docker-examples/tree/master/05-aws-ecs/jenkins-home/userContent)
+[Jenkins Docker Examples](https://github.com/ik-jenkins/jenkins-docker-examples)
 
-[Jenkins Fargate](https://github.com/arminc/jenkins-fargate/blob/master/jenkins/config/1-master.groovy)
+[Jenkins Fargate](https://github.com/arminc/jenkins-fargate/)
