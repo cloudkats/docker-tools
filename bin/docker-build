@@ -1,8 +1,9 @@
 #!/bin/bash
 
 set -euo
-: PROJECT
-: TAG
+
+PROJECT=$1
+TAG=${2:-latest}
 
 DOCKER=`which docker`
 docker_image="cloudkats/$PROJECT"
@@ -24,4 +25,4 @@ push() {
 }
 
 build_docker
-push
+# push
