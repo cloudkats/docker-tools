@@ -22,7 +22,7 @@ jenkins:
   crumbIssuer:
     standard:
       excludeClientIPFromCrumb: false
-  disableRememberMe: false
+  disableRememberMe: true
   securityRealm:
     local:
       allowsSignup: false
@@ -30,6 +30,7 @@ jenkins:
       users:
         - id: padmin
           password: ${ADMIN_PASSWORD:-passw0rd}
+  slaveAgentPort: 50000
   authorizationStrategy:
     globalMatrix:
       grantedPermissions:
@@ -37,8 +38,20 @@ jenkins:
         - "Job/Read:authenticated"
         - "View/Read:anonymous"
         - "Overall/Administer:authenticated"
-# TODO: do agent security as well
-# 
+        # Agent security setup
+        - "Agent/Connect:anonymous"
+        - "Agent/Disconnect:anonymous"
+        - "Agent/Configure:anonymous"
+        - "Agent/Build:anonymous"
+        - "Agent/Create:anonymous"
+        - "Agent/Delete:anonymous"
+        - "Agent/Connect:authenticated"
+        - "Agent/Disconnect:authenticated"
+        - "Agent/Configure:authenticated"
+        - "Agent/Build:authenticated"
+        - "Agent/Create:authenticated"
+        - "Agent/Delete:authenticated"
+
 tool:
   git:
     installations:
