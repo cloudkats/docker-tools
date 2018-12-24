@@ -1,0 +1,48 @@
+jenkins:
+  systemMessage: |
+    Welcome to our build server.
+
+    This Jenkins is 100% configured and managed 'as code'.
+    Config is now mostly handled by 'Jenkins Configuration as Code Plugin' (JCasC).
+    JCasC config can be found in the jenkins.yaml file in the $JENKINS_HOME/casc_configs/ folder.
+
+    some settings are still injected from init.groovy.d scripts.
+  numExecutors: 1
+  scmCheckoutRetryCount: 2
+  mode: NORMAL
+  crumbIssuer:
+    standard:
+      excludeClientIPFromCrumb: false
+  disableRememberMe: false
+  securityRealm:
+    local:
+      allowsSignup: false
+      enableCaptcha: true
+      users:
+        - id: demoAdmin
+          password: ${ADMIN_PASSWORD:-passw0rd}
+  authorizationStrategy:
+    globalMatrix:
+      grantedPermissions:
+        - "Overall/Read:authenticated"
+        - "Job/Read:authenticated"
+        - "View/Read:anonymous"
+        - "Overall/Administer:authenticated"
+
+tool:
+  git:
+    installations:
+      - name: Default
+        home: "git"
+  maven:
+    installations:
+    - name: "maven"
+      properties:
+      - installSource:
+          installers:
+          - maven:
+              id: "3.6.0"
+
+security:
+  remotingCLI:
+    enabled: ${CLI_ENABLED:-false}

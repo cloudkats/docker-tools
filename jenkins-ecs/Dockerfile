@@ -3,7 +3,12 @@ FROM jenkins/jenkins:2.156-alpine
 LABEL maintainer="Ivan Katliarchuk <cloudkats@gmail.com>"
 LABEL Description="This is the Jenkins image with ECS Fargate agent/slave support."
 
+ARG JENKINS_HOME=/var/jenkins_home
+
+ENV JENKINS_HOME $JENKINS_HOME
 ENV JENKINS_REF /usr/share/jenkins/ref
+
+ENV CASC_JENKINS_CONFIG $JENKINS_HOME/casc_configs
 
 # install jenkins plugins
 COPY jenkins-home/plugins.txt $JENKINS_REF/
@@ -17,7 +22,4 @@ ENV JAVA_OPTS -Dorg.eclipse.jetty.server.Request.maxFormContentSize=100000000 \
 COPY jenkins-home/*.* $JENKINS_REF/
 COPY jenkins-home/userContent $JENKINS_REF/userContent
 COPY jenkins-home/init.groovy.d/* /usr/share/jenkins/ref/init.groovy.d/
-
-# COPY jenkins-home/jobs $JENKINS_REF/jobs/
-# COPY jenkins-home/init.groovy.d $JENKINS_REF/init.groovy.d/
-# COPY jenkins-home/dsl $JENKINS_REF/dsl/
+COPY jenkins-home/casc $JENKINS_HOME/casc_configs/

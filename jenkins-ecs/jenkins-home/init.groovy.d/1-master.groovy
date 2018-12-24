@@ -1,4 +1,4 @@
-mport jenkins.model.*
+import jenkins.model.*
 
 def instance = Jenkins.getInstance()
 def env = System.getenv()
@@ -11,4 +11,4 @@ instance.setLabelString("master")
 jlc = JenkinsLocationConfiguration.get()
 jlc.setUrl(env["JENKINS_URL"] ?: '')
 jlc.setAdminAddress(env["JENKINS_EMAIL"] ?: '')
-jlc.save() 
+jlc.save()

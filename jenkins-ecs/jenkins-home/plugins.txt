@@ -100,3 +100,6 @@ handy-uri-templates-2-api:2.1.6-1.0
 mercurial:2.4
 jira:3.0.5
 favorite:2.3.2
+configuration-as-code:1.4
+configuration-as-code-support:1.4
+slack:latest
