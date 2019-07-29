@@ -44,19 +44,12 @@ jenkins:
         - "View/Read:anonymous"
         - "Overall/Administer:authenticated"
         # Agent security setup
-        - "Agent/Connect:anonymous"
-        - "Agent/Disconnect:anonymous"
-        - "Agent/Configure:anonymous"
-        - "Agent/Build:anonymous"
-        - "Agent/Create:anonymous"
-        - "Agent/Delete:anonymous"
         - "Agent/Connect:authenticated"
         - "Agent/Disconnect:authenticated"
         - "Agent/Configure:authenticated"
         - "Agent/Build:authenticated"
         - "Agent/Create:authenticated"
         - "Agent/Delete:authenticated"
-
 
 tool:
   git:

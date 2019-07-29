@@ -12,3 +12,5 @@ jlc = JenkinsLocationConfiguration.get()
 jlc.setUrl(env["JENKINS_URL"] ?: '')
 jlc.setAdminAddress(env["JENKINS_EMAIL"] ?: '')
 jlc.save()
+
+instance.save()

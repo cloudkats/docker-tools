@@ -1,0 +1,39 @@
+resource "aws_ecs_service" "ecs" {
+  name            = "${var.cluster_name}"
+  cluster         = "${aws_ecs_cluster.ecs.id}"
+  desired_count   = "${var.service_desired_count}"
+  iam_role        = "arn:aws:iam::${data.aws_caller_identity.current.account_id}:role/aws-service-role/ecs.amazonaws.com/AWSServiceRoleForECS"
+  task_definition = "${aws_ecs_task_definition.service.arn}"
+  deployment_maximum_percent = "${var.service_deployment_maximum_percent}"
+  deployment_minimum_healthy_percent = "${var.service_deployment_minimum_healthy_percent}"
+
+  ordered_placement_strategy {
+    type  = "binpack"
+    field = "cpu"
+	}
+
+  load_balancer {
+    elb_name = "${var.service_elb_name}"
+    target_group_arn = "${aws_lb_target_group.prometheus-lb.arn}"
+    container_name   = "${format("prometheus-%s", var.envAbbreviation)}"
+    container_port   = "${var.container_port}"
+	}
+
+  placement_constraints {
+    type       = "memberOf"
+    expression = "attribute:ecs.availability-zone in [eu-west-1a, eu-west-1b, eu-west-1c]"
+	}
+  network_configuration {
+    subnets = [
+			"${data.aws_subnet_ids.env_private_subnet_ids.ids}"
+		]
+    security_groups = [
+			"${data.aws_security_group.prometheus_sg.name}"
+		]
+    assign_public_ip = false
+	}
+}
+
+resource "aws_iam_service_linked_role" "servicerole" {
+  aws_service_name = "ecs.amazonaws.com"
+}
