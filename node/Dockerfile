@@ -11,3 +11,9 @@ RUN npm i npm@latest -g \
 	&& apk add  --update $PACKAGES \
 	&& rm -rf /var/lib/apt/lists/* \
 	&& rm -rf /var/cache/apk/*
+
+USER node
+
+RUN mkdir /home/node/workspace
+
+WORKDIR /home/node/workspace
