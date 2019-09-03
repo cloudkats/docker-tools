@@ -16,7 +16,7 @@ build_docker() {
         echo Could not find the 'docker' executable
         exit 1
     fi
-    $DOCKER build -t $docker_image:$tag ../$PROJECT
+    $DOCKER build -t $docker_image:$tag $PROJECT
     echo "$docker_image ready"
 }
 
@@ -25,4 +25,4 @@ push() {
 }
 
 build_docker
-push
+# push
