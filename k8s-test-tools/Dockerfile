@@ -27,6 +27,8 @@ RUN git clone https://github.com/bats-core/bats-core.git /bats;
 
 FROM bash:${bashver}
 
+RUN apk --no-cache add curl
+
 COPY --from=builder /kubectl /usr/sbin/kubectl
 COPY --from=builder /bats /opt/bats/
 COPY --from=builder /usr/local/bin/kubectx /usr/local/bin/kubectx

@@ -25,4 +25,4 @@ push() {
 }
 
 build_docker
-# push
+push
