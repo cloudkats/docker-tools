@@ -2,9 +2,7 @@ FROM alpine:3.7
 
 LABEL maintainer="Ivan Katliarchuk <cloudkats@gmail.com>"
 
-RUN apk update
-RUN apk upgrade
-RUN apk add ca-certificates && update-ca-certificates
+RUN apk update;apk upgrade;apk add ca-certificates && update-ca-certificates
 RUN apk add --no-cache --update \
 	curl \
 	zip \
