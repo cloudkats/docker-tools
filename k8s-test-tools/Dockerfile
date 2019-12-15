@@ -3,7 +3,7 @@ ARG bashver=latest
 
 FROM alpine:${alpinever} as builder
 
-ARG K8S_VERSION=v1.13.10
+ARG K8S_VERSION=v1.14.10
 
 RUN apk add --no-cache git
 
@@ -15,7 +15,7 @@ RUN set -x                  && \
 	wget -O /kubectl https://storage.googleapis.com/kubernetes-release/release/$K8S_VERSION/bin/linux/amd64/kubectl && \
 	chmod +x /kubectl
 
-ENV KUBE_CTX_VERSION "0.6.3"
+ENV KUBE_CTX_VERSION "0.7.1"
 
 RUN apk --no-cache add bash curl &&\
 	curl -L -o /usr/local/bin/kubectx https://raw.githubusercontent.com/ahmetb/kubectx/v${KUBE_CTX_VERSION}/kubectx &&\
