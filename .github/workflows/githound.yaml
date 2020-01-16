@@ -13,8 +13,10 @@ on:
     tags:
       - v*
 env:
-  GITHUB_HASH: $(git rev-parse --short "$GITHUB_SHA")
-
+  WORKSPACE: githound
+  DOCKER_REPO: cloudkats
+  DOCKER_IMAGE: githound
+  
 jobs:
   buildonpush:
     name: BuildOnPush
@@ -22,13 +24,17 @@ jobs:
     if: github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
+
     - name: Build the Docker image
       run: |
         echo "Build and Push"
-        echo "$GITHUB_HASH"
+        cd "${WORKSPACE}"
+        echo "$(git rev-parse --short "$GITHUB_SHA")"
+
     - name: Login to Registry
       run: |
-        echo "${DOCKER_PASSWORD}" | docker login hub.docker.com -u ${DOCKER_USERNAME} --password-stdin
+        set -x
+        echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
