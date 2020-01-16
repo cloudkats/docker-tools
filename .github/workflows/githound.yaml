@@ -3,9 +3,11 @@ name: GitHound
 
 on:
   push:
+    branches:
+    - master
     paths:
-      - githound/**
-      - .github/workflows/githound.yaml
+    - githound/**
+    - .github/workflows/githound.yaml
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
