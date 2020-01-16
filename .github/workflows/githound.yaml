@@ -16,7 +16,6 @@ env:
   WORKSPACE: githound
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: githound
-  SHA8: ${GITHUB_SHA::8}
 
 jobs:
   buildonpush:
@@ -43,7 +42,6 @@ jobs:
       run: |
         echo "Push"
         echo "$IMAGE_ID"
-        echo ${GITHUB_SHA::8}
 
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
         tag_date="$(date +%Y%d%m)"
@@ -58,8 +56,8 @@ jobs:
         docker tag image "${IMAGE_ID}:${VERSION}"
         docker push "${IMAGE_ID}:${VERSION}"
 
-        docker tag image "${IMAGE_ID}:${TAG_GIT_SHA}"
-        docker push "${IMAGE_ID}:${TAG_GIT_SHA}"
+        docker tag image "${IMAGE_ID}:${GITHUB_SHA::8}"
+        docker push "${IMAGE_ID}:${GITHUB_SHA::8}"
 
         docker tag image "${IMAGE_ID}:${tag_date}"
         docker push "${IMAGE_ID}:${tag_date}"

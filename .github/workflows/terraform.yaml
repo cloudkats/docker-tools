@@ -31,7 +31,7 @@ jobs:
         echo "Build"
         cd "${WORKSPACE}"
         echo ${GITHUB_SHA::8}
-        echo ${SHA8}
+        
         docker build . --file Dockerfile --tag image \
           --build-arg TERRAFORM_VERSION=$(cat tfversion)
 
@@ -47,10 +47,8 @@ jobs:
         echo "Push"
         echo "$IMAGE_ID"
         echo "$(cat tfversion)"
-        exit 1
 
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
-        tag_git_hash=$(git rev-parse --short "$GITHUB_SHA")
         tag_date="$(date +%Y%d%m)"
 
         # Strip git ref prefix from version
@@ -63,8 +61,8 @@ jobs:
         docker tag image "${IMAGE_ID}:${VERSION}"
         docker push "${IMAGE_ID}:${VERSION}"
 
-        docker tag image "${IMAGE_ID}:${tag_git_hash}"
-        docker push "${IMAGE_ID}:${tag_git_hash}"
+        docker tag image "${IMAGE_ID}:${GITHUB_SHA::8}"
+        docker push "${IMAGE_ID}:${GITHUB_SHA::8}"
 
         docker tag image "${IMAGE_ID}:${tag_date}"
         docker push "${IMAGE_ID}:${tag_date}"

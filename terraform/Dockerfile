@@ -1,6 +1,6 @@
 ARG TERRAFORM_VERSION
 
-FROM docker pull hashicorp/terraform:${TERRAFORM_VERSION} as source
+FROM hashicorp/terraform:${TERRAFORM_VERSION} as source
 
 FROM alpine:3.11
 
