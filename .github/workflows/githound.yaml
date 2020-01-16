@@ -15,9 +15,11 @@ env:
   GITHUB_HASH: $(git rev-parse --short "$GITHUB_SHA")
 
 jobs:
-  push:
-    name: Build and Push
+  buildonpush:
+    name: BuildOnPush
     runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
     - uses: actions/checkout@v2
     - name: Build the Docker image
       run: |
@@ -29,4 +31,3 @@ jobs:
         DOCKER_REGISTRY_URL: docker.pkg.github.com
         DOCKER_USERNAME: ${{ secrets.GITHUB_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
-      if: github.event_name == 'push'
