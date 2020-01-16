@@ -1,4 +1,4 @@
-name: GitHound
+name: Terraform
 # This workflow is triggered on pushes to the repository.
 
 on:
@@ -7,15 +7,15 @@ on:
     branches:
       - master
     paths:
-      - githound/**
-      - .github/workflows/githound.yaml
+      - terraform/**
+      - .github/workflows/terraform.yaml
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
 env:
-  WORKSPACE: githound
+  WORKSPACE: terraform
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: githound
+  DOCKER_IMAGE: terraform
   SHA8: ${GITHUB_SHA::8}
 
 jobs:
@@ -30,7 +30,10 @@ jobs:
       run: |
         echo "Build"
         cd "${WORKSPACE}"
-        docker build . --file Dockerfile --tag image
+        echo ${GITHUB_SHA::8}
+        echo ${SHA8}
+        docker build . --file Dockerfile --tag image \
+          --build-arg TERRAFORM_VERSION=$(cat tfversion)
 
     - name: Login to Registry
       run: |
@@ -43,9 +46,11 @@ jobs:
       run: |
         echo "Push"
         echo "$IMAGE_ID"
-        echo ${GITHUB_SHA::8}
+        echo "$(cat tfversion)"
+        exit 1
 
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+        tag_git_hash=$(git rev-parse --short "$GITHUB_SHA")
         tag_date="$(date +%Y%d%m)"
 
         # Strip git ref prefix from version
@@ -58,11 +63,9 @@ jobs:
         docker tag image "${IMAGE_ID}:${VERSION}"
         docker push "${IMAGE_ID}:${VERSION}"
 
-        docker tag image "${IMAGE_ID}:${TAG_GIT_SHA}"
-        docker push "${IMAGE_ID}:${TAG_GIT_SHA}"
+        docker tag image "${IMAGE_ID}:${tag_git_hash}"
+        docker push "${IMAGE_ID}:${tag_git_hash}"
 
         docker tag image "${IMAGE_ID}:${tag_date}"
         docker push "${IMAGE_ID}:${tag_date}"
-      env:
-        TAG_GIT_SHA: ${{ github.sha }}
 
