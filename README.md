@@ -9,13 +9,13 @@
 
 ## Terraform
 
-![](https://github.com/cloudkats/docker-tools/workflows/Terraform/badge.svg)
-![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=pink&style=flat-square)
+[![](https://github.com/cloudkats/docker-tools/workflows/Terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3ATerraform)
+[![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform)
 
 ## GitHound
 
-![](https://github.com/cloudkats/docker-tools/workflows/GitHound/badge.svg)
-![](https://img.shields.io/docker/pulls/cloudkats/githound?color=green&logo=docker&logoColor=pink&style=flat-square)
+[![](https://github.com/cloudkats/docker-tools/workflows/GitHound/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AGitHound)
+[![](https://img.shields.io/docker/pulls/cloudkats/githound?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/githound)
 
 ## Create Locally
 ```
