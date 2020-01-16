@@ -1,0 +1,32 @@
+name: GitHound
+# This workflow is triggered on pushes to the repository.
+
+on:
+  push:
+    # Publish `master` as Docker `latest` image.
+    branches:
+      - master
+    paths:
+      - githound/**
+    # Publish `v1.2.3` tags as releases.
+    tags:
+      - v*
+env:
+  GITHUB_HASH: $(git rev-parse --short "$GITHUB_SHA")
+
+jobs:
+  push:
+    name: Build and Push
+    runs-on: ubuntu-latest
+    - uses: actions/checkout@v2
+    - name: Build the Docker image
+      run: |
+        echo "Build and Push"
+        echo "$GITHUB_HASH"
+    - name: Login to Registry
+      uses: actions/docker/login@master
+      env:
+        DOCKER_REGISTRY_URL: docker.pkg.github.com
+        DOCKER_USERNAME: ${{ secrets.GITHUB_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+      if: github.event_name == 'push'

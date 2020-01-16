@@ -10,5 +10,5 @@ LABEL vendor="cloud kats" \
 COPY --from=builder /go/bin/git-hound /usr/bin/git-hound
 COPY .githound.yml /.githound.yml
 RUN  apk update \
-     && apk add git \
-	 && chmod +x /usr/bin/git-hound
+	&& apk add git \
+	&& chmod +x /usr/bin/git-hound
