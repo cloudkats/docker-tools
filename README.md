@@ -4,6 +4,8 @@
 ![](https://img.shields.io/github/v/tag/cloudkats/docker-tools)
 [![](https://img.shields.io/github/repo-size/cloudkats/docker-tools)](https://github.com/cloudkats/docker-tools)
 ![](https://img.shields.io/github/languages/top/cloudkats/docker-tools?color=green&logo=docker&logoColor=blue)
+![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-aws-lambda)
+![](https://img.shields.io/github/last-commit/terraform-module/terraform-aws-lambda)
 
 ## Terraform
 
