@@ -2,7 +2,7 @@ FROM golang:1.9 as builder
 RUN go get -u github.com/ezekg/git-hound \
 	&& go install github.com/ezekg/git-hound
 
-FROM alpine:3.7
+FROM alpine:3.11
 
 LABEL vendor="cloud kats" \
 	maintainer="cloudkats@gmail.com"

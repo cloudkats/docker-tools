@@ -44,7 +44,8 @@ jobs:
       run: |
         echo "Push"
         echo "$IMAGE_ID"
-        exit 1
+
+        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
         tag_git_hash=$(git rev-parse --short "$GITHUB_SHA")
         tag_date="$(date +%Y%d%m)"
 
@@ -63,7 +64,4 @@ jobs:
 
         docker tag image "${IMAGE_ID}:${tag_date}"
         docker push "${IMAGE_ID}:${tag_date}"
-      env:
-        IMAGE_ID: "${DOCKER_REPO}/${DOCKER_IMAGE}"
-        TAG_HASH: $(git rev-parse --short "$GITHUB_SHA")
 
