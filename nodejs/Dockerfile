@@ -1,5 +1,5 @@
-ARG VAR_VERSION=12.10.0-alpine
-FROM node:${VAR_VERSION}
+ARG NODE_VERSION
+FROM node:${NODE_VERSION}
 
 LABEL vendor="cloud kats" \
 	maintainer="cloudkats@gmail.com"
