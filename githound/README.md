@@ -5,3 +5,5 @@
 ```bash
 git log -p | git-hound -config /.githound.yml sniff
 ```
+
+Added workflow
