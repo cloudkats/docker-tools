@@ -4,7 +4,7 @@ name: NodeJS
 on:
   push:
     paths:
-    - node/**
+    - nodejs/**
     - .github/workflows/nodejs.yaml
 
 env:
