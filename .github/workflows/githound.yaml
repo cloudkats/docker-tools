@@ -8,6 +8,7 @@ on:
       - master
     paths:
       - githound/**
+      - .github/workflows/githound.yaml
     # Publish `v1.2.3` tags as releases.
     tags:
       - v*
@@ -26,8 +27,8 @@ jobs:
         echo "Build and Push"
         echo "$GITHUB_HASH"
     - name: Login to Registry
-      uses: actions/docker/login@master
+      run: |
+        echo "${DOCKER_PASSWORD}" | docker login hub.docker.com -u ${DOCKER_USERNAME} --password-stdin
       env:
-        DOCKER_REGISTRY_URL: docker.pkg.github.com
-        DOCKER_USERNAME: ${{ secrets.GITHUB_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.GITHUB_TOKEN }}
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
