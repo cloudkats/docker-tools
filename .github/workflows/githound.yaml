@@ -3,9 +3,6 @@ name: GitHound
 
 on:
   push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - master
     paths:
       - githound/**
       - .github/workflows/githound.yaml

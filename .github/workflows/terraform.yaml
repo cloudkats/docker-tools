@@ -3,9 +3,6 @@ name: Terraform
 
 on:
   push:
-    # Publish `master` as Docker `latest` image.
-    branches:
-      - master
     paths:
       - terraform/**
       - .github/workflows/terraform.yaml
