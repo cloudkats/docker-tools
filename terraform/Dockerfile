@@ -13,7 +13,6 @@ RUN apk update && apk upgrade && apk add --no-cache --update \
   curl \
   unzip \
   ca-certificates \
-  update-ca-certificates \
   bash \
   python \
   py-pip \
