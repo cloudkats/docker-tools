@@ -1,0 +1,29 @@
+ clouds:
+  - ecs:
+      name: ${CLOUD_NAME:-cluster}
+      cluster: ${JENKINS_CLUSTER_ARN:-clusterArn}
+      jenkinsUrl: ${JENKINS_URL:-http://localhost:8080}
+      regionName: ${AWS_REGION:-us-east-1}
+      credentialsId: ${AWS_CLOUD_CREDS:-}
+      slaveTimoutInSeconds: 60
+      templates:
+      - label: "ecs-ec2"
+        templateName: "ecs-ec2"
+        assignPublicIp: false
+        image: "cloudbees/jnlp-slave-with-java-build-tools"
+        executionRole: ${TASK_EXECUTION_ROLE_ARN:-execution-role}
+        launchType: "EC2"
+        logDriver: "awslogs"
+        logDriverOptions:
+        - name: "awslogs-group"
+          value: "${AWS_LOG_GROUP:-jenkins}"
+        - name: "awslogs-region"
+          value: ${AWS_REGION:-us-east-1}
+        - name: "awslogs-stream-prefix"
+          value: "master-ec2"
+        cpu: 1024
+        memory: 3048
+        memoryReservation: 2048
+        networkMode: "bridge"
+        privileged: false
+        remoteFSRoot: "${AWS_FILE_SYSTEM}"

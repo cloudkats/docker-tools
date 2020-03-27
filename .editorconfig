@@ -1,0 +1,25 @@
+# top-most EditorConfig file
+root = true
+
+[*]
+end_of_line = lf
+charset = utf-8
+indent_style = space
+indent_size = 2
+insert_final_newline = false
+trim_trailing_whitespace = true
+
+[Dockerfile]
+indent_style = space
+indent_size = 2
+max_line_length = 140
+
+[*.sh]
+indent_style = space
+indent_size = 2
+
+[Makefile]
+indent_style = tab
+
+[README]
+indent_style = tab

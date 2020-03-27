@@ -1,0 +1,66 @@
+name: C7nMailer
+# This workflow is triggered on pushes to the repository.
+
+on:
+  push:
+    paths:
+    - c7n-mailer/**
+    - .github/workflows/c7nmailer.yaml
+
+env:
+  WORKSPACE: c7n-mailer
+  DOCKER_REPO: cloudkats
+  DOCKER_IMAGE: c7n-mailer
+
+jobs:
+  buildonpush:
+    name: BuildOnPush
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      run: |
+        echo "Build"
+        cd "${WORKSPACE}"
+
+        docker build . --file Dockerfile --tag image \
+          --build-arg PACKAGE_VERSION=$(cat tfversion)
+
+    - name: Login to Registry
+      run: |
+        echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+
+    - name: Push Docker image
+      run: |
+        echo "Push"
+        echo "$IMAGE_ID"
+
+        cd "${WORKSPACE}"
+        image_version=$(cat version)
+
+        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+        tag_date="$(date +%Y%d%m)"
+
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+        # Use Docker `latest` tag convention
+        [ "$VERSION" == "master" ] && VERSION=latest
+        docker tag image "${IMAGE_ID}:${VERSION}"
+        docker push "${IMAGE_ID}:${VERSION}"
+
+        docker tag image "${IMAGE_ID}:${image_version}.${GITHUB_SHA::8}"
+        docker push "${IMAGE_ID}:${image_version}.${GITHUB_SHA::8}"
+
+        docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
+        docker push "${IMAGE_ID}:${image_version}.${tag_date}"
+
+        docker tag image "${IMAGE_ID}:${image_version}"
+        docker push "${IMAGE_ID}:${image_version}"
