@@ -1,3 +1,4 @@
+ARG VERSION
 FROM jenkins/jenkins:${VERSION}
 
 COPY plugins.conf /tmp/plugins.conf
