@@ -56,15 +56,5 @@ jobs:
         docker tag image "${IMAGE_ID}:${VERSION}"
         docker push "${IMAGE_ID}:${VERSION}"
 
-        docker tag image "${IMAGE_ID}:${image_version}.${PURPOSE}.${GITHUB_SHA::8}"
-        docker push "${IMAGE_ID}:${image_version}.${PURPOSE}.${GITHUB_SHA::8}"
-
-        docker tag image "${IMAGE_ID}:${image_version}.${PURPOSE}.${tag_date}"
-        docker push "${IMAGE_ID}:${image_version}.${PURPOSE}.${tag_date}"
-
-        docker tag image "${IMAGE_ID}:${image_version}.${PURPOSE}"
-        docker push "${IMAGE_ID}:${image_version}.${PURPOSE}"
-
-        docker tag image "${IMAGE_ID}:${image_version::5}.${PURPOSE}"
-        docker push "${IMAGE_ID}:${image_version::5}.${PURPOSE}"
-
+        docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
+        docker push "${IMAGE_ID}:${image_version}.${tag_date}"
