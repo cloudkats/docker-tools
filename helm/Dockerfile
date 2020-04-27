@@ -8,7 +8,7 @@ ARG VERSION
 
 RUN apk add --no-cache ca-certificates=20191127-r1 \
   && apk add --no-cache -t deps wget=1.20.3-r0 \
-  git=2.24.1-r0 openssl=1.1.1d-r3 bash=5.0.11-r1 \
+  git=2.24.3-r0 openssl=1.1.1g-r0 bash=5.0.11-r1 \
   && wget -q https://get.helm.sh/helm-v${VERSION}-linux-amd64.tar.gz \
   && tar -xf helm-v${VERSION}-linux-amd64.tar.gz \
   && mv linux-amd64/helm /usr/local/bin \
