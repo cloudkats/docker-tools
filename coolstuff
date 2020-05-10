@@ -1,3 +1,15 @@
 https://hub.docker.com/r/nicolaka/devcon/dockerfile
 
 https://evilmartians.com/chronicles/ruby-on-whales-docker-for-ruby-rails-development
+
+
+How to create docs for such project:
+https://github.com/flood-io/dockerfiles
+https://github.com/tianon/dockerfiles
+
+docker validator
+https://github.com/hadolint/hadolint
+
+## Github Actions
+
+https://github.com/denvazh/gatling/tree/master/.github/workflows
