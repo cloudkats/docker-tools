@@ -8,9 +8,9 @@ on:
     - .github/workflows/terragrunt.yaml
 
 env:
-  WORKSPACE: terraform
+  WORKSPACE: terragrunt
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: terraform
+  DOCKER_IMAGE: terragrunt
   SHA8: ${GITHUB_SHA::8}
 
 jobs:
