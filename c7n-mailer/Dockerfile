@@ -1,7 +1,10 @@
 FROM python:3.8.1-alpine3.11
 
 LABEL vendor="cloud kats" \
-  maintainer="cloudkats@gmail.com"
+  maintainer="cloudkats@gmail.com" \
+  org.opencontainers.image.title="cloudkats/c7n-mailer" \
+  org.opencontainers.image.url="https://github.com/cloud-custodian/cloud-custodian" \
+  org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/c7n-mailer"
 
 # hadolint ignore=DL3018,DL3003
 RUN apk add --no-cache --update git \
