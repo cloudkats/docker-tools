@@ -17,7 +17,7 @@ RUN apk update && apk add --no-cache --update \
   jq tree \
   tzdata dos2unix \
   && pip3 install --upgrade yq awscli \
-  && && ln -sv /usr/bin/python3 /usr/bin/python
+  && ln -sv /usr/bin/python3 /usr/bin/python
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD ["/bin/bash"]

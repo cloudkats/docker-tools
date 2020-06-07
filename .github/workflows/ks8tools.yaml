@@ -25,7 +25,8 @@ jobs:
       run: |
         echo "Build"
 
-        docker build . --file Dockerfile --tag image
+        docker build . --file Dockerfile --tag image \
+          --build-arg VERSION=$(cat version)
 
     - name: Login to Registry
       run: |
@@ -38,7 +39,7 @@ jobs:
       working-directory: ${{ env.WORKSPACE }}
       run: |
         echo "Push"
-        
+
         image_version=$(cat version)
 
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
@@ -62,3 +63,6 @@ jobs:
 
         docker tag image "${IMAGE_ID}:${image_version}"
         docker push "${IMAGE_ID}:${image_version}"
+
+        docker tag image "${IMAGE_ID}:latest"
+        docker push "${IMAGE_ID}:latest"
