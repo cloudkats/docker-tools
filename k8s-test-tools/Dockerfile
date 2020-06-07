@@ -1,28 +1,32 @@
-ARG bashver=latest
+ARG bashver=5.0.17
 
-FROM alpine:3.11 as builder
+FROM alpine:3.12 as builder
 
 ARG K8S_VERSION
 
-RUN apk add --no-cache git;apk --update upgrade    && \
-	apk add ca-certificates && \
-	apk add --no-cache git  && \
-	rm -rf /var/cache/apk/* && \
-	wget -O /kubectl https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl \
+# hadolint ignore=DL3018,DL3019
+RUN apk add --no-cache git ca-certificates bash curl \
+	&& rm -rf /var/cache/apk/* \
+  && curl -L -o /kubectl https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl \
 	&& chmod +x /kubectl
 
 ENV KUBE_CTX_VERSION "0.7.1"
+ENV GITHUB_RAW https://raw.githubusercontent.com
 
-RUN apk --no-cache add bash curl &&\
-	curl -L -o /usr/local/bin/kubectx https://raw.githubusercontent.com/ahmetb/kubectx/v${KUBE_CTX_VERSION}/kubectx &&\
-	curl -L -o /usr/local/bin/kubens https://raw.githubusercontent.com/ahmetb/kubectx/v${KUBE_CTX_VERSION}/kubens &&\
-	chmod +x /usr/local/bin/kubectx &&\
-	chmod +x /usr/local/bin/kubens \
+# hadolint ignore=DL3018,DL3019
+RUN curl -L -o /usr/local/bin/kubectx ${GITHUB_RAW}/ahmetb/kubectx/v${KUBE_CTX_VERSION}/kubectx \
+  && curl -L -o /usr/local/bin/kubens ${GITHUB_RAW}/ahmetb/kubectx/v${KUBE_CTX_VERSION}/kubens \
+	&& chmod +x /usr/local/bin/kubectx \
+	&& chmod +x /usr/local/bin/kubens \
   && git clone https://github.com/bats-core/bats-core.git /bats;
 
 FROM bash:${bashver}
 
-RUN apk --no-cache add curl
+LABEL vendor="cloud kats" \
+  maintainer="cloudkats@gmail.com" \
+  org.opencontainers.image.title="cloudkats/k8s-test-tools" \
+  org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/k8s-test-tools" \
+  org.opencontainers.image.tools="kubectl,bats,kubectx,kubens"
 
 COPY --from=builder /kubectl /usr/sbin/kubectl
 COPY --from=builder /bats /opt/bats/

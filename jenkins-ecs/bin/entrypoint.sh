@@ -1,4 +1,7 @@
-#! /bin/bash -e
+#!/bin/bash
+
+set -e
+
 # shellcheck disable=SC2155
 # shellcheck disable=SC2086
 if [[ $# -lt 1 ]] || [[ "$1" == "-"* ]]; then
