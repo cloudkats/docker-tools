@@ -1,9 +1,9 @@
 ARG VERSION
 ARG ALPINE_VERSION=3.12
-ARG HELM_VERSION=v3.2.2
+ARG HELM_VERSION=3.2.2
 
 FROM cloudkats/k8s-test-tools:${VERSION} as tools
-FROM lachlanevenson/k8s-helm:${HELM_VERSION} as helm
+FROM cloudkats/helm:${HELM_VERSION} as helm
 FROM alpine:${ALPINE_VERSION} as downloader
 
 # hadolint ignore=DL3018,DL3019
