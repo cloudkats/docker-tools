@@ -1,6 +1,6 @@
 ARG VERSION
 ARG ALPINE_VERSION=3.12
-ARG HELM_VERSION=3.2.2
+ARG HELM_VERSION=3.2.4
 
 FROM cloudkats/k8s-test-tools:${VERSION} as tools
 FROM cloudkats/helm:${HELM_VERSION} as helm
@@ -27,7 +27,8 @@ LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com" \
   org.opencontainers.image.title="cloudkats/k8s-tools" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/k8s-tools" \
-  org.opencontainers.image.tools="kubectl,bats,helm,sops,python3,yq"
+  org.opencontainers.image.tools="kubectl,bats,helm,sops,python3,yq" \
+  org.opencontainers.image.helmp-lugins="helm-secrets"
 
 COPY --from=tools /usr/sbin/kubectl /usr/local/bin/kubectl
 COPY --from=tools /opt/bats /opt/bats/
@@ -39,6 +40,8 @@ RUN apk add --no-cache ca-certificates=20191127-r3 \
   openssl=1.1.1g-r0 jq=1.6-r1 bash=5.0.17-r0 \
   && apk add -Uuv --no-cache --update python3=3.8.3-r0 py3-pip=20.1.1-r0 \
   && pip3 install --upgrade pip==20.1.1
+
+RUN helm plugin install https://github.com/futuresimple/helm-secrets
 
 RUN ln -sfn /opt/bats/bin/bats /usr/sbin/bats \
   && ln -sfn /usr/local/bin/kubectl /usr/sbin/kubectl \
