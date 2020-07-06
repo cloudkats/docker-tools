@@ -45,11 +45,6 @@ jobs:
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
         tag_date="$(date +%Y%d%m)"
 
-        # Strip git ref prefix from version
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-        # Strip "v" prefix from tag name
-        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
         docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
         docker push "${IMAGE_ID}:${image_version}.${tag_date}"
 
