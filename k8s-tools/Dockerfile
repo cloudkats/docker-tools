@@ -7,7 +7,7 @@ FROM cloudkats/helm:${HELM_VERSION} as helm
 FROM alpine:${ALPINE_VERSION} as downloader
 
 # hadolint ignore=DL3018,DL3019
-RUN apk update && apk add --no-cache ca-certificates=20191127-r3 \
+RUN apk update && apk add --no-cache ca-certificates=20191127-r4 \
   git=2.26.2-r0 openssl=1.1.1g-r0 wget=1.20.3-r1 bash=5.0.17-r0
 RUN update-ca-certificates 2>/dev/null || true
 
@@ -36,8 +36,8 @@ COPY --from=helm /usr/local/bin/helm /usr/local/bin/helm
 COPY --from=downloader /usr/local/bin/sops /usr/local/bin/sops
 COPY --from=downloader /usr/bin/yq /usr/local/bin/yq
 
-RUN apk add --no-cache ca-certificates=20191127-r3 \
-  openssl=1.1.1g-r0 jq=1.6-r1 bash=5.0.17-r0 \
+RUN apk add --no-cache ca-certificates=20191127-r4 \
+  openssl=1.1.1g-r0 jq=1.6-r1 bash=5.0.17-r0 git=2.26.2-r0 \
   && apk add -Uuv --no-cache --update python3=3.8.3-r0 py3-pip=20.1.1-r0 \
   && pip3 install --upgrade pip==20.1.1
 
