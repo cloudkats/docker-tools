@@ -1,3 +1,9 @@
+###
+# Build:
+# docker build . --tag test-image --build-arg VERSION=$(cat version)
+# Run:
+# docker run --rm -it test-image /bin/bash
+###
 ARG bashver=5.0.17
 
 FROM alpine:3.12 as builder
@@ -5,12 +11,12 @@ FROM alpine:3.12 as builder
 ARG K8S_VERSION
 
 # hadolint ignore=DL3018,DL3019
-RUN apk add --no-cache git ca-certificates bash curl \
+RUN apk add --no-cache git ca-certificates bash curl gettext \
 	&& rm -rf /var/cache/apk/* \
   && curl -L -o /kubectl https://storage.googleapis.com/kubernetes-release/release/v${K8S_VERSION}/bin/linux/amd64/kubectl \
 	&& chmod +x /kubectl
 
-ENV KUBE_CTX_VERSION "0.7.1"
+ENV KUBE_CTX_VERSION "0.9.1"
 ENV GITHUB_RAW https://raw.githubusercontent.com
 
 # hadolint ignore=DL3018,DL3019
@@ -26,7 +32,7 @@ LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com" \
   org.opencontainers.image.title="cloudkats/k8s-test-tools" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/k8s-test-tools" \
-  org.opencontainers.image.tools="kubectl,bats,kubectx,kubens"
+  org.opencontainers.image.tools="kubectl-1.17,bats-5,kubectx-0.9,kubens-0.9"
 
 COPY --from=builder /kubectl /usr/sbin/kubectl
 COPY --from=builder /bats /opt/bats/

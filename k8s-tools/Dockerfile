@@ -1,3 +1,9 @@
+###
+# Build:
+# docker build . --tag test-image --build-arg VERSION=$(cat version)
+# Run:
+# docker run --rm -it test-image /bin/bash
+###
 ARG VERSION
 ARG ALPINE_VERSION=3.12
 ARG HELM_VERSION=3.2.4
@@ -28,7 +34,7 @@ LABEL vendor="cloud kats" \
   org.opencontainers.image.title="cloudkats/k8s-tools" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/k8s-tools" \
   org.opencontainers.image.tools="kubectl,bats,helm,sops,python3,yq" \
-  org.opencontainers.image.helmp-lugins="helm-secrets"
+  org.opencontainers.image.helmp-plugins="helm-secrets"
 
 COPY --from=tools /usr/sbin/kubectl /usr/local/bin/kubectl
 COPY --from=tools /opt/bats /opt/bats/
@@ -36,9 +42,9 @@ COPY --from=helm /usr/local/bin/helm /usr/local/bin/helm
 COPY --from=downloader /usr/local/bin/sops /usr/local/bin/sops
 COPY --from=downloader /usr/bin/yq /usr/local/bin/yq
 
-RUN apk add --no-cache ca-certificates=20191127-r4 \
+RUN apk add --no-cache ca-certificates=20191127-r4 gettext=0.20.2-r0 \
   openssl=1.1.1g-r0 jq=1.6-r1 bash=5.0.17-r0 git=2.26.2-r0 \
-  && apk add -Uuv --no-cache --update python3=3.8.3-r0 py3-pip=20.1.1-r0 \
+  && apk add -Uuv --no-cache --update python3=3.8.5-r0 py3-pip=20.1.1-r0 \
   && pip3 install --upgrade pip==20.1.1
 
 RUN helm plugin install https://github.com/futuresimple/helm-secrets
