@@ -14,8 +14,7 @@ LABEL vendor="cloud kats" \
   org.opencontainers.image.context="app"
 
 ENV PACKAGES "git bash tini zip"
-
-USER root
+RUN whoami
 
 RUN mkdir -p /app
 
@@ -29,3 +28,5 @@ RUN apk add --no-cache $PACKAGES \
   && npm i -g env-cmd \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /var/cache/apk/*
+
+USER node
