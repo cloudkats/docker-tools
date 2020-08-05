@@ -1,4 +1,4 @@
-FROM alpine:3.7
+FROM alpine:3.12
 
 LABEL maintainer="Ivan Katliarchuk <cloudkats@gmail.com>"
 
