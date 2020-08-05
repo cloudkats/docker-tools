@@ -74,12 +74,12 @@
 
 ## Kubernetes Test Tools
 
-[![](https://github.com/cloudkats/docker-tools/workflows/K8sTestTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AK8sTestTools)
+[![](https://github.com/cloudkats/docker-tools/workflows/k8sTestTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8sTestTools)
 [![](https://img.shields.io/docker/pulls/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools)
 
 ## Kubernetes Tools
 
-[![](https://github.com/cloudkats/docker-tools/workflows/K8sTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AK8sTools)
+[![](https://github.com/cloudkats/docker-tools/workflows/k8sTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8sTools)
 [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)
 
 ## Helm

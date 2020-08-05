@@ -1,4 +1,4 @@
-name: K8sTools
+name: k8sTools
 # This workflow is triggered on pushes to the repository.
 
 on:
@@ -28,14 +28,14 @@ jobs:
         docker build . --file Dockerfile --tag image \
           --build-arg VERSION=$(cat version)
 
-    - name: Login to Registry
+    - name: login to registry
       run: |
         echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
-    - name: Push Docker image
+    - name: push docker image
       working-directory: ${{ env.WORKSPACE }}
       run: |
         echo "Push"

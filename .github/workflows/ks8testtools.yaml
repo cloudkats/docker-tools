@@ -1,4 +1,4 @@
-name: K8sTestTools
+name: k8sTestTools
 # This workflow is triggered on pushes to the repository.
 
 on:
@@ -14,7 +14,7 @@ env:
 
 jobs:
   buildonpush:
-    name: BuildOnPush
+    name: build&On&push
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
@@ -28,21 +28,19 @@ jobs:
         docker build . --file Dockerfile --tag image \
           --build-arg K8S_VERSION=$(cat version)
 
-    - name: Login to Registry
+    - name: login to registry
       run: |
         echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
-    - name: Push Docker image
+    - name: push docker image
       working-directory: ${{ env.WORKSPACE }}
       run: |
-
-        set -x
-        
         echo "Push"
 
+        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
         image_version=$(cat version)
 
         docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
