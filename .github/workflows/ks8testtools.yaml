@@ -38,6 +38,9 @@ jobs:
     - name: Push Docker image
       working-directory: ${{ env.WORKSPACE }}
       run: |
+
+        set -x
+        
         echo "Push"
 
         image_version=$(cat version)
