@@ -8,7 +8,7 @@ ARG VERSION
 ARG ALPINE_VERSION=3.12
 ARG HELM_VERSION=3.2.4
 
-FROM cloudkats/k8s-test-tools:${VERSION} as tools
+FROM cloudkats/k8s-test-tools:1.17.9 as tools
 FROM cloudkats/helm:${HELM_VERSION} as helm
 FROM alpine:${ALPINE_VERSION} as downloader
 
