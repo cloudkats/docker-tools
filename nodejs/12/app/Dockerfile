@@ -13,7 +13,7 @@ LABEL vendor="cloud kats" \
   org.opencontainers.image.tools="node=12.16.3" \
   org.opencontainers.image.context="app"
 
-ENV PACKAGES "git bash tini"
+ENV PACKAGES "git bash tini zip"
 
 USER root
 
