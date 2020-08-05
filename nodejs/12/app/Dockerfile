@@ -1,11 +1,19 @@
+###
+# Build:
+# docker build . --tag test-image --build-arg VERSION=$(cat version)
+# Run:
+# docker run --rm -it test-image /bin/bash
+###
 ARG VERSION
 FROM node:${VERSION}
 
 LABEL vendor="cloud kats" \
 	maintainer="cloudkats@gmail.com" \
-  host="app"
+  org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/node" \
+  org.opencontainers.image.tools="node=12.16.3" \
+  org.opencontainers.image.context="app"
 
-ENV PACKAGES "git bash"
+ENV PACKAGES "git bash tini"
 
 USER root
 
@@ -15,9 +23,9 @@ WORKDIR /app
 
 COPY entrypoint.sh .
 
-RUN apk add --no-cache tini \
+# hadolint ignore=DL3018
+RUN apk add --no-cache $PACKAGES \
   && npm i npm@latest -g \
   && npm i -g env-cmd \
-  && apk add  --update $PACKAGES \
   && rm -rf /var/lib/apt/lists/* \
   && rm -rf /var/cache/apk/*
