@@ -30,3 +30,7 @@ RUN apk add --no-cache $PACKAGES \
   && rm -rf /var/cache/apk/*
 
 USER node
+
+RUN mkdir /home/node/workspace
+
+WORKDIR /home/node/workspace
