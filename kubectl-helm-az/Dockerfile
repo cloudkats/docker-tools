@@ -1,4 +1,4 @@
-FROM lachlanevenson/k8s-helm:v3.1.0
+FROM lachlanevenson/k8s-helm:v3.3.1
 FROM lachlanevenson/k8s-kubectl:v1.14.1
 
 # We build our own base az alpine image becase all official images currently
