@@ -1,7 +1,7 @@
 #
 # The recommended shebang is #!/usr/bin/env bash, not #!/bin/bash
 #
-FROM hashicorp/terraform:0.12.25 as terraform
+FROM hashicorp/terraform:0.13.2 as terraform
 
 FROM alpine:3.11
 
