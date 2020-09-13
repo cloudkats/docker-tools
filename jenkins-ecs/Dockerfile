@@ -1,4 +1,4 @@
-FROM jenkins/jenkins:2.156-alpine
+FROM jenkins/jenkins:2.256-alpine
 
 LABEL maintainer="Ivan Katliarchuk <cloudkats@gmail.com>"
 LABEL Description="This is the Jenkins image with ECS Fargate agent/slave support."
