@@ -5,7 +5,9 @@
   "regexManagers": [
     {
       "fileMatch": [
-        "Dockerfile$"
+        "Dockerfile$",
+        "(^|/|\\.)Dockerfile$",
+        "(^|/)Dockerfile\\.[^/]*$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sENV .*?_VERSION=(?<currentValue>.*)\\s"
@@ -14,7 +16,9 @@
     },
     {
       "fileMatch": [
-        "Dockerfile$"
+        "Dockerfile$",
+        "(^|/|\\.)Dockerfile$",
+        "(^|/)Dockerfile\\.[^/]*$"
       ],
       "matchStrings": [
         "ARG IMAGE=(?<depName>.*?):(?<currentValue>.*?)@(?<currentDigest>sha256:[a-f0-9]+)s"
@@ -22,6 +26,9 @@
       "datasourceTemplate": "docker"
     }
   ],
+  "enabled": true,
   "automerge": true,
-  "enabled": true
+  "major": {
+    "automerge": false
+  }
 }
