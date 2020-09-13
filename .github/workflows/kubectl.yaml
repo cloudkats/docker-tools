@@ -43,8 +43,8 @@ jobs:
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
-        context: .
-        file: ${{ env.WORKSPACE}}/Dockefile
+        context: ${{ env.WORKSPACE }}
+        file: ${{ env.WORKSPACE}}/Dockerfile
         tag_with_ref: true
         tag_with_sha: true
         tags: |
