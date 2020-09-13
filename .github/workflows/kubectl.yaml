@@ -37,6 +37,7 @@ jobs:
     -
       name: Prepare
       id: prep
+      working-directory: ${{ env.WORKSPACE }}
       run: |
         VERSION=$(sed -n 's/ENV VERSION=\(.*\)/\1/p' Dockerfile)
 
