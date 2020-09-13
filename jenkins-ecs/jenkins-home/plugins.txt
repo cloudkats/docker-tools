@@ -16,7 +16,7 @@ blueocean-autofavorite:1.2.2
 blueocean-bitbucket-pipeline:1.9.0
 blueocean-commons:1.23.2
 blueocean-config:1.23.2
-blueocean-core-js:1.9.0
+blueocean-core-js:1.23.2
 blueocean-dashboard:1.9.0
 blueocean-display-url:2.2.0
 blueocean-events:1.9.0
