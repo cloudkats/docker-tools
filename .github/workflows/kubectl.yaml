@@ -32,9 +32,19 @@ jobs:
       working-directory: ${{ env.WORKSPACE }}
       run: |
         VERSION=$(sed -n 's/ENV VERSION=\(.*\)/\1/p' Dockerfile)
+        TAGS="${DOCKER_IMAGE}:${VERSION}"
+        TAGS="${TAGS},${DOCKER_IMAGE}:latest,${DOCKER_IMAGE}:$(date -u +'%Y-%m-%d')"
 
+        echo ::set-output name=tags::${TAGS}
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
+
+    -
+      name: dockerhub login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     -
       name: build and push
@@ -49,10 +59,7 @@ jobs:
         tag_with_sha: true
         push: true
         platforms: linux/amd64
-        tags: |
-          ${{ env.DOCKER_IMAGE }}:latest
-          ${{ env.DOCKER_IMAGE }}:${{ steps.prep.outputs.created }}
-          ${{ env.DOCKER_IMAGE }}:${{ steps.prep.outputs.version }}
+        tags: ${{ steps.prep.outputs.tags }}
         labels: |
           org.opencontainers.image.created=${{ steps.prep.outputs.created }}
           org.opencontainers.image.source=${{ github.repositoryUrl }}
