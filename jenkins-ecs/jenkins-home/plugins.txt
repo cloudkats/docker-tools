@@ -3,7 +3,7 @@ active-directory:2.16
 amazon-ecr:1.6
 amazon-ecs:1.36
 anchore-container-scanner:1.0.18
-ant:1.9
+ant:1.11
 antisamy-markup-formatter:1.5
 apache-httpcomponents-client-4-api:4.5.5-3.0
 artifactory:2.16.2
