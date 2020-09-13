@@ -9,6 +9,8 @@ env:
   WITH_V: true
   DEFAULT_BUMP: patch
   INITIAL_VERSION: 0.0.0
+  # https://github.com/chalk/supports-color/issues/106
+  FORCE_COLOR: true
 
 jobs:
   build:
