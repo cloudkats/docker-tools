@@ -39,7 +39,7 @@ jobs:
     -
       name: build and push
       id: docker_build
-      uses: docker/build-push-action@v2
+      uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
         password: ${{ secrets.DOCKERHUB_TOKEN }}
@@ -48,6 +48,7 @@ jobs:
         tag_with_ref: true
         tag_with_sha: true
         push: true
+        platforms: linux/amd64
         tags: |
           ${{ env.DOCKER_IMAGE }}:latest
           ${{ env.DOCKER_IMAGE }}:${{ steps.prep.outputs.created }}
