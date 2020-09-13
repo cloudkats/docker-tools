@@ -14,7 +14,7 @@ env:
 
 jobs:
   buildonpush:
-    name: BuildOnPush
+    name: build-on-push
     runs-on: ubuntu-latest
     if: github.event_name != 'pull_request'
     steps:
@@ -27,7 +27,7 @@ jobs:
         dockerfile: ${{ env.WORKSPACE }}/Dockerfile
 
     -
-      name: Prepare
+      name: prepare
       id: prep
       working-directory: ${{ env.WORKSPACE }}
       run: |
@@ -37,7 +37,7 @@ jobs:
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
 
     -
-      name: Build and push
+      name: build and push
       id: docker_build
       uses: docker/build-push-action@v2
       with:
@@ -47,6 +47,7 @@ jobs:
         file: ${{ env.WORKSPACE}}/Dockerfile
         tag_with_ref: true
         tag_with_sha: true
+        push: true
         tags: |
           ${{ env.DOCKER_IMAGE }}:latest
           ${{ env.DOCKER_IMAGE }}:${{ steps.prep.outputs.created }}
@@ -58,7 +59,7 @@ jobs:
           org.opencontainers.image.revision=${{ github.sha }}
           org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
 
-    - name: Docker Hub Description
+    - name: docker hub description
       uses: peter-evans/dockerhub-description@v2
       env:
         DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
