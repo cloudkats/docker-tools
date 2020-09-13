@@ -3,6 +3,7 @@ name: terragrunt
 
 on:
   push:
+    branches: master
     paths:
     - terragrunt/**
     - .github/workflows/terragrunt.yaml
