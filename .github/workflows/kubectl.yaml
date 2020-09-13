@@ -16,7 +16,7 @@ jobs:
   buildonpush:
     name: BuildOnPush
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name != 'pull_request'
     steps:
     - uses: actions/checkout@v2
 
@@ -25,14 +25,6 @@ jobs:
         XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
       with:
         dockerfile: ${{ env.WORKSPACE }}/Dockerfile
-
-    -
-      name: Login to DockerHub
-      if: github.event_name != 'pull_request'
-      uses: docker/login-action@v1
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
 
     -
       name: Prepare
@@ -49,7 +41,9 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v2
       with:
-        context: ${{ env.WORKSPACE }}
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        context: .
         file: ${{ env.WORKSPACE}}/Dockefile
         tag_with_ref: true
         tag_with_sha: true
