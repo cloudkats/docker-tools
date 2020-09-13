@@ -51,7 +51,8 @@ jobs:
       with:
         context: ${{ env.WORKSPACE }}
         file: ${{ env.WORKSPACE}}/Dockefile
-        push: true
+        tag_with_ref: true
+        tag_with_sha: true
         tags: |
           ${{ env.DOCKER_IMAGE }}:latest
           ${{ env.DOCKER_IMAGE }}:${{ steps.prep.outputs.created }}

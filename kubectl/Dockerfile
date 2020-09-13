@@ -1,6 +1,6 @@
 ###
 # Build:
-# docker build . --tag test-image
+# docker build kubectl --file kubectl/Dockerfile --tag test
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
