@@ -20,7 +20,7 @@ blueocean-core-js:1.23.2
 blueocean-dashboard:1.23.2
 blueocean-display-url:2.2.0
 blueocean-events:1.9.0
-blueocean-git-pipeline:1.9.0
+blueocean-git-pipeline:1.23.2
 blueocean-github-pipeline:1.9.0
 blueocean-i18n:1.9.0
 blueocean-jira:1.9.0
