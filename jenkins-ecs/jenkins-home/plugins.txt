@@ -39,7 +39,7 @@ build-user-vars-plugin:1.5
 buildtriggerbadge:2.9
 checkmarx:8.80.0
 cloudbees-bitbucket-branch-source:2.2.16
-cloudbees-folder:6.7
+cloudbees-folder:6.14
 cobertura:1.13
 code-coverage-api:1.0.5
 command-launcher:1.2
