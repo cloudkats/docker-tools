@@ -36,7 +36,7 @@ bouncycastle-api:2.17
 branch-api:2.1.2
 build-timeout:1.19
 build-user-vars-plugin:1.5
-buildtriggerbadge:2.9
+buildtriggerbadge:2.10
 checkmarx:8.80.0
 cloudbees-bitbucket-branch-source:2.2.16
 cloudbees-folder:6.7
