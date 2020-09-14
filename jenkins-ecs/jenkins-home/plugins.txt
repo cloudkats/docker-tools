@@ -41,7 +41,7 @@ checkmarx:8.80.0
 cloudbees-bitbucket-branch-source:2.2.16
 cloudbees-folder:6.7
 cobertura:1.13
-code-coverage-api:1.0.5
+code-coverage-api:1.2.0
 command-launcher:1.2
 conditional-buildstep:1.3.6
 config-file-provider:3.4.1
