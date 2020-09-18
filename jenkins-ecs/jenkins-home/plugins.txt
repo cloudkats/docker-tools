@@ -33,7 +33,7 @@ blueocean-rest:1.9.0
 blueocean-rest-impl:1.24.0
 blueocean-web:1.9.0
 bouncycastle-api:2.17
-branch-api:2.1.2
+branch-api:2.6.0
 build-timeout:1.20
 build-user-vars-plugin:1.5
 buildtriggerbadge:2.9
