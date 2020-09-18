@@ -14,7 +14,7 @@ badge:1.8
 blueocean:1.24.0
 blueocean-autofavorite:1.2.2
 blueocean-bitbucket-pipeline:1.23.2
-blueocean-commons:1.23.2
+blueocean-commons:1.24.0
 blueocean-config:1.23.2
 blueocean-core-js:1.23.2
 blueocean-dashboard:1.23.2
