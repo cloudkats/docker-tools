@@ -28,7 +28,7 @@ blueocean-jwt:1.9.0
 blueocean-personalization:1.23.2
 blueocean-pipeline-api-impl:1.9.0
 blueocean-pipeline-editor:1.9.0
-blueocean-pipeline-scm-api:1.9.0
+blueocean-pipeline-scm-api:1.24.0
 blueocean-rest:1.9.0
 blueocean-rest-impl:1.9.0
 blueocean-web:1.9.0
