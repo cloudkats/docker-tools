@@ -56,7 +56,8 @@ jobs:
         push: false
         platforms: linux/amd64
         # tags: ${{ steps.prep.outputs.tags }}
-        tags: ${{ env.DOCKER_IMAGE }}:latest
+        # tags: ${{ env.DOCKER_IMAGE }}:latest
+        tags: latest
         labels: |
           org.opencontainers.image.created=${{ steps.prep.outputs.created }}
           org.opencontainers.image.source=${{ github.repositoryUrl }}
