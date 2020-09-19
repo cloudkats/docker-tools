@@ -8,5 +8,5 @@
 ## Run Locally
 
 ```
-docker run --rm --entrypoint="" -it cloudkats/k8s-tools:v1.13.10 /bin/sh
+docker run --rm --entrypoint="" -it cloudkats/k8s-tools:latest /bin/sh
 ```
