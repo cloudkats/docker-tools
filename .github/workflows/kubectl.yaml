@@ -10,7 +10,7 @@ on:
 
 env:
   WORKSPACE: kubectl
-  DOCKER_IMAGE: hub.docker.com/cloudkats/kubectl
+  DOCKER_IMAGE: cloudkats/kubectl
   GITHUB_DOCKER_REGISTRY: docker.pkg.github.com
 
 jobs:
