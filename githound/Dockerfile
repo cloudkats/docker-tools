@@ -1,4 +1,4 @@
-FROM golang:1.14 as builder
+FROM golang:1.15 as builder
 RUN go get -u github.com/ezekg/git-hound \
 	&& go install github.com/ezekg/git-hound
 
