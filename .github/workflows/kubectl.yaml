@@ -11,6 +11,7 @@ on:
 env:
   WORKSPACE: kubectl
   DOCKER_IMAGE: cloudkats/kubectl
+  DOCKER_REGISTRY:
   GITHUB_DOCKER_REGISTRY: docker.pkg.github.com
 
 jobs:
@@ -41,14 +42,22 @@ jobs:
         echo ::set-output name=created::$(date -u +'%Y-%m-%d')
 
     -
+      name: dockerhub login
+      uses: docker/login-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        registry: ${{ env.DOCKER_REGISTRY }}
+
+    -
       name: build and push
       id: docker_build
       uses: docker/build-push-action@v1
       with:
-        # path: ${{ env.WORKSPACE }}
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_TOKEN }}
-        dockerfile: ${{ env.WORKSPACE }}/Dockerfile
+        path: ${{ env.WORKSPACE }}
+        # username: ${{ secrets.DOCKERHUB_USERNAME }}
+        # password: ${{ secrets.GITHUB_TOKEN }}
+        dockerfile: ./Dockerfile
         push: true
         # tags: ${{ steps.prep.outputs.tags }}
         repository: ${{ env.DOCKER_IMAGE }}
