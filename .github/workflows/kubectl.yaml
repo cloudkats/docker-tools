@@ -52,8 +52,8 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v1
       with:
-        context: .
-        file: ${{ env.WORKSPACE }}/Dockerfile
+        path: ${{ env.WORKSPACE }}
+        dockerfile: Dockerfile
         push: true
         platforms: linux/amd64
         # tags: ${{ steps.prep.outputs.tags }}
