@@ -1,5 +1,5 @@
 # hadolint ignore=DL3006
-FROM ubuntu:20.04
+FROM ubuntu:20.10
 
 ARG user=jenkins
 ARG group=jenkins
