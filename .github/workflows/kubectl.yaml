@@ -47,8 +47,9 @@ jobs:
       uses: docker/build-push-action@v1
       with:
         username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.GITHUB_TOKEN }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
         dockerfile: ${{ env.WORKSPACE }}/Dockerfile
+        registry: ${{ env.DOCKER_REGISTRY }}
         push: true
         # tags: ${{ steps.prep.outputs.tags }}
         tag_with_ref: true
