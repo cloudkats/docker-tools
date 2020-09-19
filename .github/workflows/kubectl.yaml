@@ -13,6 +13,7 @@ env:
   DOCKER_IMAGE: cloudkats/kubectl
   DOCKER_REGISTRY:
   GITHUB_DOCKER_REGISTRY: docker.pkg.github.com
+  VENDOR: cloudkats
 
 jobs:
   buildonpush:
@@ -33,9 +34,8 @@ jobs:
       id: prep
       working-directory: ${{ env.WORKSPACE }}
       run: |
-        VERSION=$(sed -n 's/ENV KUBECTL_VERSION=v\(.*\)/\1/p' Dockerfile)
-        TAGS="${DOCKER_IMAGE}:${VERSION}"
-        TAGS="${TAGS},${DOCKER_IMAGE}:latest,${DOCKER_IMAGE}:$(date -u +'%Y%m%d')"
+        VERSION=$(../bin/version.sh -r KUBECTL_VERSION)
+        TAGS="${VERSION},latest,$(date -u +'%Y%m%d')"
 
         echo ::set-output name=tags::${TAGS}
         echo ::set-output name=version::${VERSION}
@@ -52,18 +52,22 @@ jobs:
         dockerfile: ${{ env.WORKSPACE }}/Dockerfile
         registry: ${{ env.DOCKER_REGISTRY }}
         push: true
-        # tags: ${{ steps.prep.outputs.tags }}
+        tags: ${{ steps.prep.outputs.tags }}
         tag_with_ref: true
         tag_with_sha: true
         add_git_labels: true
         repository: ${{ env.DOCKER_IMAGE }}
-        tags: latest
         labels: |
           org.opencontainers.image.created=${{ steps.prep.outputs.created }}
           org.opencontainers.image.source=${{ github.repositoryUrl }}
           org.opencontainers.image.version=${{ steps.prep.outputs.version }}
           org.opencontainers.image.revision=${{ github.sha }}
           org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
+          org.label-schema.vcs-ref=${{ github.ref }}
+          org.label-schema.vcs-url="https://github.com/cloudkats/docker-tools/kubectl"
+          org.label-schema.build-date=${{ steps.prep.outputs.created }}
+          org.label-schema.description="Kubectl docker image"
+          org.label-schema.vendor=${{ env.VENDOR }}
 
     - name: docker hub description
       uses: peter-evans/dockerhub-description@v2
