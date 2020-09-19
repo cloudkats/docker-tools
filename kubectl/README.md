@@ -25,4 +25,4 @@ For full documentation see [kubectl](https://kubernetes.io/docs/reference/genera
 
 ## License
 
-MIT License - see the [LICENSE](../LICENSE) file for details
+MIT License - see the [LICENSE](https://github.com/cloudkats/docker-tools/blob/master/LICENCE) file for details
