@@ -31,7 +31,7 @@ jobs:
       id: prep
       working-directory: ${{ env.WORKSPACE }}
       run: |
-        VERSION=$(sed -n 's/ENV VERSION=v\(.*\)/\1/p' Dockerfile)
+        VERSION=$(sed -n 's/ENV KUBECTL_VERSION=v\(.*\)/\1/p' Dockerfile)
         TAGS="${DOCKER_IMAGE}:${VERSION}"
         TAGS="${TAGS},${DOCKER_IMAGE}:latest,${DOCKER_IMAGE}:$(date -u +'%Y%m%d')"
 
