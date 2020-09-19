@@ -52,7 +52,7 @@ jobs:
       uses: docker/build-push-action@v1
       with:
         context: ${{ env.WORKSPACE }}
-        file: ${{ env.WORKSPACE}}/Dockerfile
+        file: Dockerfile
         push: true
         platforms: linux/amd64
         # tags: ${{ steps.prep.outputs.tags }}
