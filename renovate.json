@@ -6,13 +6,15 @@
     {
       "fileMatch": [
         "Dockerfile$",
+        "^Dockerfile$",
         "(^|/|\\.)Dockerfile$",
         "(^|/)Dockerfile\\.[^/]*$"
       ],
       "matchStrings": [
         "datasource=(?<datasource>.*?) depName=(?<depName>.*?)( versioning=(?<versioning>.*?))?\\sENV .*?_VERSION=(?<currentValue>.*)\\s"
       ],
-      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}"
+      "versioningTemplate": "{{#if versioning}}{{{versioning}}}{{else}}semver{{/if}}",
+      "datasourceTemplate": "github-releases"
     },
     {
       "fileMatch": [
@@ -27,5 +29,8 @@
     }
   ],
   "enabled": true,
-  "automerge": true
+  "automerge": true,
+  "major": {
+    "automerge": false
+  }
 }

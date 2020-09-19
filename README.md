@@ -1,5 +1,6 @@
 # Docker Tools
 
+[renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
 [![](https://img.shields.io/github/license/cloudkats/docker-tools)](https://github.com/cloudkats/docker-tools)
 ![](https://img.shields.io/github/v/tag/cloudkats/docker-tools)
 [![](https://img.shields.io/github/repo-size/cloudkats/docker-tools)](https://github.com/cloudkats/docker-tools)
@@ -118,4 +119,3 @@ Submit a pull request
 docker build .  --tag image \
   --build-arg VERSION=$(cat version)
 ```
-
