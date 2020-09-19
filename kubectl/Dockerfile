@@ -2,7 +2,7 @@
 # Build:
 # docker build kubectl --file kubectl/Dockerfile --tag test
 # Run:
-# docker run --rm -it test-image /bin/bash
+# docker run --rm -it kubectl /bin/bash
 ###
 FROM alpine:3.12
 
