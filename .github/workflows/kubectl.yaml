@@ -10,7 +10,8 @@ on:
 
 env:
   WORKSPACE: kubectl
-  DOCKER_IMAGE: cloudkats/kubectl
+  DOCKER_IMAGE: hub.docker.com/cloudkats/kubectl
+  GITHUB_DOCKER_REGISTRY: docker.pkg.github.com
 
 jobs:
   buildonpush:
@@ -51,12 +52,12 @@ jobs:
       id: docker_build
       uses: docker/build-push-action@v1
       with:
-        context: ${{ env.WORKSPACE }}
-        file: Dockerfile
-        push: false
+        context: .
+        file: ${{ env.WORKSPACE }}/Dockerfile
+        push: true
         platforms: linux/amd64
         # tags: ${{ steps.prep.outputs.tags }}
-        # tags: ${{ env.DOCKER_IMAGE }}:latest
+        repository: ${{ env.DOCKER_IMAGE }}
         tags: latest
         labels: |
           org.opencontainers.image.created=${{ steps.prep.outputs.created }}
