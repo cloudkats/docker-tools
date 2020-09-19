@@ -2,7 +2,8 @@
 
 Docker image for the Kubernetes [kubectl](https://kubernetes.io/docs/tasks/tools/install-kubectl/) tool.
 
-[Dockerfile location](https://github.com/cloudkats/docker-tools/blob/master/kubectl/Dockerfile)
+- [Dockerfile location](https://github.com/cloudkats/docker-tools/blob/master/kubectl/Dockerfile)
+- [Dockerhub](https://hub.docker.com/repository/docker/cloudkats/kubectl)
 
 ## Tools installed
 
