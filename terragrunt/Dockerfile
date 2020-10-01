@@ -7,7 +7,7 @@
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
-FROM hashicorp/terraform:0.13.3 as terraform
+FROM hashicorp/terraform:0.13.4 as terraform
 
 FROM alpine:3.11
 
