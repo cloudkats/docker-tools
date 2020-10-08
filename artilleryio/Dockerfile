@@ -1,4 +1,4 @@
-FROM node:14.13.0-alpine3.11
+FROM node:14.13.1-alpine3.11
 
 LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com" \
