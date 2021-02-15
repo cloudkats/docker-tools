@@ -1,0 +1,74 @@
+name: docker build
+# This workflow is triggered on pushes to the repository.
+
+on:
+  push:
+    branches: master
+    paths:
+    - terragrunt/**
+    - .github/workflows/terragrunt.yaml
+
+env:
+  WORKSPACE: terragrunt
+  DOCKER_REPO: cloudkats
+  DOCKER_IMAGE: terragrunt
+  SHA8: ${GITHUB_SHA::8}
+  FORCE_COLOR: true
+
+jobs:
+  buildonpush:
+    name: BuildOnPush
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+    - uses: actions/checkout@v2
+
+    -
+      name: prepare
+      id: prep
+      working-directory: ${{ env.WORKSPACE }}
+      run: |
+        VERSION=$(../bin/version.sh -r TERRAGRUNT_VERSION)
+        TAGS="${VERSION},latest,$(date -u +'%Y%m%d')"
+
+        echo ::set-output name=tags::${TAGS}
+        echo ::set-output name=version::${VERSION}
+        echo ::set-output name=created::$(date -u +'%Y-%m-%d')
+        echo ::set-output name=vcs_ref::${GITHUB_SHA::8}
+
+    -
+      name: build and push
+      id: docker_build
+      uses: docker/build-push-action@v1
+      with:
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_TOKEN }}
+        dockerfile: ${{ env.WORKSPACE }}/Dockerfile
+        registry: ${{ env.DOCKER_REGISTRY }}
+        push: true
+        tags: ${{ steps.prep.outputs.tags }}
+        tag_with_ref: true
+        tag_with_sha: true
+        add_git_labels: true
+        repository: ${{ env.DOCKER_IMAGE }}
+        labels: |
+          org.opencontainers.image.created=${{ steps.prep.outputs.created }}
+          org.opencontainers.image.source=${{ github.repositoryUrl }}
+          org.opencontainers.image.version=${{ steps.prep.outputs.version }}
+          org.opencontainers.image.revision=${{ github.sha }}
+          org.opencontainers.image.licenses=${{ github.event.repository.license.name }}
+          org.label-schema.vcs-ref=${{ github.ref }}
+          org.label-schema.vcs-url="https://github.com/cloudkats/docker-tools/kubectl"
+          org.label-schema.build-date=${{ steps.prep.outputs.created }}
+          org.label-schema.description="Kubectl docker image"
+          org.label-schema.vendor=${{ env.VENDOR }}
+
+    - name: docker hub description
+      uses: peter-evans/dockerhub-description@v2
+      env:
+        DOCKERHUB_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+        DOCKERHUB_PASSWORD: ${{ secrets.DOCKERHUB_PASSWORD }}
+        DOCKERHUB_REPOSITORY: ${{ env.DOCKER_IMAGE }}
+        README_FILEPATH: ${{ env.WORKSPACE }}/README.md
+
+
