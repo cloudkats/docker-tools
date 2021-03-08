@@ -4,7 +4,7 @@
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
-FROM alpine:3.12
+FROM alpine:3.13
 
 LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com"
