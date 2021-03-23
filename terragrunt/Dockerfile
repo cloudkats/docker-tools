@@ -9,7 +9,7 @@
 ###
 FROM hashicorp/terraform:0.14.8 as terraform
 
-FROM alpine:3.11
+FROM alpine:3.13
 
 LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com" \
