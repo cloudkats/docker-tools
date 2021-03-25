@@ -135,3 +135,7 @@ Submit a pull request
 docker build .  --tag image \
   --build-arg VERSION=$(cat version)
 ```
+
+## TODO
+
+- [] Fix Renovate
