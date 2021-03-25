@@ -101,6 +101,22 @@ $ ARG TIMESTAMP
 $ FROM ${DOCKER_REGISTRY:-none}/{ARCH:-amd64}/{OS:-ubuntu}/${RELEASE:-bionic}:${TIMESTAMP:-latest}
 ```
 
+## Image Hardening
+
+```Dockerfile
+FROM <your repo>/<your project>/<your image>:<your tag>
+ARG user=testuser
+ARG group=testuser
+ARG uid=2000
+ARG gid=2000
+ENV TEST_HOME /home/testuser
+RUN groupadd -g ${gid} ${group} \
+&& useradd -d "$TEST_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
+RUN chown -R ${user} "$TEST_HOME"
+#RUN chown -R ${user} "/usr/src"
+USER ${user}
+```
+
 ## Trial
 
 - https://github.com/reviewdog/action-hadolint
