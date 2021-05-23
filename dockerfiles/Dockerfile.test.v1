@@ -1,0 +1,12 @@
+FROM golang:1.15 as builder
+COPY . /code
+WORKDIR /code
+RUN unset GOPATH  && go test -v ./... && \
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o out/check ./cmd/check && \
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o out/in ./cmd/in && \
+    CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o out/out ./cmd/out
+FROM alpine:3.12
+RUN mkdir -p /opt/resource
+COPY --from=builder /code/out/* /opt/resource/
+ENV VERSION_FILE  /opt/resource/version
+RUN echo "$(date +%Y/%M/%d-%T)" > $VERSION_FILE

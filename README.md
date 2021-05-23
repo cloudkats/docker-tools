@@ -113,7 +113,7 @@ ENV TEST_HOME /home/testuser
 RUN groupadd -g ${gid} ${group} \
 && useradd -d "$TEST_HOME" -u ${uid} -g ${gid} -m -s /bin/bash ${user}
 RUN chown -R ${user} "$TEST_HOME"
-#RUN chown -R ${user} "/usr/src"
+RUN chown -R ${user} "/usr/src"
 USER ${user}
 ```
 

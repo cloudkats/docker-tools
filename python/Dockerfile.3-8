@@ -1,0 +1,15 @@
+# For development/testing purposes
+ARG python_version=3.8
+FROM python:${python_version}
+ARG USERID=1000
+RUN set -ex && \
+  pip install -U flit && \
+  groupadd -r app && \
+  useradd --uid=${USERID} --create-home --no-log-init -r -g app app
+
+# USER app
+# COPY --chown=app . /home/app/code
+# WORKDIR /home/app/code
+# ENV PATH=/home/app/.local/bin:${PATH}
+# RUN flit install --symlink --extras=test
+# CMD pytest -v --cov=ecs_task --cov-report=term tests.py
