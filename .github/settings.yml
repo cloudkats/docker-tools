@@ -1,0 +1,16 @@
+# These settings are synced to GitHub by https://probot.github.io/apps/settings/
+_extends: .github
+
+repository:
+  name: docker-tools
+  description: "↘️ Docker tooling for multiple use cases"
+  topics: ivka, docker
+  homepage: https://github.com/cloudkats/docker-tools
+  private: false
+  has_projects: false
+  has_wiki: false
+  is_template: false
+  has_downloads: false
+
+branches:
+  - name: master
