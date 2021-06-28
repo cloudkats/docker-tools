@@ -3,7 +3,7 @@ FROM lachlanevenson/k8s-helm:v3.6.0
 FROM lachlanevenson/k8s-kubectl:v1.21.2
 
 
-FROM alpine:3.13
+FROM alpine:3.14
 ENV AWSCLI_VERSION 1.17.10
 RUN apk add -U --no-cache python3 ca-certificates \
   && pip3 install --no-cache-dir --upgrade pip \
