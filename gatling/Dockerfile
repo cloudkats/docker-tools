@@ -12,7 +12,8 @@ WORKDIR /opt
 
 # gating version
 ARG VERSION
-ENV GATLING_VERSION $VERSION
+# renovate: datasource=github-tags depName=gatling/gatling
+ENV GATLING_VERSION=3.3.1
 
 # create directory for gatling install
 RUN mkdir -p gatling

@@ -7,7 +7,7 @@ on:
     - .github/workflows/gatling.yaml
 
 env:
-  WORKSPACE: gatling/3.3.1
+  WORKSPACE: gatling
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: gatling
 
@@ -24,8 +24,7 @@ jobs:
       run: |
         echo "Build"
 
-        docker build . --file Dockerfile --tag image \
-          --build-arg VERSION=$(cat version)
+        docker build . --file Dockerfile --tag image
 
     - name: Login to Registry
       run: |
