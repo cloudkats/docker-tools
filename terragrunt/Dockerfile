@@ -7,7 +7,7 @@
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
-FROM hashicorp/terraform:1.0.6 as terraform
+FROM hashicorp/terraform:1.0.7 as terraform
 
 FROM alpine:3.14
 
@@ -30,7 +30,7 @@ RUN apk update && apk add -Uuv --no-cache --update \
   && ln -sv /usr/bin/python3 /usr/bin/python
 
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
-ENV TERRAGRUNT_VERSION=v0.31.5
+ENV TERRAGRUNT_VERSION=v0.32.2
 
 ADD https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 /usr/bin/terragrunt
 
