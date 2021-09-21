@@ -1,3 +1,32 @@
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+**Table of Contents**
+
+- [Docker Tools](#docker-tools)
+  - [Terraform](#terraform)
+  - [NodeJS](#nodejs)
+  - [Trufflehog](#trufflehog)
+  - [CI TOOLS](#ci-tools)
+  - [C7n Mailer](#c7n-mailer)
+  - [GitHound](#githound)
+  - [Jenkins](#jenkins)
+  - [Jo](#jo)
+  - [Terragrunt](#terragrunt)
+  - [Gatling](#gatling)
+  - [Artillery](#artillery)
+  - [Kubernetes Test Tools](#kubernetes-test-tools)
+  - [Kubernetes Tools](#kubernetes-tools)
+  - [Helm](#helm)
+  - [Create Locally](#create-locally)
+  - [Image Hardening](#image-hardening)
+  - [Trial](#trial)
+  - [How to Contribute](#how-to-contribute)
+  - [TODO](#todo)
+  - [Commands](#commands)
+  - [Resources](#resources)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
 # Docker Tools
 
 [renovate-badge]: https://img.shields.io/badge/renovate-app-blue.svg
@@ -136,6 +165,6 @@ docker build .  --tag image \
   --build-arg VERSION=$(cat version)
 ```
 
-## TODO
+## Resources
 
-- [] Fix Renovate
+- [Hardened images](https://repo1.dso.mil/dsop?page=2)
