@@ -116,7 +116,7 @@ RUN echo "deb http://ppa.launchpad.net/ondrej/php/ubuntu bionic main" > /etc/apt
     rm -rf /var/lib/apt/lists/*
 
 # renovate: datasource=github-releases depName=composer/composer
-ENV COMPOSER_VERSION=2.1.5
+ENV COMPOSER_VERSION=2.1.9
 
 RUN php -r "copy('https://github.com/composer/composer/releases/download/$COMPOSER_VERSION/composer.phar', '/usr/local/bin/composer');"
 
@@ -194,7 +194,7 @@ RUN pip install --user pipenv
 # Poetry
 
 # renovate: datasource=github-releases depName=python-poetry/poetry
-ENV POETRY_VERSION=1.1.7
+ENV POETRY_VERSION=1.1.11
 
 RUN curl -sSL https://raw.githubusercontent.com/python-poetry/poetry/master/get-poetry.py | python - --version ${POETRY_VERSION}
 
