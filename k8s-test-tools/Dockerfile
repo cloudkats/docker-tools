@@ -6,7 +6,7 @@
 ###
 ARG bashver=5.0.17
 
-FROM alpine:3.14 as builder
+FROM alpine:3.15 as builder
 
 ARG K8S_VERSION
 

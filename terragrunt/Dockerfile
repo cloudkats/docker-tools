@@ -9,7 +9,7 @@
 ###
 FROM hashicorp/terraform:1.0.11 as terraform
 
-FROM alpine:3.14
+FROM alpine:3.15
 
 LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com" \
@@ -30,7 +30,7 @@ RUN apk update && apk add -Uuv --no-cache --update \
   && ln -sv /usr/bin/python3 /usr/bin/python
 
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
-ENV TERRAGRUNT_VERSION=v0.31.5
+ENV TERRAGRUNT_VERSION=v0.35.13
 
 ADD https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 /usr/bin/terragrunt
 
