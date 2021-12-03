@@ -2,7 +2,7 @@ ARG TERRAFORM_VERSION
 
 FROM hashicorp/terraform:${TERRAFORM_VERSION} as source
 
-FROM alpine:3.14
+FROM alpine:3.15
 
 LABEL vendor="cloud kats" \
 	maintainer="cloudkats@gmail.com"

@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 LABEL vendor="cloud kats" \
   maintainer="cloudkats@gmail.com"
