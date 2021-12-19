@@ -1,5 +1,5 @@
 FROM lachlanevenson/k8s-helm:v3.7.2
-FROM lachlanevenson/k8s-kubectl:v1.22.3
+FROM lachlanevenson/k8s-kubectl:v1.23.1
 
 # We build our own base az alpine image becase all official images currently
 # have security vulnerabilities (as of mcr.microsoft.com/azure-cli:2.0.64).
