@@ -1,0 +1,32 @@
+name: appcenter-cli
+# This workflow is triggered on pushes to the repository.
+
+on:
+  push:
+    paths:
+    - appcenter-cli/**
+    - .github/workflows/appcenter-cli.yaml
+
+env:
+  WORKSPACE: appcenter-cli
+  DOCKER_REPO: cloudkats
+  DOCKER_IMAGE: appcenter-cli
+
+jobs:
+  buildonpush:
+    name: BuildOnPush
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push'
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Build the Docker image
+      working-directory: ${{ env.WORKSPACE }}
+      run: ./build.sh
+
+    - name: login to registry
+      run: |
+        echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
+      env:
+        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}

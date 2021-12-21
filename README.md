@@ -17,6 +17,7 @@
   - [Kubernetes Test Tools](#kubernetes-test-tools)
   - [Kubernetes Tools](#kubernetes-tools)
   - [Helm](#helm)
+  - [AppCenter CLI](#appcenter-cli)
   - [Create Locally](#create-locally)
   - [Image Hardening](#image-hardening)
   - [Trial](#trial)
@@ -26,6 +27,8 @@
   - [Resources](#resources)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+[Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 
 # Docker Tools
 
@@ -117,6 +120,11 @@
 [![](https://github.com/cloudkats/docker-tools/workflows/Helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AHelm)
 [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm)
 
+## [AppCenter CLI](https://github.com/microsoft/appcenter-cli)
+
+[![](https://github.com/cloudkats/docker-tools/workflows/appcenter-cli/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aappcenter-cli)
+[![](https://img.shields.io/docker/pulls/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli)
+
 ## Create Locally
 ```
 $ cd <Folder>
@@ -156,7 +164,9 @@ Submit a pull request
 
 ## TODO
 
-- add user to every container (# RUN adduser --system --home /ci --disabled-password --group ci)
+- [] add user to every container (# RUN adduser --system --home /ci --disabled-password --group ci)
+- [] Fix broken links
+- [] Unify container labels
 
 ## Commands
 
@@ -168,3 +178,9 @@ docker build .  --tag image \
 ## Resources
 
 - [Hardened images](https://repo1.dso.mil/dsop?page=2)
+
+```
+docker tag local-image:tagname new-repo:tagname
+docker push new-repo:tagname
+docker push cloudkats/appcenter-cli:tagname
+```
