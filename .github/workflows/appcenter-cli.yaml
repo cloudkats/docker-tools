@@ -30,3 +30,27 @@ jobs:
       env:
         DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
         DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+
+    - name: Push Docker image
+      working-directory: ${{ env.WORKSPACE }}
+      run: |
+        echo "Push"
+
+        image_version="latest"
+        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+        tag_date="$(date +%Y%d%m)"
+
+        # Strip git ref prefix from version
+        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+        # Strip "v" prefix from tag name
+        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+        ./push.sh
+
+    - name: docker hub description
+      uses: peter-evans/dockerhub-description@v2
+      with:
+        dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
+        dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        dockerhub_repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
+        readme_filepath: ${{ env.WORKSPACE }}/README.md

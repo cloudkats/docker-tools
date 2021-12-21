@@ -28,7 +28,8 @@
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-[Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
+- [Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
+- [Container Label Schema](http://label-schema.org/rc1/)
 
 # Docker Tools
 
