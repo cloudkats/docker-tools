@@ -1,4 +1,4 @@
-FROM alpine:3.14
+FROM alpine:3.15
 
 # enable edge repository
 RUN sed -i '/edge/s/^#//' /etc/apk/repositories
