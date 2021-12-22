@@ -1,3 +1,7 @@
 #!/bin/bash
 
-docker build -t appcenter-cli .
+set -e
+
+: "${IMAGE}"
+
+docker build -t "${IMAGE}" .

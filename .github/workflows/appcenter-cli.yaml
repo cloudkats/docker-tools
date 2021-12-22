@@ -50,11 +50,11 @@ jobs:
       working-directory: ${{ env.WORKSPACE }}
       env:
         IMAGE_ID: ${{ steps.prep.outputs.image_id }}
+        IMAGE: ${{ env.DOCKER_IMAGE }}
         TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
         TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
         TAG_VERSION: ${{ steps.prep.outputs.version }}
-      run: |
-        ./push.sh
+      run: ./build.sh && ./push.sh
 
     - name: docker hub description
       uses: peter-evans/dockerhub-description@v2
