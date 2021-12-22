@@ -1,6 +1,6 @@
 FROM node:17
 
-# Install appcenter cli
+# hadolint ignore=DL3016
 RUN npm install -g appcenter-cli
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \

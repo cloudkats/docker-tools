@@ -1,16 +1,16 @@
 #!/bin/bash
 
-: "${IMAGE_ID}"
-: "${image_version}"
-: "${tag_date}"
+set -ex
 
-docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
-docker push "${IMAGE_ID}:${image_version}.${tag_date}"
+: "${IMAGE_ID}"
+: "${TAG_VERSION_DATE}"
+: "${TAG_VERSION_SHA}"
 
 docker tag image "${IMAGE_ID}:latest"
 docker push "${IMAGE_ID}:latest"
 
-if [ "$image_version" != "latest" ]; then
-  docker tag image "${IMAGE_ID}:${image_version}"
-  docker push "${IMAGE_ID}:${image_version}"
-fi
+docker tag image "${IMAGE_ID}:${TAG_VERSION_DATE}"
+docker push "${IMAGE_ID}:${TAG_VERSION_DATE}"
+
+docker tag image "${IMAGE_ID}:${TAG_VERSION_SHA}"
+docker push "${IMAGE_ID}:${TAG_VERSION_SHA}"

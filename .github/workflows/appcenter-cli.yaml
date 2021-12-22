@@ -39,35 +39,27 @@ jobs:
         # Strip "v" prefix from tag name
         [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
-        TAGS="${VERSION},latest,$(date -u +'%Y%m%d')"
-        IMAGE_VERSION="${GITHUB_SHA::8}"
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
 
-        echo ::set-output name=tags::${TAGS}
         echo ::set-output name=version::${VERSION}
-        echo ::set-output name=created::$(date -u +'%Y-%m-%d')
-        echo ::set-output name=vcs_ref::${GITHUB_SHA::8}
+        echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')
+        echo ::set-output name=sha::${GITHUB_SHA::8}
+        echo ::set-output name=image_id::${IMAGE_ID}
 
-    # - name: Push Docker image
-    #   working-directory: ${{ env.WORKSPACE }}
-    #   run: |
-    #     echo "Push"
-
-    #     image_version="latest"
-    #     IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
-    #     tag_date="$(date +%Y%d%m)"
-
-    #     # Strip git ref prefix from version
-    #     VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-    #     # Strip "v" prefix from tag name
-    #     [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
-
-    #     ./push.sh
+    - name: Push Docker image
+      working-directory: ${{ env.WORKSPACE }}
+      env:
+        IMAGE_ID: ${{ steps.prep.outputs.image_id }}
+        TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
+        TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
+        TAG_VERSION: ${{ steps.prep.outputs.version }}
+      run: |
+        ./push.sh
 
     - name: docker hub description
       uses: peter-evans/dockerhub-description@v2
       with:
-        dockerhub_username: ${{ secrets.DOCKERHUB_USERNAME }}
-        dockerhub_password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        dockerhub_repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
-        readme_filepath: ${{ env.WORKSPACE }}/README.md
+        username: ${{ secrets.DOCKERHUB_USERNAME }}
+        password: ${{ secrets.DOCKERHUB_PASSWORD }}
+        repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
+        readme-filepath: ${{ env.WORKSPACE }}/README.md
