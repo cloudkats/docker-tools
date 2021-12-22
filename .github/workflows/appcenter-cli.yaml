@@ -54,7 +54,10 @@ jobs:
         TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
         TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
         TAG_VERSION: ${{ steps.prep.outputs.version }}
-      run: ./build.sh && ./push.sh
+      run: |
+        env
+        ./build.sh
+        ./push.sh
 
     - name: docker hub description
       uses: peter-evans/dockerhub-description@v2
