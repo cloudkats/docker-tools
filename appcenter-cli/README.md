@@ -16,3 +16,7 @@
 - [Visual Studio App Center](https://docs.microsoft.com/en-us/appcenter/cli/)
 
 ## Run Locally
+
+```sh
+docker run --rm -it cloudkats/appcenter-cli appcenter --help
+```
