@@ -4,8 +4,8 @@ name: k8s.tools
 on:
   push:
     paths:
-    - ks8-tools/**
-    - .github/workflows/ks8.tools.yaml
+    - k8s-tools/**
+    - .github/workflows/k8s.tools.yaml
   workflow_dispatch:
 
 env:
