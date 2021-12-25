@@ -51,7 +51,7 @@ jobs:
         BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
       run: |
         ./build.sh
-        ./push.sh
+        ../bin/push.sh
 
     - name: docker hub description
       uses: peter-evans/dockerhub-description@v2
