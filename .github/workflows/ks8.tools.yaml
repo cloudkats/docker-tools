@@ -1,31 +1,43 @@
-name: appcenter-cli
+name: k8s.tools
 # This workflow is triggered on pushes to the repository.
 
 on:
   push:
     paths:
-    - appcenter-cli/**
-    - .github/workflows/appcenter-cli.yaml
+    - ks8-tools/**
+    - .github/workflows/ks8.tools.yaml
 
 env:
-  WORKSPACE: appcenter-cli
+  WORKSPACE: k8s-tools
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: appcenter-cli
+  DOCKER_IMAGE: k8s-tools
 
 jobs:
-  build-and-push:
+  buildonpush:
     name: BuildOnPush
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
 
-    - name: login to registry
+    - name: push docker image
+      working-directory: ${{ env.WORKSPACE }}
       run: |
-        echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+        echo "Push"
+
+        image_version=$(cat version)
+
+        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+        tag_date="$(date +%Y%d%m)"
+
+        docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
+        docker push "${IMAGE_ID}:${image_version}.${tag_date}"
+
+        docker tag image "${IMAGE_ID}:${image_version}"
+        docker push "${IMAGE_ID}:${image_version}"
+
+        docker tag image "${IMAGE_ID}:latest"
+        docker push "${IMAGE_ID}:latest"
 
     - name: prepare
       id: prep
@@ -36,6 +48,9 @@ jobs:
         [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
         IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+
+        echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+        echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
 
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')
@@ -50,6 +65,8 @@ jobs:
         TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
         TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
         TAG_VERSION: ${{ steps.prep.outputs.version }}
+        CREATED: ${{ steps.prep.outputs.tag_date }}
+        BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
       run: |
         ./build.sh
         ./push.sh
@@ -61,4 +78,4 @@ jobs:
         password: ${{ secrets.DOCKERHUB_PASSWORD }}
         repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
         readme-filepath: ${{ env.WORKSPACE }}/README.md
-        short-description: "non-Official Docker image for the Microsoft Appcenter CLI tool "
+        short-description: "non-Official Docker image with kubernets toolings"

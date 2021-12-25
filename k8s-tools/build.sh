@@ -1,8 +1,9 @@
 #!/bin/bash
 
-set -euox pipefail
+set -ex
 
 : "${IMAGE}"
+: "${CREATED}"
 : "${CREATED}"
 : "${BUILD_URL}"
 
