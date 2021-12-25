@@ -50,7 +50,7 @@ jobs:
         CREATED: ${{ steps.prep.outputs.tag_date }}
         BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
       run: |
-        ./build.sh
+        ../bin/build.sh
         ../bin/push.sh
 
     - name: docker hub description
