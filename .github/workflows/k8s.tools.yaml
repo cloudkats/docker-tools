@@ -58,6 +58,7 @@ jobs:
         BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
       run: |
         ../bin/build.sh
+        IMAGE_VERSION=$(docker run --rm ${IMAGE} "kubectl version --short --client=true" | awk '{print $3}' | sed -e 's/^v//')
         ../bin/push.sh
 
     - name: docker hub description
