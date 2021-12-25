@@ -21,25 +21,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
 
-    - name: push docker image
-      working-directory: ${{ env.WORKSPACE }}
-      run: |
-        echo "Push"
-
-        image_version=$(cat version)
-
-        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
-        tag_date="$(date +%Y%d%m)"
-
-        docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
-        docker push "${IMAGE_ID}:${image_version}.${tag_date}"
-
-        docker tag image "${IMAGE_ID}:${image_version}"
-        docker push "${IMAGE_ID}:${image_version}"
-
-        docker tag image "${IMAGE_ID}:latest"
-        docker push "${IMAGE_ID}:latest"
-
     - name: prepare
       id: prep
       working-directory: ${{ env.WORKSPACE }}

@@ -138,20 +138,14 @@
 | Name  | Badges   |
 |:--------------------------|:----------------|
 |[Helm](https://helm.sh/)   |  [![](https://github.com/cloudkats/docker-tools/workflows/Helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AHelm) [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) |
-| [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![](https://github.com/cloudkats/docker-tools/actions/workflows/ks8.tools.yaml/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)|
+| [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![](https://github.com/cloudkats/docker-tools/actions/workflows/k8s.tools.yaml/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)|
 |   |   |
 
 ## Create Locally
-```
-$ cd <Folder>
 
-$ ARG DOCKER_REGISTRY
-$ ARG ARCH
-$ ARG OS
-$ ARG OS_RELEASE
-$ ARG TIMESTAMP
+```sh
 
-$ FROM ${DOCKER_REGISTRY:-none}/{ARCH:-amd64}/{OS:-ubuntu}/${RELEASE:-bionic}:${TIMESTAMP:-latest}
+FROM ${DOCKER_REGISTRY:-none}/{ARCH:-amd64}/{OS:-ubuntu}/${RELEASE:-bionic}:${TIMESTAMP:-latest}
 ```
 
 ## Image Hardening
@@ -172,7 +166,7 @@ USER ${user}
 
 ## Trial
 
-- https://github.com/reviewdog/action-hadolint
+- [Hadoling](https://github.com/reviewdog/action-hadolint)
 
 ## How to Contribute
 
