@@ -10,7 +10,6 @@
   - [GitHound](#githound)
   - [Jenkins](#jenkins)
   - [Jo](#jo)
-  - [Gatling](#gatling)
   - [Artillery](#artillery)
   - [AppCenter CLI](#appcenter-cli)
   - [Images](#images)
@@ -79,11 +78,6 @@
 [![](https://img.shields.io/docker/pulls/cloudkats/jo?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/jo)
 
 <!-- performance -->
-
-## Gatling
-
-[![](https://github.com/cloudkats/docker-tools/workflows/gatling/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Agatling)
-[![](https://img.shields.io/docker/pulls/cloudkats/gatling?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/gatling)
 
 ## Artillery
 
