@@ -6,6 +6,7 @@ on:
     paths:
     - citools/**
     - .github/workflows/ci.tools.yaml
+  workflow_dispatch:
 
 env:
   WORKSPACE: citools

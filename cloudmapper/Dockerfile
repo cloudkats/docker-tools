@@ -1,9 +1,7 @@
 # https://github.com/duo-labs/cloudmapper
 FROM python:3.7-slim as cloudmapper
 
-# LABEL maintainer="https://github.com/0xdabbad00/"
-# LABEL Project="https://github.com/duo-labs/cloudmapper"
-
+# renovate: datasource=github-releases depName=duo-labs/cloudmapper
 ARG CLOUDMAPPER_VERSION=2.10.0
 ENV BUILD_PACKAGES='build-essential autoconf automake libtool'
 ENV ESSTENTIAL_PACKAGES='python3-tk jq awscli git'
