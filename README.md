@@ -172,3 +172,4 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 1. [ ] Link back to project from Docker Hub
 1. [ ] Renovate configuration
 1. [ ] Use `requirementes.txt` file with python packages
+1. [ ] Review missing images
