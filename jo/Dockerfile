@@ -1,14 +1,24 @@
-FROM alpine:3.15
+# docker build --no-cache -t test .
+# docker run --rm -it test /bin/bash
+FROM ubuntu:22.04@sha256:3c3de9608507804525ff4303874525760ea36d62606e8105f515adaa761b80cb
 
-# enable edge repository
-RUN sed -i '/edge/s/^#//' /etc/apk/repositories
-RUN echo "@edgecomms http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+# renovate: datasource=github-releases depName=jpmens/jo
+ARG JO_VERSION=1.4
+# hadolint ignore=DL3008
+RUN apt-get -qq update \
+  && apt-get install -qqy --no-install-recommends jo \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* /var/cache/apt/*
 
-ARG VERSION
-ENV JO_VERSION $VERSION
-
-# hadolint ignore=DL3018
-RUN apk add -Uuv --no-cache bash git make openssl jo@edgecomms==${JO_VERSION}-r0
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
+  org.opencontainers.image.title="cloudkats/jo" \
+  org.opencontainers.image.source="https://jpmens.net/2016/03/05/a-shell-command-to-create-json-jo" \
+  org.opencontainers.image.demo="https://github.com/jpmens/jo/tree/master/tests" \
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/jo/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
+  org.opencontainers.image.version="${JO_VERSION}" \
+  org.opencontainers.image.tools="jo"
 
 ENTRYPOINT [ "/bin/bash", "-c"]
 CMD ["/bin/bash"]

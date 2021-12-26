@@ -1,0 +1,14 @@
+FROM alpine:3.15
+
+# enable edge repository
+RUN sed -i '/edge/s/^#//' /etc/apk/repositories
+RUN echo "@edgecomms http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories
+
+ARG VERSION
+ENV JO_VERSION $VERSION
+
+# hadolint ignore=DL3018
+RUN apk add -Uuv --no-cache bash git make openssl jo@edgecomms==${JO_VERSION}-r0
+
+ENTRYPOINT [ "/bin/bash", "-c"]
+CMD ["/bin/bash"]

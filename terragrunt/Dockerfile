@@ -21,7 +21,6 @@ LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.version="${TERRAFORM_VERSION}" \
   org.opencontainers.image.tools="terragrunt"
 
-
 COPY --from=terraform /bin/terraform /bin/terraform
 
 # hadolint ignore=DL3018,DL3013

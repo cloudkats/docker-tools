@@ -12,10 +12,8 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ### Table of Contents
 
-- [NodeJS](#nodejs)
 - [Trufflehog](#trufflehog)
 - [GitHound](#githound)
-- [Jo](#jo)
 - [Docker Images](#docker-images)
   - [IaC](#iac)
   - [Kubernets](#kubernets)
@@ -39,11 +37,6 @@
 - [Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 - [Container Label Schema](http://label-schema.org/rc1/)
 
-## NodeJS
-
-[![](https://github.com/cloudkats/docker-tools/workflows/node.12.app/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Anode.12.app)
-[![](https://img.shields.io/docker/pulls/cloudkats/node?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/node)
-
 ## Trufflehog
 
 [![](https://github.com/cloudkats/docker-tools/workflows/Trufflehog/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3ATrufflehog)
@@ -53,13 +46,6 @@
 
 [![](https://github.com/cloudkats/docker-tools/workflows/GitHound/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AGitHound)
 [![](https://img.shields.io/docker/pulls/cloudkats/githound?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/githound)
-
-## Jo
-
-- [Git Repo](https://github.com/jpmens/jo)
-
-[![](https://github.com/cloudkats/docker-tools/workflows/jo/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ajo)
-[![](https://img.shields.io/docker/pulls/cloudkats/jo?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/jo)
 
 ## Docker Images
 
@@ -92,7 +78,7 @@
 |:---------|:----------|:-----------|
 | [CI Tools](./citools/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/ci.tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.tools) [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) | [![](https://img.shields.io/docker/v/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) |
 |  [Microsoft App Center](./appcenter/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/ci.appcenter.cli/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.appcenter.cli) [![](https://img.shields.io/docker/pulls/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli)  | [![](https://img.shields.io/docker/v/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli) |
-| | |
+| [Jo](jo/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/ci.jo/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.jo) [![](https://img.shields.io/docker/pulls/cloudkats/ci.jo?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/jo) | [![](https://img.shields.io/docker/v/cloudkats/jo?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/jo) |
 
 ### Cloud Security
 
