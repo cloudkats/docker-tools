@@ -45,7 +45,7 @@ jobs:
 
         echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
         echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
-        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "K8S_VERSION=" | tr ":" " " | awk '{print $3}')"
+        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "K8S_VERSION=" | tr "=" " " | awk '{print $3}')"
 
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')
