@@ -14,7 +14,6 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ### Table of Contents
 
-- [GitHound](#githound)
 - [Docker Images](#docker-images)
   - [IaC](#iac)
   - [Kubernets](#kubernets)
@@ -42,11 +41,6 @@
 - [Container labels: Label Schema](http://label-schema.org/rc1/)
 
 ---
-
-## GitHound
-
-[![](https://github.com/cloudkats/docker-tools/workflows/GitHound/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AGitHound)
-[![](https://img.shields.io/docker/pulls/cloudkats/githound?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/githound)
 
 ## Docker Images
 
@@ -102,7 +96,7 @@
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
 | [Trafflehog](trufflehog/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/gitsec.trufflehog/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Agitsec.trufflehog) [![](https://img.shields.io/docker/pulls/cloudkats/trufflehog?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/trufflehog) | [![](https://img.shields.io/docker/v/cloudkats/trufflehog?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/trufflehog) |
-|   |   |
+| [GitHound](githound/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/gitsec.githound/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Agitsec.githound) [![](https://img.shields.io/docker/pulls/cloudkats/gitsec.githound?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/githound) | [![](https://img.shields.io/docker/v/cloudkats/gitsec.githound?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/githound) |
 |   |   |
 
 ### Languages
