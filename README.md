@@ -5,8 +5,8 @@
 ![](https://img.shields.io/github/v/tag/cloudkats/docker-tools)
 [![](https://img.shields.io/github/repo-size/cloudkats/docker-tools)](https://github.com/cloudkats/docker-tools)
 ![](https://img.shields.io/github/languages/top/cloudkats/docker-tools?color=green&logo=docker&logoColor=blue)
-![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-aws-lambda)
-![](https://img.shields.io/github/last-commit/terraform-module/terraform-aws-lambda)
+![](https://img.shields.io/github/commit-activity/m/cloudkats/docker-tools)
+![](https://img.shields.io/github/last-commit/cloudkats/docker-tools)
 
 ---
 
@@ -14,7 +14,6 @@
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ### Table of Contents
 
-- [Trufflehog](#trufflehog)
 - [GitHound](#githound)
 - [Docker Images](#docker-images)
   - [IaC](#iac)
@@ -23,6 +22,7 @@
   - [CI Automation](#ci-automation)
   - [Cloud Security](#cloud-security)
   - [Cyber Security](#cyber-security)
+  - [Git Security](#git-security)
   - [Languages](#languages)
 - [Tips and Tricks](#tips-and-tricks)
   - [Create Locally](#create-locally)
@@ -41,10 +41,7 @@
 - [Container labels: Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
 - [Container labels: Label Schema](http://label-schema.org/rc1/)
 
-## Trufflehog
-
-[![](https://github.com/cloudkats/docker-tools/workflows/Trufflehog/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3ATrufflehog)
-[![](https://img.shields.io/docker/pulls/cloudkats/trufflehog?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/trufflehog)
+---
 
 ## GitHound
 
@@ -97,6 +94,14 @@
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
 |   |   |
+|   |   |
+|   |   |
+
+### Git Security
+
+|  Name    | Badges  | Version |
+|:---------|:----------|:-----------|
+| [Trafflehog](trufflehog/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/gitsec.trufflehog/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Agitsec.trufflehog) [![](https://img.shields.io/docker/pulls/cloudkats/trufflehog?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/trufflehog)  |
 |   |   |
 |   |   |
 

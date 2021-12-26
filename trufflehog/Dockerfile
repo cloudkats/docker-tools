@@ -1,19 +1,26 @@
-FROM alpine:3.15
+FROM python:3.7-slim
 
-LABEL vendor="cloud kats" \
-  maintainer="cloudkats@gmail.com"
+# renovate: datasource=github-releases depName=microsoft/appcenter-cli
+ARG PACKAGE_VERSION=2.0.99
 
-ARG PACKAGE_VERSION
+ENV APT_PACKAGES="bash jq git"
+ENV PYTHON_PACKAGES="yq pip truffleHog"
 
-RUN apk update && apk upgrade && apk add --no-cache --update \
-	bash \
-	python \
-	py-pip \
-	git \
-	jq \
-  && pip install --upgrade pip truffleHog==${PACKAGE_VERSION} \
-  && rm -rf /var/lib/apt/lists/* \
-  && rm -rf /var/cache/apk/*
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
+  org.opencontainers.image.title="cloudkats/trafflehog" \
+  org.opencontainers.image.source="https://github.com/trufflesecurity/truffleHog" \
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/trafflehog/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
+  org.opencontainers.image.version="${PACKAGE_VERSION}" \
+  org.opencontainers.image.tools="${PYTHON_PACKAGES} ${APT_PACKAGES}"
+
+# hadolint ignore=DL3008,DL3013
+RUN apt-get update -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends ${APT_PACKAGES} \
+  && pip3 install --no-cache-dir --upgrade yq pip truffleHog==${PACKAGE_VERSION} \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/*
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD ["/bin/bash"]
