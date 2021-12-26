@@ -1,5 +1,5 @@
 # https://github.com/duo-labs/cloudmapper
-FROM python:3.7-slim as cloudmapper
+FROM python:3.10-slim as cloudmapper
 
 # LABEL maintainer="https://github.com/0xdabbad00/"
 # LABEL Project="https://github.com/duo-labs/cloudmapper"
