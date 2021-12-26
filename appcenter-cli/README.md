@@ -1,6 +1,8 @@
 # AppCenter CLI
 
-[Github Repository](https://github.com/cloudkats/docker-tools/tree/master/appcenter-cli)
+Command-line Interface (CLI) for Visual Studio App Cente
+
+[Source Code Repository](https://github.com/cloudkats/docker-tools/tree/master/appcenter-cli)
 
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
