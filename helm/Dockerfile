@@ -25,7 +25,7 @@ LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/helm" \
   org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/helm/readme.md" \
   org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
-  org.opencontainers.image.tools="kubectl,bats,helm,sops,python3,yq" \
+  org.opencontainers.image.tools="helm" \
   org.opencontainers.image.helmp-plugins="helm-secrets"
 
 COPY --from=first /usr/local/bin/helm /usr/local/bin/helm

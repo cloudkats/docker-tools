@@ -1,23 +1,22 @@
-name: helm
+name: k8s.test-tools
 # This workflow is triggered on pushes to the repository.
 
 on:
   push:
     paths:
-    - helm/**
-    - .github/workflows/helm.yaml
-  workflow_dispatch:
+    - ks8-test-tools/**
+    - .github/workflows/ks8.test-tools.yaml
 
 env:
-  WORKSPACE: helm
+  WORKSPACE: k8s-test-tools
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: helm
+  DOCKER_IMAGE: k8s-test-tools
 
 jobs:
   buildonpush:
-    name: BuildOnPush
+    name: build&On&push
     runs-on: ubuntu-latest
-
+    if: github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
 
@@ -46,7 +45,7 @@ jobs:
 
         echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
         echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
-        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "HELM_VERSION=" | tr "=" " " | awk '{print $3}')"
+        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "K8S_VERSION=" | tr ":" " " | awk '{print $3}')"
 
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')

@@ -1,6 +1,6 @@
 #!/bin/bash
 
-set -euox
+set -ex
 
 : "${IMAGE}"
 : "${IMAGE_ID}"
