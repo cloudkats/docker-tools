@@ -48,7 +48,7 @@ jobs:
         echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "FROM python:" | tr ":" " " | awk '{print $3}' | tr "\-slim" " ")"
 
         echo ::set-output name=version::${VERSION}
-        echo ::set-output name=tag_date::$(date -u +'%Y.%m')
+        echo ::set-output name=tag_date::$(date -u +'%Y-%m')
         echo ::set-output name=sha::${GITHUB_SHA::8}
         echo ::set-output name=image_id::${IMAGE_ID}
 
