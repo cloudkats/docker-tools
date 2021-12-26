@@ -8,6 +8,8 @@
 ![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-aws-lambda)
 ![](https://img.shields.io/github/last-commit/terraform-module/terraform-aws-lambda)
 
+---
+
 <!-- START doctoc generated TOC please keep comment here to allow auto update -->
 <!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
 ### Table of Contents
@@ -27,15 +29,17 @@
   - [Image Hardening](#image-hardening)
   - [Trial](#trial)
   - [How to Contribute](#how-to-contribute)
-- [TODO](#todo)
 - [Commands](#commands)
 - [Resources](#resources)
 - [Example commands](#example-commands)
+- [TODO](#todo)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
-- [Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
-- [Container Label Schema](http://label-schema.org/rc1/)
+---
+
+- [Container labels: Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
+- [Container labels: Label Schema](http://label-schema.org/rc1/)
 
 ## Trufflehog
 
@@ -136,18 +140,6 @@ USER ${user}
 
 Submit a pull request
 
-## TODO
-
-> Work in Progress
-
-1. [ ] add user to every container (# RUN adduser --system --home /ci --disabled-password --group ci)
-1. [ ] Fix broken links
-1. [ ] Unify container labels
-1. [ ] Link to source code on main page
-1. [ ] Link back to project from Docker Hub
-1. [ ] Renovate configuration
-1. [ ] Use `requirementes.txt` file with python packages
-
 ## Commands
 
 ```sh
@@ -170,4 +162,14 @@ docker push cloudkats/appcenter-cli:tagname
 docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' | sed -e 's/^v//'
 ```
 
-<!-- $(date -u +'%Y.%m') -->
+## TODO
+
+> Work in Progress
+
+1. [ ] add user to every container (# RUN adduser --system --home /ci --disabled-password --group ci)
+1. [ ] Fix broken links
+1. [ ] Unify container labels
+1. [ ] Link to source code on main page
+1. [ ] Link back to project from Docker Hub
+1. [ ] Renovate configuration
+1. [ ] Use `requirementes.txt` file with python packages
