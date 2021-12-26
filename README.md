@@ -102,7 +102,7 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-| [CI Tools](./citools/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/CiTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3ACiTools) [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) | [![](https://img.shields.io/docker/v/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) |
+| [CI Tools](./citools/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/ci.tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.tools) [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) | [![](https://img.shields.io/docker/v/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) |
 |  [Microsoft App Center](./appcenter/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/ci.appcenter.cli/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.appcenter.cli) [![](https://img.shields.io/docker/pulls/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli)  | [![](https://img.shields.io/docker/v/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli) |
 | | |
 
