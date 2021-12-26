@@ -67,4 +67,4 @@ jobs:
           password: ${{ secrets.DOCKERHUB_PASSWORD }}
           repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
           readme-filepath: ${{ env.WORKSPACE }}/README.md
-          short-description: "non-Official Docker image with Gatling, a load testing tooling"
+          short-description: "Unoficial Docker image with Gatling, a load testing tooling"
