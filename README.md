@@ -26,6 +26,7 @@
   - [TODO](#todo)
   - [Commands](#commands)
   - [Resources](#resources)
+  - [Example commands](#example-commands)
 
 <!-- END doctoc generated TOC please keep comment here to allow auto update -->
 
@@ -137,7 +138,7 @@
 
 | Name  | Badges   |
 |:--------------------------|:----------------|
-|[Helm](https://helm.sh/)   |  [![](https://github.com/cloudkats/docker-tools/workflows/Helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AHelm) [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) |
+|[Helm](https://helm.sh/)   |  [![](https://github.com/cloudkats/docker-tools/workflows/helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ahelm) [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) |
 | [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![](https://github.com/cloudkats/docker-tools/actions/workflows/k8s.tools.yaml/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)|
 |   |   |
 
@@ -189,8 +190,11 @@ docker build .  --tag image \
 
 - [Hardened images](https://repo1.dso.mil/dsop?page=2)
 
+## Example commands
+
 ```
 docker tag local-image:tagname new-repo:tagname
 docker push new-repo:tagname
 docker push cloudkats/appcenter-cli:tagname
+docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' | sed -e 's/^v//'
 ```

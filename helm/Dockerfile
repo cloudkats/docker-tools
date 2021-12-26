@@ -1,39 +1,39 @@
 #
 # The recommended shebang is #!/usr/bin/env bash, not #!/bin/bash
 #
-ARG ALPINE_VERSION=3.12
+FROM alpine:3.12 as first
 
-FROM alpine:${ALPINE_VERSION} as first
-
-ARG VERSION
+# renovate: datasource=github-releases depName=helm/helm
+ARG HELM_VERSION=3.2.4
 
 # hadolint ignore=DL3018
-RUN apk add --no-cache ca-certificates=20191127-r4 \
-  && apk add --no-cache -t deps wget=1.20.3-r1 \
-  git openssl=1.1.1g-r0 bash=5.0.17-r0 \
-  && wget -q https://get.helm.sh/helm-v${VERSION}-linux-amd64.tar.gz \
-  && tar -xf helm-v${VERSION}-linux-amd64.tar.gz \
+RUN apk add --no-cache ca-certificates \
+  && apk add --no-cache -t deps wget \
+  git openssl bash \
+  && wget -q https://get.helm.sh/helm-v${HELM_VERSION}-linux-amd64.tar.gz \
+  && tar -xf helm-v${HELM_VERSION}-linux-amd64.tar.gz \
   && mv linux-amd64/helm /usr/local/bin \
   && apk del --purge deps \
-  && rm -f /helm-v${VERSION}-linux-amd64.tar.gz
+  && rm -f /helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
-FROM alpine:${ALPINE_VERSION}
+FROM alpine:3.12
 
 # Metadata
-LABEL vendor="cloudkats" \
-  maintainer="cloudkats@gmail.com" \
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
   org.opencontainers.image.title="cloudkats/helm" \
-  org.opencontainers.image.url="https://helm.sh/docs/" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/helm" \
-  org.opencontainers.image.tools="helm"
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/helm/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
+  org.opencontainers.image.tools="kubectl,bats,helm,sops,python3,yq" \
+  org.opencontainers.image.helmp-plugins="helm-secrets"
 
 COPY --from=first /usr/local/bin/helm /usr/local/bin/helm
 
-RUN apk add --no-cache ca-certificates=20191127-r4 \
-  openssl=1.1.1g-r0 bash=5.0.17-r0 \
+# hadolint ignore=DL3018
+RUN apk add --no-cache ca-certificates \
+  openssl bash \
   && ln -sfn /usr/local/bin/helm /usr/sbin/helm
 
-COPY docker-entrypoint.sh /usr/local/bin/
-
-ENTRYPOINT ["docker-entrypoint.sh"]
-CMD ["bash"]
+ENTRYPOINT ["/bin/bash", "-c"]
+CMD ["/bin/bash"]
