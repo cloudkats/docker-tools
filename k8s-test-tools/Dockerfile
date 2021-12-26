@@ -34,7 +34,7 @@ LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/k8s-test-tools" \
   org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/k8s-test-tools/readme.md" \
   org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
-  org.opencontainers.image.tools="kubectl,bats,kubectx,kubens"
+  org.opencontainers.image.tools="kubectl bats kubectx kubens"
 
 COPY --from=builder /kubectl /usr/sbin/kubectl
 COPY --from=builder /bats /opt/bats/

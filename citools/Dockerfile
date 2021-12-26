@@ -1,42 +1,29 @@
 ###
 # Build:
-# docker build . --tag test-image --build-arg VERSION=$(cat version)
+# docker build . --tag test
 # Run:
-# docker run --rm -it test-image /bin/bash
+# docker run --rm -it test /bin/bash
 ###
-FROM alpine:3.15
+FROM python:3.7-slim
 
-LABEL vendor="cloud kats" \
-  maintainer="cloudkats@gmail.com"
+ENV APT_PACKAGES="bash curl zip jq tree git make ca-certificates netcat"
+ENV PYTHON_PACKAGES="yq pip python-nmap pyyaml boto3 awscli"
 
-ARG AWSCLI_VERSION=1.18.112
-ARG BOTO_VERSION=1.14.35
-ARG PYYAML_VERSION=5.3.1
-ARG PIP_VERSION=20.2.1
-ARG PYTHON3_VERSION=3.8.5-r0
-ARG ZIP_VERSION=3.0-r8
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
+  org.opencontainers.image.title="cloudkats/ci-tools" \
+  org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/citools" \
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/citools/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
+  org.opencontainers.image.version="${PYTHON_VERSION}" \
+  org.opencontainers.image.tools="${PYTHON_PACKAGES} ${APT_PACKAGES}"
 
-# hadolint ignore=DL3018
-RUN apk add --no-cache --update \
-	curl \
-  zip=${ZIP_VERSION} \
-	bash \
-  python3=${PYTHON3_VERSION} \
-	py-pip \
-	git \
-	openssh \
-	make \
-	libffi-dev \
-	jq \
-	tree \
-	netcat-openbsd \
-	nmap \
-	bind-tools \
-  ca-certificates \
-  && pip install --upgrade pip==${PIP_VERSION} \
-    awscli==${AWSCLI_VERSION} boto3==${BOTO_VERSION} \
-    pyyaml==${PYYAML_VERSION} \
-  && rm -rf /var/cache/apk/*
+# hadolint ignore=DL3008,DL3013
+RUN apt-get update -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends ${APT_PACKAGES} \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip3 install --no-cache-dir --upgrade ${PYTHON_PACKAGES}
 
 ENTRYPOINT [ "/bin/bash", "-c" ]
 CMD ["/bin/bash"]

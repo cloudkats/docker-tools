@@ -21,7 +21,7 @@ RUN wget -q https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/so
   && chmod 0755 /usr/local/bin/sops \
   && chown root:root /usr/local/bin/sops
 
-# renovate: datasource=github-releases depName=mozilla/sops
+# renovate: datasource=github-releases depName=mikefarah/yq
 ARG YQ_VERSION=4.0.0
 ARG YQ_BINARY=yq_linux_amd64
 
@@ -36,7 +36,7 @@ LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/k8s-tools" \
   org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/k8s-tools/readme.md" \
   org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
-  org.opencontainers.image.tools="kubectl,bats,helm,sops,python3,yq" \
+  org.opencontainers.image.tools="kubectl bats helm sops python3 yq" \
   org.opencontainers.image.helmp-plugins="helm-secrets"
 
 # hadolint ignore=DL3018,DL3016

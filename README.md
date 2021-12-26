@@ -167,9 +167,15 @@ Submit a pull request
 
 ## TODO
 
-- [] add user to every container (# RUN adduser --system --home /ci --disabled-password --group ci)
-- [] Fix broken links
-- [] Unify container labels
+> Work in Progress
+
+1. [ ] add user to every container (# RUN adduser --system --home /ci --disabled-password --group ci)
+1. [ ] Fix broken links
+1. [ ] Unify container labels
+1. [ ] Link to source code on main page
+1. [ ] Link back to project from Docker Hub
+1. [ ] Renovate configuration
+1. [ ] Use `requirementes.txt` file with python packages
 
 ## Commands
 
@@ -190,3 +196,5 @@ docker push new-repo:tagname
 docker push cloudkats/appcenter-cli:tagname
 docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' | sed -e 's/^v//'
 ```
+
+<!-- $(date -u +'%Y.%m') -->
