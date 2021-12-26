@@ -1,36 +1,3 @@
-<!-- START doctoc generated TOC please keep comment here to allow auto update -->
-<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
-### Table of Contents
-
-- [Docker Tools](#docker-tools)
-  - [NodeJS](#nodejs)
-  - [Trufflehog](#trufflehog)
-  - [GitHound](#githound)
-  - [Jenkins](#jenkins)
-  - [Jo](#jo)
-  - [AppCenter CLI](#appcenter-cli)
-  - [Docker Images](#docker-images)
-    - [IaC](#iac)
-    - [Kubernets](#kubernets)
-  - [Load Testing](#load-testing)
-  - [CI Automation](#ci-automation)
-  - [Cloud Security](#cloud-security)
-  - [Cyber Security](#cyber-security)
-  - [Languages](#languages)
-  - [Create Locally](#create-locally)
-  - [Image Hardening](#image-hardening)
-  - [Trial](#trial)
-  - [How to Contribute](#how-to-contribute)
-  - [TODO](#todo)
-  - [Commands](#commands)
-  - [Resources](#resources)
-  - [Example commands](#example-commands)
-
-<!-- END doctoc generated TOC please keep comment here to allow auto update -->
-
-- [Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
-- [Container Label Schema](http://label-schema.org/rc1/)
-
 # Docker Tools
 
 [![Renovate](https://img.shields.io/badge/renovate-enabled-brightgreen.svg)](https://renovatebot.com)
@@ -40,6 +7,38 @@
 ![](https://img.shields.io/github/languages/top/cloudkats/docker-tools?color=green&logo=docker&logoColor=blue)
 ![](https://img.shields.io/github/commit-activity/m/terraform-module/terraform-aws-lambda)
 ![](https://img.shields.io/github/last-commit/terraform-module/terraform-aws-lambda)
+
+<!-- START doctoc generated TOC please keep comment here to allow auto update -->
+<!-- DON'T EDIT THIS SECTION, INSTEAD RE-RUN doctoc TO UPDATE -->
+### Table of Contents
+
+- [NodeJS](#nodejs)
+- [Trufflehog](#trufflehog)
+- [GitHound](#githound)
+- [Jenkins](#jenkins)
+- [Jo](#jo)
+- [AppCenter CLI](#appcenter-cli)
+- [Docker Images](#docker-images)
+  - [IaC](#iac)
+  - [Kubernets](#kubernets)
+- [Load Testing](#load-testing)
+- [CI Automation](#ci-automation)
+- [Cloud Security](#cloud-security)
+- [Cyber Security](#cyber-security)
+- [Languages](#languages)
+- [Create Locally](#create-locally)
+- [Image Hardening](#image-hardening)
+- [Trial](#trial)
+- [How to Contribute](#how-to-contribute)
+- [TODO](#todo)
+- [Commands](#commands)
+- [Resources](#resources)
+- [Example commands](#example-commands)
+
+<!-- END doctoc generated TOC please keep comment here to allow auto update -->
+
+- [Open Containers](https://github.com/opencontainers/image-spec/blob/main/annotations.md)
+- [Container Label Schema](http://label-schema.org/rc1/)
 
 ## NodeJS
 
