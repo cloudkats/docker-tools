@@ -133,6 +133,7 @@
 |[Helm](https://helm.sh/)   |  [![](https://github.com/cloudkats/docker-tools/workflows/helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ahelm) [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) |
 | [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![](https://github.com/cloudkats/docker-tools/actions/workflows/k8s.tools.yaml/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)|
 | [Kubernetes Test Tools](./k8s-test-tools/Dockerfile) |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.test-tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.test-tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) |
+| [Kubectl](./kubectl/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/k8s.kubectl/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.kubectl) [![](https://img.shields.io/docker/pulls/cloudkats/kubectl?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) |
 
 ## Create Locally
 

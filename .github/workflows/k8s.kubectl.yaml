@@ -1,22 +1,23 @@
-name: k8s.test-tools
+name: k8s.kubectl
 # This workflow is triggered on pushes to the repository.
 
 on:
   push:
     paths:
-    - ks8-test-tools/**
-    - .github/workflows/ks8.test-tools.yaml
+    - kubectl/**
+    - .github/workflows/k8s.kubectl.yaml
+  workflow_dispatch:
 
 env:
-  WORKSPACE: k8s-test-tools
+  WORKSPACE: kubectl
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: k8s-test-tools
+  DOCKER_IMAGE: kubectl
 
 jobs:
   buildonpush:
-    name: build&On&push
+    name: build-on-push
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: github.event_name != 'pull_request'
     steps:
     - uses: actions/checkout@v2
 
@@ -45,7 +46,7 @@ jobs:
 
         echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
         echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
-        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "K8S_VERSION=" | tr "=" " " | awk '{print $3}')"
+        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "KUBECTL_VERSION=" | tr "=" " " | awk '{print $3}')"
 
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')
