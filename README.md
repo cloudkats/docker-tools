@@ -21,15 +21,16 @@
 - [Docker Images](#docker-images)
   - [IaC](#iac)
   - [Kubernets](#kubernets)
-- [Load Testing](#load-testing)
-- [CI Automation](#ci-automation)
-- [Cloud Security](#cloud-security)
-- [Cyber Security](#cyber-security)
-- [Languages](#languages)
-- [Create Locally](#create-locally)
-- [Image Hardening](#image-hardening)
-- [Trial](#trial)
-- [How to Contribute](#how-to-contribute)
+  - [Load Testing](#load-testing)
+  - [CI Automation](#ci-automation)
+  - [Cloud Security](#cloud-security)
+  - [Cyber Security](#cyber-security)
+  - [Languages](#languages)
+- [Tips and Tricks](#tips-and-tricks)
+  - [Create Locally](#create-locally)
+  - [Image Hardening](#image-hardening)
+  - [Trial](#trial)
+  - [How to Contribute](#how-to-contribute)
 - [TODO](#todo)
 - [Commands](#commands)
 - [Resources](#resources)
@@ -90,27 +91,21 @@
 | [Kubernetes Test Tools](./k8s-test-tools/Dockerfile) |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.test-tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.test-tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) | [![](https://img.shields.io/docker/v/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) |
 | [Kubectl](./kubectl/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/k8s.kubectl/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.kubectl) [![](https://img.shields.io/docker/pulls/cloudkats/kubectl?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) | [![](https://img.shields.io/docker/v/cloudkats/kubectl?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) |
 
-## [Load Testing](https://loadninja.com/load-testing/)
+### [Load Testing](https://loadninja.com/load-testing/)
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
 | [Gatling](./gatling/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/load.gatling/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aload.gatling) [![](https://img.shields.io/docker/pulls/cloudkats/gatling?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/gatling) | [![](https://img.shields.io/docker/v/cloudkats/gatling?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/gatling) |
 | [Artilery](./artilery/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/load.artillery/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aload.artillery) [![](https://img.shields.io/docker/pulls/cloudkats/artilleryio?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/artilleryio) | [![](https://img.shields.io/docker/v/cloudkats/artilleryio?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/artilleryio) |
 
-|   |   |
-|---|---|
-|   |   |
-|   |   |
-|   |   |
-
-## CI Automation
+### CI Automation
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
 | [CI Tools](./citools/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/CiTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3ACiTools) [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) | [![](https://img.shields.io/docker/v/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) |
 |   |   |
 
-## Cloud Security
+### Cloud Security
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
@@ -118,7 +113,7 @@
 | [CloudCustodian Mailer](./c7n-mailer/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/cloudsec.c7n-mailer/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Acloudsec.c7n-mailer) [![](https://img.shields.io/docker/pulls/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer)  | [![](https://img.shields.io/docker/v/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer) |
 |   |   |
 
-## Cyber Security
+### Cyber Security
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
@@ -126,21 +121,23 @@
 |   |   |
 |   |   |
 
-## Languages
+### Languages
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
 |   |   |
 |   |   |
 
-## Create Locally
+## Tips and Tricks
+
+### Create Locally
 
 ```sh
 
 FROM ${DOCKER_REGISTRY:-none}/{ARCH:-amd64}/{OS:-ubuntu}/${RELEASE:-bionic}:${TIMESTAMP:-latest}
 ```
 
-## Image Hardening
+### Image Hardening
 
 ```Dockerfile
 FROM <your repo>/<your project>/<your image>:<your tag>
@@ -156,11 +153,11 @@ RUN chown -R ${user} "/usr/src"
 USER ${user}
 ```
 
-## Trial
+### Trial
 
 - [Hadolint](https://github.com/reviewdog/action-hadolint)
 
-## How to Contribute
+### How to Contribute
 
 Submit a pull request
 
