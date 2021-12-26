@@ -4,8 +4,8 @@ name: k8s.helm
 on:
   push:
     paths:
-    - helm/**
-    - .github/workflows/k8s.helm.yaml
+      - helm/**
+      - .github/workflows/k8s.helm.yaml
   workflow_dispatch:
 
 env:
@@ -19,60 +19,60 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - uses: brpaz/hadolint-action@v1.5.0
-      env:
-        XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
-      with:
-        dockerfile: ${{ env.WORKSPACE }}/Dockerfile
+      - uses: brpaz/hadolint-action@v1.5.0
+        env:
+          XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
+        with:
+          dockerfile: ${{ env.WORKSPACE }}/Dockerfile
 
-    - name: Login to Registry
-      run: |
-        echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+      - name: Login to Registry
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
 
-    - name: prepare
-      id: prep
-      working-directory: ${{ env.WORKSPACE }}
-      run: |
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-        # Strip "v" prefix from tag name
-        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+      - name: prepare
+        id: prep
+        working-directory: ${{ env.WORKSPACE }}
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
-        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+          IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
 
-        echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
-        echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
-        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "HELM_VERSION=" | tr "=" " " | awk '{print $3}')"
+          echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
+          echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "HELM_VERSION=" | tr "=" " " | awk '{print $3}')"
 
-        echo ::set-output name=version::${VERSION}
-        echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')
-        echo ::set-output name=sha::${GITHUB_SHA::8}
-        echo ::set-output name=image_id::${IMAGE_ID}
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tag_date::$(date -u +'%Y-%m')
+          echo ::set-output name=sha::${GITHUB_SHA::8}
+          echo ::set-output name=image_id::${IMAGE_ID}
 
-    - name: build & push docker image
-      working-directory: ${{ env.WORKSPACE }}
-      env:
-        IMAGE_ID: ${{ steps.prep.outputs.image_id }}
-        IMAGE: ${{ env.DOCKER_IMAGE }}
-        TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
-        TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
-        TAG_VERSION: ${{ steps.prep.outputs.version }}
-        CREATED: ${{ steps.prep.outputs.tag_date }}
-        BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
-        IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
-      run: |
-        ../bin/build.sh
-        ../bin/push.sh
+      - name: build & push docker image
+        working-directory: ${{ env.WORKSPACE }}
+        env:
+          IMAGE_ID: ${{ steps.prep.outputs.image_id }}
+          IMAGE: ${{ env.DOCKER_IMAGE }}
+          TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
+          TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
+          TAG_VERSION: ${{ steps.prep.outputs.version }}
+          CREATED: ${{ steps.prep.outputs.tag_date }}
+          BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
+          IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
+        run: |
+          ../bin/build.sh
+          ../bin/push.sh
 
-    - name: docker hub description
-      uses: peter-evans/dockerhub-description@v2
-      with:
-        username: ${{ secrets.DOCKERHUB_USERNAME }}
-        password: ${{ secrets.DOCKERHUB_PASSWORD }}
-        repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
-        readme-filepath: ${{ env.WORKSPACE }}/README.md
-        short-description: "non-Official Docker image with helm"
+      - name: docker hub description
+        uses: peter-evans/dockerhub-description@v2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
+          readme-filepath: ${{ env.WORKSPACE }}/README.md
+          short-description: "non-Official Docker image with helm"
