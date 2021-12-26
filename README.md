@@ -191,6 +191,8 @@ docker build .  --tag image \
 ## Example commands
 
 ```
+docker build --no-cache -t test .
+docker system prune
 docker tag local-image:tagname new-repo:tagname
 docker push new-repo:tagname
 docker push cloudkats/appcenter-cli:tagname
