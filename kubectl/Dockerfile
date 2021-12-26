@@ -18,12 +18,14 @@ RUN apk add --no-cache ca-certificates bash \
   && rm -rf /var/cache/apk/*
 
 # Metadata
-LABEL maintainer="cloudkats@gmail.com" \
-  org.opencontainers.image.title="kubectl" \
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
+  org.opencontainers.image.title="cloudkats/kubectl" \
   org.opencontainers.image.source="https://kubernetes.io/docs/reference/kubectl/overview/" \
-  org.opencontainers.image.url="https://github.com/cloudkats/docker-tools/kubectl" \
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/kubectl/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
   org.opencontainers.image.version="${KUBECTL_VERSION}" \
-  app.tag="kubectl:$KUBECTL_VERSION"
+  org.opencontainers.image.tools="kubectl"
 
 ENTRYPOINT [ "/bin/bash", "-c"]
 CMD ["/bin/bash"]
