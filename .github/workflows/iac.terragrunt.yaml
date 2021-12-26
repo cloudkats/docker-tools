@@ -1,30 +1,25 @@
-name: iac.terraform
+name: iac.terragrunt
 # This workflow is triggered on pushes to the repository.
 
 on:
   push:
     paths:
-    - terraform/**
-    - .github/workflows/iac.terraform.yaml
+    - terragrunt/**
+    - .github/workflows/iac.terragrunt.yaml
 
 env:
-  WORKSPACE: terraform
+  WORKSPACE: terragrunt
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: terraform
+  DOCKER_IMAGE: terragrunt
+
 
 jobs:
   buildonpush:
     name: BuildOnPush
     runs-on: ubuntu-latest
-
+    if: github.event_name == 'push'
     steps:
     - uses: actions/checkout@v2
-
-    - uses: brpaz/hadolint-action@v1.5.0
-      env:
-        XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
-      with:
-        dockerfile: ${{ env.WORKSPACE }}/Dockerfile
 
     - name: Login to Registry
       run: |
@@ -45,7 +40,7 @@ jobs:
 
         echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
         echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
-        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "TERRAFORM_VERSION=" | tr "=" " " | awk '{print $3}' | sed -e 's/^v//')"
+        echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "TERRAGRUNT_VERSION=" | tr "=" " " | awk '{print $3}' | sed -e 's/^v//')"
 
         echo ::set-output name=version::${VERSION}
         echo ::set-output name=tag_date::$(date -u +'%Y-%m-%d')

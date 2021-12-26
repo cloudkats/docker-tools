@@ -129,20 +129,19 @@
 
 ### IaC
 
-|  Name | Badges  |
-|:---|:---|
-| [Terraform](./terraform/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform) [![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform)  |
-|   |   |
-|   |   |
+|  Name    | Badges  | Version |
+|:---------|:----------|:-----------|
+| [Terraform](./terraform/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform) [![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform)  | [![](https://img.shields.io/docker/v/cloudkats/terraform?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) |
+| [Terragrunt](./terragrunt/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terragrunt/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terragrunt) [![](https://img.shields.io/docker/pulls/cloudkats/terragrunt?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt)  | [![](https://img.shields.io/docker/v/cloudkats/terragrunt?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt) |
 
 ### [Kubernets](https://kubernetes.io/)
 
-| Name  | Badges   |
-|:--------------------------|:----------------|
-|[Helm](./helm/Dockerfile)   |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.helm) [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) |
-| [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![](https://github.com/cloudkats/docker-tools/actions/workflows/k8s.tools.yaml/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)|
-| [Kubernetes Test Tools](./k8s-test-tools/Dockerfile) |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.test-tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.test-tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) |
-| [Kubectl](./kubectl/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/k8s.kubectl/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.kubectl) [![](https://img.shields.io/docker/pulls/cloudkats/kubectl?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) |
+| Name  | Badges   | Version |
+|:--------------------------|:----------------|:--------------|
+|[Helm](./helm/Dockerfile)   |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.helm/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.helm) [![](https://img.shields.io/docker/pulls/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) | [![](https://img.shields.io/docker/v/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/helm) |
+| [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![](https://github.com/cloudkats/docker-tools/actions/workflows/k8s.tools.yaml/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools)| [![](https://img.shields.io/docker/v/cloudkats/k8s-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-tools) |
+| [Kubernetes Test Tools](./k8s-test-tools/Dockerfile) |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.test-tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.test-tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) | [![](https://img.shields.io/docker/v/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) |
+| [Kubectl](./kubectl/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/k8s.kubectl/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.kubectl) [![](https://img.shields.io/docker/pulls/cloudkats/kubectl?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) | [![](https://img.shields.io/docker/v/cloudkats/kubectl?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) |
 
 ## Create Locally
 
