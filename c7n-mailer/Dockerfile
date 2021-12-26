@@ -1,23 +1,24 @@
-FROM python:3.8.7-alpine3.11
+# FROM python:3.8.7-alpine3.11
+FROM python:3.7-slim
 
-LABEL vendor="cloud kats" \
-  maintainer="cloudkats@gmail.com" \
+# renovate: datasource=github-releases depName=cloud-custodian/cloud-custodian
+ARG PACKAGE_VERSION=0.9.1.0
+
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
   org.opencontainers.image.title="cloudkats/c7n-mailer" \
-  org.opencontainers.image.url="https://github.com/cloud-custodian/cloud-custodian" \
-  org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/c7n-mailer"
+  org.opencontainers.image.source="https://github.com/cloud-custodian/cloud-custodian" \
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/c7n-mailer/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
+  org.opencontainers.image.version="${PACKAGE_VERSION}" \
+  org.opencontainers.image.tools="cloudcustodian-c7n-mailer"
 
-# hadolint ignore=DL3018,DL3003
-RUN apk add --no-cache --update git \
-    && git clone https://github.com/capitalone/cloud-custodian --depth=1 && \
-    cd cloud-custodian && \
-    pip install -e .
+# hadolint ignore=DL3008,DL3013
+RUN apt-get update -y --no-install-recommends \
+  && apt-get install -y --no-install-recommends bash \
+  && apt-get clean \
+  && rm -rf /var/lib/apt/lists/* \
+  && pip3 install --no-cache-dir --upgrade yq pip c7n-mailer
 
-ARG PACKAGE_VERSION
-
-# hadolint ignore=DL3018,DL3003
-RUN cd cloud-custodian && git fetch --tags && git checkout tags/${PACKAGE_VERSION} && \
-    cd tools/c7n_mailer && \
-    pip install --upgrade -r ./requirements.txt && \
-    python setup.py develop && \
-    pip install -e . # && \
-    rm -rf /var/cache/apk/*
+ENTRYPOINT [ "/bin/bash", "-c" ]
+CMD ["/bin/bash"]

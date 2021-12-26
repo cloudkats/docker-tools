@@ -6,7 +6,6 @@
   - [NodeJS](#nodejs)
   - [Trufflehog](#trufflehog)
   - [CI TOOLS](#ci-tools)
-  - [C7n Mailer](#c7n-mailer)
   - [GitHound](#githound)
   - [Jenkins](#jenkins)
   - [Jo](#jo)
@@ -57,11 +56,6 @@
 
 [![](https://github.com/cloudkats/docker-tools/workflows/CiTools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3ACiTools)
 [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools)
-
-## C7n Mailer
-
-[![](https://github.com/cloudkats/docker-tools/workflows/C7nMailer/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3AC7nMailer)
-[![](https://img.shields.io/docker/pulls/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer)
 
 ## GitHound
 
@@ -127,8 +121,8 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-|[Cloudmapper](./cloudmapper/Dockerfile)   |  [![](https://github.com/cloudkats/docker-tools/workflows/cloudsec.cloudmapper/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Acloudsec.cloudmapper) [![](https://img.shields.io/docker/pulls/cloudkats/cloudmapper?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/cloudmapper) | [![](https://img.shields.io/docker/v/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/cloudmapper) |
-|   |   |
+| [Cloudmapper](./cloudmapper/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/cloudsec.cloudmapper/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Acloudsec.cloudmapper) [![](https://img.shields.io/docker/pulls/cloudkats/cloudmapper?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/cloudmapper) | [![](https://img.shields.io/docker/v/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/cloudmapper) |
+| [CloudCustodian Mailer](./c7n-mailer/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/cloudsec.c7n-mailer/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Acloudsec.c7n-mailer) [![](https://img.shields.io/docker/pulls/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer)  | [![](https://img.shields.io/docker/v/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer) |
 |   |   |
 
 ## Cloud Security
