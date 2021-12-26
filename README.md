@@ -107,9 +107,9 @@
 
 ## [Load Testing](https://loadninja.com/load-testing/)
 
-|   |   |
-|---|---|
-|   |   |
+|  Name    | Badges  | Version |
+|:---------|:----------|:-----------|
+| [Gatling](./gatling/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/load.gatling/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aload.gatling) [![](https://img.shields.io/docker/pulls/cloudkats/gatling?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/gatling) | [![](https://img.shields.io/docker/v/cloudkats/gatling?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/gatling) |
 |   |   |
 |   |   |
 
@@ -154,7 +154,7 @@ USER ${user}
 
 ## Trial
 
-- [Hadoling](https://github.com/reviewdog/action-hadolint)
+- [Hadolint](https://github.com/reviewdog/action-hadolint)
 
 ## How to Contribute
 

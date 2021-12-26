@@ -1,19 +1,19 @@
 FROM adoptopenjdk/openjdk11:jdk-11.0.7_10-alpine-slim
 
-# Metadata
-LABEL vendor="cloudkats" \
-  maintainer="cloudkats@gmail.com" \
-  org.opencontainers.image.title="cloudkats/gatling" \
-  org.opencontainers.image.url="https://gatling.io/docs" \
-  org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/gatling"
-
 # working directory for gatling
 WORKDIR /opt
 
-# gating version
-ARG VERSION
 # renovate: datasource=github-tags depName=gatling/gatling
 ENV GATLING_VERSION=3.3.1
+# Metadata
+LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
+  org.opencontainers.image.vendor="https://github.com/cloudkats" \
+  org.opencontainers.image.title="cloudkats/gatling" \
+  org.opencontainers.image.source="https://gatling.io/docs" \
+  org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/gatling/readme.md" \
+  org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
+  org.opencontainers.image.version="${GATLING_VERSION}" \
+  org.opencontainers.image.tools="gatling"
 
 # create directory for gatling install
 RUN mkdir -p gatling
