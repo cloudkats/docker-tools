@@ -68,4 +68,3 @@ jobs:
 
         docker tag image "${IMAGE_ID}:${image_version::5}.${PURPOSE}"
         docker push "${IMAGE_ID}:${image_version::5}.${PURPOSE}"
-
