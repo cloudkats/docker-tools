@@ -1,11 +1,11 @@
-name: helm
+name: k8s.helm
 # This workflow is triggered on pushes to the repository.
 
 on:
   push:
     paths:
     - helm/**
-    - .github/workflows/helm.yaml
+    - .github/workflows/k8s.helm.yaml
   workflow_dispatch:
 
 env:
