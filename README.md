@@ -127,7 +127,7 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-|   |   |
+|[Cloudmapper](./cloudmapper/Dockerfile)   |  [![](https://github.com/cloudkats/docker-tools/workflows/cloudsec.cloudmapper/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Acloudsec.cloudmapper) [![](https://img.shields.io/docker/pulls/cloudkats/cloudmapper?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/cloudmapper) | [![](https://img.shields.io/docker/v/cloudkats/helm?color=green&logo=docker&logoColor=pink&style=flat-square)](https://hub.docker.com/r/cloudkats/cloudmapper) |
 |   |   |
 |   |   |
 
