@@ -3,7 +3,7 @@ name: cloudsec.cloudmapper
 on:
   push:
     paths:
-    - gatling/*
+    - cloudmapper/*
     - .github/workflows/cloudsec.cloudmapper.yaml
   workflow_dispatch:
 
