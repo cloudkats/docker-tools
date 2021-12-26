@@ -15,6 +15,7 @@ LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
   org.opencontainers.image.title="cloudkats/terragrunt" \
   org.opencontainers.image.source="https://kubernetes.io/docs/reference/terragrunt/overview/" \
+  org.opencontainers.image.demo="https://github.com/gruntwork-io/terragrunt-infrastructure-live-example" \
   org.opencontainers.image.documentation="https://github.com/cloudkats/docker-tools/terragrunt/readme.md" \
   org.opencontainers.image.licenses="https://github.com/cloudkats/docker-tools/LICENCE" \
   org.opencontainers.image.version="${TERRAFORM_VERSION}" \

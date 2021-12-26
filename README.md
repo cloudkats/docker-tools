@@ -11,10 +11,14 @@
   - [Jenkins](#jenkins)
   - [Jo](#jo)
   - [AppCenter CLI](#appcenter-cli)
-  - [Images](#images)
-  - [Load Testing](#load-testing)
+  - [Docker Images](#docker-images)
     - [IaC](#iac)
     - [Kubernets](#kubernets)
+  - [Load Testing](#load-testing)
+  - [CI Automation](#ci-automation)
+  - [Cyber Security](#cyber-security)
+  - [Cloud Security](#cloud-security)
+  - [Languages](#languages)
   - [Create Locally](#create-locally)
   - [Image Hardening](#image-hardening)
   - [Trial](#trial)
@@ -116,6 +120,22 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
+|   |   |
+|   |   |
+
+## Cyber Security
+
+|  Name    | Badges  | Version |
+|:---------|:----------|:-----------|
+|   |   |
+|   |   |
+|   |   |
+
+## Cloud Security
+
+|  Name    | Badges  | Version |
+|:---------|:----------|:-----------|
+|   |   |
 |   |   |
 |   |   |
 
