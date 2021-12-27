@@ -23,7 +23,8 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - run: echo ${{ toJson(github) }}
+      - name: 'test it'
+        run: echo ${{ toJson(github) }}
 
       - uses: brpaz/hadolint-action@v1.5.0
         env:
