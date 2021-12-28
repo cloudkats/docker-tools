@@ -9,6 +9,11 @@ on:
     branches:
       - main
   workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: false
 
 env:
   WORKSPACE: jo
@@ -19,7 +24,9 @@ jobs:
   buildonpush:
     name: BuildOnPush
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' && github.event.created == false }}
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.branch == true
+      || github.event_name == 'push' && github.event.created == false
     steps:
       - uses: actions/checkout@v2
 
@@ -85,7 +92,9 @@ jobs:
   buildonmr:
     name: BuildOnMR
     runs-on: ubuntu-latest
-    if: ${{ github.event_name == 'workflow_dispatch' || github.event_name == 'push' && github.event.created == true }}
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.branch == false
+      || github.event_name == 'push' && github.event.created == true
     steps:
       - uses: actions/checkout@v2
 
