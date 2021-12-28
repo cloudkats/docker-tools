@@ -20,7 +20,7 @@ env:
 
 jobs:
   buildonpush:
-    name: build-on-push
+    name: BuildOnPush
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'true'
