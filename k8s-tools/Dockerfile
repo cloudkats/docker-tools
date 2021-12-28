@@ -22,7 +22,7 @@ RUN wget -q https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/so
   && chown root:root /usr/local/bin/sops
 
 # renovate: datasource=github-releases depName=mikefarah/yq
-ARG YQ_VERSION=4.0.0
+ARG YQ_VERSION=v4.16.2
 ARG YQ_BINARY=yq_linux_amd64
 
 RUN wget --progress=dot:giga https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq &&\
