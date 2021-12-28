@@ -11,19 +11,19 @@ on:
       push:
         description: Push to docker registy
         required: true
-        default: 'false'
+        default: "false"
 env:
   WORKSPACE: githound
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: githound
-  GREP_VERSION: 'PACKAGE_VERSION='
+  GREP_VERSION: "PACKAGE_VERSION="
 
 jobs:
   buildonpush:
     name: BuildOnPush
     runs-on: ubuntu-latest
     if: >-
-      github.event_name == 'workflow_dispatch' && github.event.inputs.push == true
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'true'
       || github.event_name == 'push' && github.event.created == false
     steps:
       - uses: actions/checkout@v2
