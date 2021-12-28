@@ -3,7 +3,7 @@ FROM adoptopenjdk/openjdk11:jdk-11.0.7_10-alpine-slim
 # working directory for gatling
 WORKDIR /opt
 
-# renovate: datasource=github-tags depName=gatling/gatling
+# renovate: datasource=github-releases depName=gatling/gatling
 ENV GATLING_VERSION=3.3.1
 # Metadata
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \

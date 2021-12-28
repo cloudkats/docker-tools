@@ -6,7 +6,7 @@ LABEL vendor="cloud kats" \
   org.opencontainers.image.url="https://artillery.io/docs/" \
   org.opencontainers.image.source="https://github.com/cloudkats/docker-tools/artillery"
 
-# renovate: datasource=github-tags depName=artilleryio/artillery
+# renovate: datasource=github-releases depName=artilleryio/artillery
 ARG ARTILLERY_VERSION=1.7.5
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
