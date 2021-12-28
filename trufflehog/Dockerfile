@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 # renovate: datasource=github-releases depName=microsoft/appcenter-cli
-ARG PACKAGE_VERSION=2.0.99
+ARG PACKAGE_VERSION=2.10.7
 
 ENV APT_PACKAGES="bash jq git"
 ENV PYTHON_PACKAGES="yq pip truffleHog"
