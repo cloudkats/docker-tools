@@ -7,6 +7,11 @@ on:
       - k8s-tools/**
       - .github/workflows/k8s.tools.yaml
   workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: k8s-tools

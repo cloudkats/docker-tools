@@ -7,10 +7,10 @@ on:
       - .github/workflows/ci.jo.yaml
   workflow_dispatch:
     inputs:
-      registry:
+      push:
         description: Push to docker registy
         required: true
-        default: "false"
+        default: 'false'
 
 env:
   WORKSPACE: jo
@@ -22,7 +22,7 @@ jobs:
     name: BuildOnPush
     runs-on: ubuntu-latest
     if: >-
-      github.event_name == 'workflow_dispatch' && github.event.inputs.registry == true
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == true
       || github.event_name == 'push' && github.event.created == false
     steps:
       - uses: actions/checkout@v2
@@ -87,7 +87,7 @@ jobs:
     name: BuildOnMR
     runs-on: ubuntu-latest
     if: >-
-      github.event_name == 'workflow_dispatch' && github.event.inputs.registry == false
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == false
       || github.event_name == 'push' && github.event.created == true
     steps:
       - uses: actions/checkout@v2

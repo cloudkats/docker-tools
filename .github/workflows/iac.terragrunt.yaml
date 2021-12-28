@@ -6,6 +6,12 @@ on:
     paths:
       - terragrunt/**
       - .github/workflows/iac.terragrunt.yaml
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: terragrunt

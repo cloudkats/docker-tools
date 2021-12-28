@@ -5,6 +5,12 @@ on:
     paths:
       - gatling/*
       - .github/workflows/load.gatling.yaml
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: gatling

@@ -6,6 +6,12 @@ on:
     paths:
       - terraform/**
       - .github/workflows/iac.terraform.yaml
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: terraform

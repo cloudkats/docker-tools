@@ -6,7 +6,12 @@ on:
     paths:
       - githound/**
       - .github/workflows/gitsec.githound.yaml
-
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 env:
   WORKSPACE: githound
   DOCKER_REPO: cloudkats

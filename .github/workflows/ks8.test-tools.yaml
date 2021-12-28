@@ -6,7 +6,12 @@ on:
     paths:
       - ks8-test-tools/**
       - .github/workflows/ks8.test-tools.yaml
-
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 env:
   WORKSPACE: k8s-test-tools
   DOCKER_REPO: cloudkats

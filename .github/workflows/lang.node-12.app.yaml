@@ -6,6 +6,12 @@ on:
     paths:
     - nodejs/12/app/**
     - .github/workflows/nodejs-12-app.yaml
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: nodejs/12/app

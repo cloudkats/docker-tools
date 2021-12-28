@@ -6,6 +6,11 @@ on:
       - cloudmapper/*
       - .github/workflows/cloudsec.cloudmapper.yaml
   workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: cloudmapper

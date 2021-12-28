@@ -5,6 +5,12 @@ on:
     paths:
       - artilleryio/**
       - .github/workflows/load.artillery.yaml
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: artilleryio

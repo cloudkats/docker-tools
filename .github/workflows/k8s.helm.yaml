@@ -7,6 +7,11 @@ on:
       - helm/**
       - .github/workflows/k8s.helm.yaml
   workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: helm

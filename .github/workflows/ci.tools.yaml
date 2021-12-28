@@ -7,6 +7,11 @@ on:
     - citools/**
     - .github/workflows/ci.tools.yaml
   workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 
 env:
   WORKSPACE: citools

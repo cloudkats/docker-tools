@@ -6,7 +6,12 @@ on:
     paths:
       - c7n-mailer/**
       - .github/workflows/cloudsec.c7n-mailer.yaml
-
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registy
+        required: true
+        default: 'false'
 env:
   WORKSPACE: c7n-mailer
   DOCKER_REPO: cloudkats
