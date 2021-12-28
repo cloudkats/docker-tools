@@ -16,6 +16,7 @@ env:
   WORKSPACE: k8s-test-tools
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: k8s-test-tools
+  GREP_VERSION: 'K8S_VERSION='
 
 jobs:
   buildonpush:
@@ -52,7 +53,7 @@ jobs:
 
           echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
           echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
-          echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "K8S_VERSION=" | tr "=" " " | awk '{print $3}')"
+          echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "$GREP_VERSION" | tr "=" " " | awk '{print $3}')"
 
           echo ::set-output name=version::${VERSION}
           echo ::set-output name=tag_date::$(date -u +'%Y-%m')
@@ -82,3 +83,51 @@ jobs:
           repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
           readme-filepath: ${{ env.WORKSPACE }}/README.md
           short-description: "Unoficial Docker image with kubernets toolings"
+
+  buildonmr:
+    name: BuildOnMR
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'
+      || github.event_name == 'push' && github.event.created == true
+    steps:
+      - uses: actions/checkout@v2
+
+      - uses: brpaz/hadolint-action@v1.5.0
+        env:
+          XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
+        with:
+          dockerfile: ${{ env.WORKSPACE }}/Dockerfile
+
+      - name: prepare
+        id: prep
+        working-directory: ${{ env.WORKSPACE }}
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+
+          echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
+          echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "$GREP_VERSION" | tr "=" " " | awk '{print $3}')"
+
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tag_date::$(date -u +'%Y-%m')
+          echo ::set-output name=sha::${GITHUB_SHA::8}
+          echo ::set-output name=image_id::${IMAGE_ID}
+
+      - name: build & push docker image
+        working-directory: ${{ env.WORKSPACE }}
+        env:
+          IMAGE_ID: ${{ steps.prep.outputs.image_id }}
+          IMAGE: ${{ env.DOCKER_IMAGE }}
+          TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
+          TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
+          TAG_VERSION: ${{ steps.prep.outputs.version }}
+          CREATED: ${{ steps.prep.outputs.tag_date }}
+          BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
+          IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
+        run: |
+          ../bin/build.sh
