@@ -86,11 +86,11 @@ jobs:
           short-description: "Unoficial Docker image withe Terraform, IaC tool"
 
   buildonmr:
-    name: BuildOnMR
+    name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'
-      || github.event_name == 'push' && github.event.created == true
+      || github.event_name == 'push' && (github.event.created == true || github.event.forced == true)
     steps:
       - uses: actions/checkout@v2
 

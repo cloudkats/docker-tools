@@ -28,9 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'test it'
-        run: echo ${{ toJson(github) }}
-
       - name: Login to Registry
         run: |
           echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
@@ -82,7 +79,7 @@ jobs:
           short-description: "Unoficial Docker Image with duo-labs/cloudmapper installed to visualize AWS Infrastructure"
 
   buildonmr:
-    name: BuildOnMR
+    name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'

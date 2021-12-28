@@ -10,13 +10,13 @@ on:
       push:
         description: Push to docker registy
         required: true
-        default: 'false'
+        default: "false"
 
 env:
   WORKSPACE: gatling
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: gatling
-  GREP_VERSION: 'GATLING_VERSION='
+  GREP_VERSION: "GATLING_VERSION="
 
 jobs:
   buildonpush:
@@ -79,11 +79,11 @@ jobs:
           short-description: "Unoficial Docker image with Gatling, a load testing tooling"
 
   buildonmr:
-    name: BuildOnMR
+    name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'
-      || github.event_name == 'push' && github.event.created == true
+      || github.event_name == 'push' && (github.event.created == true || github.event.forced == true)
     steps:
       - uses: actions/checkout@v2
 

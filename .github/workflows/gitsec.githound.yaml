@@ -85,11 +85,11 @@ jobs:
           short-description: "Unoficial Docker image. Searches through git repositories Git plugin that prevents sensitive data from being committed."
 
   buildonmr:
-    name: BuildOnMR
+    name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'
-      || github.event_name == 'push' && github.event.created == true
+      || github.event_name == 'push' && (github.event.created == true || github.event.forced == true)
     steps:
       - uses: actions/checkout@v2
 

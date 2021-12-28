@@ -28,9 +28,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'test it'
-        run: echo ${{ toJson(github) }}
-
       - uses: brpaz/hadolint-action@v1.5.0
         env:
           XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
@@ -88,7 +85,7 @@ jobs:
           short-description: "Unoficial Docker image with a mailer implementation for Custodian. Outbound mail delivery is still somewhat organization-specific"
 
   buildonmr:
-    name: BuildOnMR
+    name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'

@@ -10,13 +10,13 @@ on:
       push:
         description: Push to docker registy
         required: true
-        default: 'false'
+        default: "false"
 
 env:
   WORKSPACE: jo
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: jo
-  GREP_VERSION: 'JO_VERSION='
+  GREP_VERSION: "JO_VERSION="
 
 jobs:
   buildonpush:
@@ -85,7 +85,7 @@ jobs:
           short-description: "Unoficial Docker image. JSON output from a shell."
 
   buildonmr:
-    name: BuildOnMR
+    name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'
