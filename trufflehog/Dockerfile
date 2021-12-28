@@ -1,4 +1,4 @@
-FROM python:3.7-slim
+FROM python:3.10-slim
 
 # renovate: datasource=github-releases depName=microsoft/appcenter-cli
 ARG PACKAGE_VERSION=2.0.99
