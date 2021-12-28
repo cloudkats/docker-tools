@@ -1,5 +1,5 @@
 # renovate: datasource=github-releases depName=hashicorp/terraform
-ARG TERRAFORM_VERSION=0.12.25
+ARG TERRAFORM_VERSION=v1.1.2
 
 FROM hashicorp/terraform:${TERRAFORM_VERSION} as source
 FROM alpine:3.15
