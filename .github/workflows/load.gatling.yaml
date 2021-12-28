@@ -78,7 +78,7 @@ jobs:
           readme-filepath: ${{ env.WORKSPACE }}/README.md
           short-description: "Unoficial Docker image with Gatling, a load testing tooling"
 
-  buildonmr:
+  build-on-merge-request:
     name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-

@@ -84,7 +84,7 @@ jobs:
           readme-filepath: ${{ env.WORKSPACE }}/README.md
           short-description: "Unoficial Docker image. Searches through git repositories for high entropy strings and secrets, digging deep into commit history"
 
-  buildonmr:
+  build-on-merge-request:
     name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-

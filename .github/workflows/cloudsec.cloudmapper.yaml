@@ -78,7 +78,7 @@ jobs:
           readme-filepath: ${{ env.WORKSPACE }}/README.md
           short-description: "Unoficial Docker Image with duo-labs/cloudmapper installed to visualize AWS Infrastructure"
 
-  buildonmr:
+  build-on-merge-request:
     name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-

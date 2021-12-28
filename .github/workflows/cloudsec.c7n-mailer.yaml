@@ -84,7 +84,7 @@ jobs:
           readme-filepath: ${{ env.WORKSPACE }}/README.md
           short-description: "Unoficial Docker image with a mailer implementation for Custodian. Outbound mail delivery is still somewhat organization-specific"
 
-  buildonmr:
+  build-on-merge-request:
     name: build-on-merge-request
     runs-on: ubuntu-latest
     if: >-
