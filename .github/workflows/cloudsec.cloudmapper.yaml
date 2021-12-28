@@ -28,6 +28,9 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
+      - name: 'test it'
+        run: echo ${{ toJson(github) }}
+
       - name: Login to Registry
         run: |
           echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
