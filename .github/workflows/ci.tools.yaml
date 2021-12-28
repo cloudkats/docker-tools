@@ -21,6 +21,9 @@ env:
 jobs:
   buildonpush:
     name: BuildOnPush
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == true
+      || github.event_name == 'push' && github.event.created == false
     runs-on: ubuntu-latest
 
     steps:

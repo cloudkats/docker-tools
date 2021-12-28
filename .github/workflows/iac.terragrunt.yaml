@@ -22,7 +22,9 @@ jobs:
   buildonpush:
     name: BuildOnPush
     runs-on: ubuntu-latest
-    if: github.event_name == 'push'
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == true
+      || github.event_name == 'push' && github.event.created == false
     steps:
       - uses: actions/checkout@v2
 
