@@ -30,9 +30,6 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: 'test it'
-        run: echo ${{ toJson(github) }}
-
       - uses: brpaz/hadolint-action@v1.5.0
         env:
           XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
@@ -97,9 +94,6 @@ jobs:
       || github.event_name == 'push' && github.event.created == true
     steps:
       - uses: actions/checkout@v2
-
-      - name: 'test it'
-        run: echo ${{ toJson(github) }}
 
       - uses: brpaz/hadolint-action@v1.5.0
         env:

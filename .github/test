@@ -1,0 +1,2 @@
+      - name: 'test it'
+        run: echo ${{ toJson(github) }}
