@@ -3,8 +3,8 @@ _extends: .github
 
 repository:
   name: docker-tools
-  description: "↘️ Docker tooling for multiple use cases"
-  topics: ivka, docker
+  description: ":whale: Docker tooling for multiple use cases"
+  topics: ivka, docker, monorepo
   homepage: https://github.com/cloudkats/docker-tools
   private: false
   has_projects: false
@@ -29,3 +29,4 @@ branches:
         strict: true
         # Required. The list of status checks to require in order to merge into this branch
         contexts: ["build-on-merge-request"]
+      enforce_admins: true

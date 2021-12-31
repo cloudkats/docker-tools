@@ -13,3 +13,5 @@
 ## Tools installed
 
 - [Terraform](https://github.com/hashicorp/terraform)
+
+<!-- badges example from here renovatebot/github-action -->
