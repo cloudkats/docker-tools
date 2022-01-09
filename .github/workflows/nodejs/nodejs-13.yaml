@@ -4,8 +4,8 @@ name: NodeJS
 on:
   push:
     paths:
-    - nodejs/**
-    - .github/workflows/nodejs.yaml
+      - nodejs/**
+      - .github/workflows/nodejs.yaml
 
 env:
   WORKSPACE: nodejs
@@ -18,49 +18,48 @@ jobs:
     runs-on: ubuntu-latest
     if: github.event_name == 'push'
     steps:
-    - uses: actions/checkout@v2
+      - uses: actions/checkout@v2
 
-    - name: Build the Docker image
-      working-directory: ${{ env.WORKSPACE }}
-      run: |
-        echo "Build"
+      - name: Build the Docker image
+        working-directory: ${{ env.WORKSPACE }}
+        run: |
+          echo "Build"
 
-        docker build . --file Dockerfile --tag image \
-          --build-arg NODE_VERSION=$(cat version)
+          docker build . --file Dockerfile --tag image \
+            --build-arg NODE_VERSION=$(cat version)
 
-    - name: Login to Registry
-      run: |
-        echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
-      env:
-        DOCKER_USERNAME: ${{ secrets.DOCKER_USERNAME }}
-        DOCKER_PASSWORD: ${{ secrets.DOCKER_TOKEN }}
+      - name: Login to Registry
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
 
-    - name: Push Docker image
-      working-directory: ${{ env.WORKSPACE }}
-      run: |
-        echo "Push"
-        
-        image_version=$(cat version)
+      - name: Push Docker image
+        working-directory: ${{ env.WORKSPACE }}
+        run: |
+          echo "Push"
 
-        IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
-        tag_date="$(date +%Y%d%m)"
+          image_version=$(cat version)
 
-        # Strip git ref prefix from version
-        VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
-        # Strip "v" prefix from tag name
-        [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+          IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+          tag_date="$(date +%Y%d%m)"
 
-        # Use Docker `latest` tag convention
-        [ "$VERSION" == "master" ] && VERSION=latest
-        docker tag image "${IMAGE_ID}:${VERSION}"
-        docker push "${IMAGE_ID}:${VERSION}"
+          # Strip git ref prefix from version
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
 
-        docker tag image "${IMAGE_ID}:${image_version}.${GITHUB_SHA::8}"
-        docker push "${IMAGE_ID}:${image_version}.${GITHUB_SHA::8}"
+          # Use Docker `latest` tag convention
+          [ "$VERSION" == "master" ] && VERSION=latest
+          docker tag image "${IMAGE_ID}:${VERSION}"
+          docker push "${IMAGE_ID}:${VERSION}"
 
-        docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
-        docker push "${IMAGE_ID}:${image_version}.${tag_date}"
+          docker tag image "${IMAGE_ID}:${image_version}.${GITHUB_SHA::8}"
+          docker push "${IMAGE_ID}:${image_version}.${GITHUB_SHA::8}"
 
-        docker tag image "${IMAGE_ID}:${image_version}"
-        docker push "${IMAGE_ID}:${image_version}"
+          docker tag image "${IMAGE_ID}:${image_version}.${tag_date}"
+          docker push "${IMAGE_ID}:${image_version}.${tag_date}"
 
+          docker tag image "${IMAGE_ID}:${image_version}"
+          docker push "${IMAGE_ID}:${image_version}"
