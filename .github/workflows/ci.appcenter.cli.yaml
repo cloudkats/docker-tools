@@ -107,7 +107,7 @@ jobs:
           echo ::set-output name=sha::${GITHUB_SHA::8}
           echo ::set-output name=image_id::${IMAGE_ID}
 
-      - name: build & push docker image
+      - name: build
         working-directory: ${{ env.WORKSPACE }}
         env:
           IMAGE_ID: ${{ steps.prep.outputs.image_id }}
