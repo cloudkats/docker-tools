@@ -1,5 +1,5 @@
 # Update versions as needed.
-FROM lachlanevenson/k8s-helm:v3.7.2
+FROM lachlanevenson/k8s-helm:v3.8.0
 FROM lachlanevenson/k8s-kubectl:v1.23.1
 
 
