@@ -1,6 +1,6 @@
 # Update versions as needed.
 FROM lachlanevenson/k8s-helm:v3.7.2
-FROM lachlanevenson/k8s-kubectl:v1.23.1
+FROM lachlanevenson/k8s-kubectl:v1.23.2
 
 
 FROM alpine:3.15
