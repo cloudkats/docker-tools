@@ -14,7 +14,7 @@ RUN apk update && apk add --no-cache ca-certificates \
 RUN update-ca-certificates 2>/dev/null || true
 
 # renovate: datasource=github-releases depName=mozilla/sops
-ARG SOPS_VERSION=v3.7.1
+ARG SOPS_VERSION=3.7.2
 # hadolint ignore=DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
 RUN wget -q https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux -O /usr/local/bin/sops \
