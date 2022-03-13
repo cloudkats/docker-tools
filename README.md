@@ -20,6 +20,7 @@
   - [Load Testing](#load-testing)
   - [CI Automation](#ci-automation)
   - [Cloud Security](#cloud-security)
+  - [Policies](#policies)
   - [Cyber Security](#cyber-security)
   - [Git Security](#git-security)
   - [Languages](#languages)
@@ -83,12 +84,18 @@
 | [CloudCustodian Mailer](./c7n-mailer/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/cloudsec.c7n-mailer/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Acloudsec.c7n-mailer) [![](https://img.shields.io/docker/pulls/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer)  | [![](https://img.shields.io/docker/v/cloudkats/c7n-mailer?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/c7n-mailer) |
 |   |   |
 
+### Policies
+
+|  Name                | Badges    | Version |
+|:---------------------|:----------|:-----------|
+| [OPA](opa/Dockerfile) | ![](https://github.com/cloudkats/docker-tools/workflows/policy.opa/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Apolicy.opa) [![](https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) | [![](https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) |
+|   |   |
+
 ### Cyber Security
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-|   |   |
-|   |   |
+|  |   |
 |   |   |
 
 ### Git Security
