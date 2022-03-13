@@ -35,7 +35,7 @@ RUN apk update && apk add -Uuv --no-cache --update \
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
 ENV TERRAGRUNT_VERSION=0.36.3
 
-ADD https://github.com/gruntwork-io/terragrunt/releases/download/${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 /usr/bin/terragrunt
+ADD https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 /usr/bin/terragrunt
 
 RUN chmod +x /usr/bin/terragrunt
 

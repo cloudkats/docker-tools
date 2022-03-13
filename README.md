@@ -50,7 +50,7 @@
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
 | [Terraform](./terraform/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform) [![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) ![](https://img.shields.io/docker/image-size/cloudkats/terraform) | [![](https://img.shields.io/docker/v/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) |
-| [Terragrunt](./terragrunt/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terragrunt/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terragrunt) [![](https://img.shields.io/docker/pulls/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt) ![](https://img.shields.io/docker/image-size/cloudkats/terragrunt) | [![](https://img.shields.io/docker/v/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt) |
+| [Terragrunt](./terragrunt/Dockerfile)  | [![][trg.badge]][trg.badge.yml] [![][trg.docker.pulls]][trg.docker] ![][trg.docker.size] | [![][trg.docker.version]][trg.docker] |
 
 ### [Kubernets](https://kubernetes.io/)
 
@@ -72,7 +72,7 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-| [CI Tools](./citools/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/ci.tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.tools) [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) | [![](https://img.shields.io/docker/v/cloudkats/ci-tools?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) |
+| [CI Tools](./citools/Dockerfile)  | [![][trg.badge]][trg.badge.yml] [![](https://img.shields.io/docker/pulls/cloudkats/ci-tools?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) | [![](https://img.shields.io/docker/v/cloudkats/ci-tools?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/ci-tools) |
 |  [Microsoft App Center](./appcenter/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/ci.appcenter.cli/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.appcenter.cli) [![](https://img.shields.io/docker/pulls/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli)  | [![](https://img.shields.io/docker/v/cloudkats/appcenter-cli?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/appcenter-cli) |
 | [Jo](jo/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/ci.jo/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aci.jo) [![](https://img.shields.io/docker/pulls/cloudkats/jo?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/jo) | [![](https://img.shields.io/docker/v/cloudkats/jo?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/jo) |
 
@@ -188,3 +188,10 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 [opa.docker.size]: https://img.shields.io/docker/image-size/cloudkats/opa
 [opa.docker.version]: https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [opa.docker]: https://hub.docker.com/r/cloudkats/opa
+
+[trg.badge]: https://github.com/cloudkats/docker-tools/workflows/iac.terragrunt/badge.svg
+[trg.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform
+[trg.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[trg.docker.size]: https://img.shields.io/docker/image-size/cloudkats/terragrunt
+[trg.docker.version]: https://img.shields.io/docker/v/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[trg.docker]: https://hub.docker.com/r/cloudkats/terragrunt
