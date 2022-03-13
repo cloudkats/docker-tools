@@ -49,8 +49,8 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-| [Terraform](./terraform/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform) [![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform)  | [![](https://img.shields.io/docker/v/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) |
-| [Terragrunt](./terragrunt/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terragrunt/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terragrunt) [![](https://img.shields.io/docker/pulls/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt)  | [![](https://img.shields.io/docker/v/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt) |
+| [Terraform](./terraform/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform) [![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) ![](https://img.shields.io/docker/image-size/cloudkats/terraform) | [![](https://img.shields.io/docker/v/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) |
+| [Terragrunt](./terragrunt/Dockerfile)  | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terragrunt/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terragrunt) [![](https://img.shields.io/docker/pulls/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt) ![](https://img.shields.io/docker/image-size/cloudkats/terragrunt) | [![](https://img.shields.io/docker/v/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terragrunt) |
 
 ### [Kubernets](https://kubernetes.io/)
 
@@ -88,7 +88,7 @@
 
 |  Name                | Badges    | Version |
 |:---------------------|:----------|:-----------|
-| [OPA](opa/Dockerfile) | ![](https://github.com/cloudkats/docker-tools/workflows/policy.opa/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Apolicy.opa) [![](https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) | [![](https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) |
+| [OPA](opa/Dockerfile) | ![](https://github.com/cloudkats/docker-tools/workflows/policy.opa/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Apolicy.opa) [![](https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) ![](https://img.shields.io/docker/image-size/cloudkats/opa) | [![](https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) |
 |   |   |
 
 ### Cyber Security
@@ -180,3 +180,5 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 1. [ ] Renovate configuration
 1. [ ] Use `requirementes.txt` file with python packages
 1. [ ] Review missing images
+
+<!-- resources -->
