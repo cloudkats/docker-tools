@@ -88,7 +88,7 @@
 
 |  Name                | Badges    | Version |
 |:---------------------|:----------|:-----------|
-| [OPA](opa/Dockerfile) | ![policy.opa][opa.badge]][opa.badge.yml] [![][opa.docker.pulls]][opa.docker] ![][opa.docker.size] | [![][opa.docker.version]][opa.docker] |
+| [OPA](opa/Dockerfile) | [![policy.opa][opa.badge]][opa.badge.yml] [![][opa.docker.pulls]][opa.docker] ![][opa.docker.size] | [![][opa.docker.version]][opa.docker] |
 |   |   |
 
 ### Cyber Security
@@ -182,7 +182,7 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 1. [ ] Review missing images
 
 <!-- resources -->
-[opa.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml/badge.svg
+[opa.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yaml/badge.svg
 [opa.badge.yml]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yaml
 [opa.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [opa.docker.size]: https://img.shields.io/docker/image-size/cloudkats/opa
