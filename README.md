@@ -88,7 +88,7 @@
 
 |  Name                | Badges    | Version |
 |:---------------------|:----------|:-----------|
-| [OPA](opa/Dockerfile) | ![](https://github.com/cloudkats/docker-tools/workflows/policy.opa/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Apolicy.opa) [![](https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) ![](https://img.shields.io/docker/image-size/cloudkats/opa) | [![](https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) |
+| [OPA](opa/Dockerfile) | [![policy.opa](https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml/badge.svg)](https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml) [![](https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) ![](https://img.shields.io/docker/image-size/cloudkats/opa) | [![](https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) |
 |   |   |
 
 ### Cyber Security

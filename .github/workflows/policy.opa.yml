@@ -4,7 +4,7 @@ name: policy.opa
 on:
   push:
     paths:
-      - terragrunt/**
+      - opa/**
       - .github/workflows/policy.opa.yaml
   workflow_dispatch:
     inputs:
