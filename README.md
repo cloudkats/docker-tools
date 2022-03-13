@@ -88,7 +88,7 @@
 
 |  Name                | Badges    | Version |
 |:---------------------|:----------|:-----------|
-| [OPA](opa/Dockerfile) | [![policy.opa](https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml/badge.svg)](https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml) [![](https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) ![](https://img.shields.io/docker/image-size/cloudkats/opa) | [![](https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/opa) |
+| [OPA](opa/Dockerfile) | [![policy.opa][opa.badge]][opa.badge.yml] [![][opa.docker.pulls]][opa.docker] ![][opa.docker.size] | [![][opa.docker.version]][opa.docker] |
 |   |   |
 
 ### Cyber Security
@@ -110,7 +110,7 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-| [NodeJS](nodejs) | [![](https://github.com/cloudkats/docker-tools/workflows/node.12.app/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Anode.12.app) [![](https://img.shields.io/docker/pulls/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/node)  | [![](https://img.shields.io/docker/v/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/node) |
+| [NodeJS](nodejs) | [![](https://github.com/cloudkats/docker-tools/workflows/node.12.app/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Anode.12.app) [![](https://img.shields.io/docker/pulls/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/node)  | [![][opa.version]](https://hub.docker.com/r/cloudkats/node) |
 |   |   |
 
 ## Tips and Tricks
@@ -182,3 +182,9 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 1. [ ] Review missing images
 
 <!-- resources -->
+[opa.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml/badge.svg
+[opa.badge.yml]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yml
+[opa.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[opa.docker.size]: https://img.shields.io/docker/image-size/cloudkats/opa
+[opa.docker.version]: https://img.shields.io/docker/v/cloudkats/opa?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[opa.docker]: https://hub.docker.com/r/cloudkats/opa
