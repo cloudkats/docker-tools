@@ -17,7 +17,7 @@ RUN update-ca-certificates 2>/dev/null || true
 ARG SOPS_VERSION=3.7.2
 # hadolint ignore=DL4006
 SHELL ["/bin/bash", "-o", "pipefail", "-c"]
-RUN wget -q https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/sops-${SOPS_VERSION}.linux -O /usr/local/bin/sops \
+RUN wget -q https://github.com/mozilla/sops/releases/download/v${SOPS_VERSION}/sops-v${SOPS_VERSION}.linux -O /usr/local/bin/sops \
   && chmod 0755 /usr/local/bin/sops \
   && chown root:root /usr/local/bin/sops
 
@@ -25,7 +25,7 @@ RUN wget -q https://github.com/mozilla/sops/releases/download/${SOPS_VERSION}/so
 ARG YQ_VERSION=4.22.1
 ARG YQ_BINARY=yq_linux_amd64
 
-RUN wget --progress=dot:giga https://github.com/mikefarah/yq/releases/download/${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq &&\
+RUN wget --progress=dot:giga https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq &&\
   chmod +x /usr/bin/yq
 
 FROM alpine:3.15
