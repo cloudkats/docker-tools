@@ -49,17 +49,17 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-| [Terraform](./terraform/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform) [![](https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) ![](https://img.shields.io/docker/image-size/cloudkats/terraform) | [![](https://img.shields.io/docker/v/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/terraform) |
-| [Terragrunt](./terragrunt/Dockerfile)  | [![][trg.badge]][trg.badge.yml] [![][trg.docker.pulls]][trg.docker] ![][trg.docker.size] | [![][trg.docker.version]][trg.docker] |
+| [Terraform](./terraform/Dockerfile) | [![][tfm.badge]][tfm.badge.yml] [![][tfm.docker.pulls]][tfm.docker] ![][tfm.docker.size] | [![][tfm.docker.version]][tfm.docker] |
+| [Terragrunt](./terragrunt/Dockerfile) | [![][trg.badge]][trg.badge.yml] [![][trg.docker.pulls]][trg.docker] ![][trg.docker.size] | [![][trg.docker.version]][trg.docker] |
 
 ### [Kubernets](https://kubernetes.io/)
 
 | Name  | Badges   | Version |
 |:--------------------------|:----------------|:--------------|
 |[Helm](./helm/Dockerfile) | [![][helm.badge]][helm.badge.yml] [![][helm.docker.pulls]][helm.docker] ![][helm.docker.size] | [![][helm.docker.version]][helm.docker] |
-| [Kubernetes Tools](./k8s-tools/Dockerfile)  |  [![][k8s-tools.badge]][k8s-tools.badge.yml] [![][k8s-tools.docker.pulls]][k8s-tools.docker] ![][k8s-tools.docker.size] | [![][k8s-tools.docker.version]][k8s-tools.docker] |
+| [Kubernetes Tools](./k8s-tools/Dockerfile) | [![][k8s-tools.badge]][k8s-tools.badge.yml] [![][k8s-tools.docker.pulls]][k8s-tools.docker] ![][k8s-tools.docker.size] | [![][k8s-tools.docker.version]][k8s-tools.docker] |
 | [Kubernetes Test Tools](./k8s-test-tools/Dockerfile) |  [![](https://github.com/cloudkats/docker-tools/workflows/k8s.test-tools/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.test-tools) [![](https://img.shields.io/docker/pulls/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) | [![](https://img.shields.io/docker/v/cloudkats/k8s-test-tools?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/k8s-test-tools) |
-| [Kubectl](./kubectl/Dockerfile) | [![](https://github.com/cloudkats/docker-tools/workflows/k8s.kubectl/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.kubectl) [![](https://img.shields.io/docker/pulls/cloudkats/kubectl?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) | [![](https://img.shields.io/docker/v/cloudkats/kubectl?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/kubectl) |
+| [Kubectl](./kubectl/Dockerfile) | [![][k8ctl.badge]][k8ctl.badge.yml] [![][k8ctl.docker.pulls]][k8ctl.docker] ![][k8ctl.docker.size] | [![][k8ctl.docker.version]][k8ctl.docker] |
 
 ### [Load Testing](https://loadninja.com/load-testing/)
 
@@ -190,11 +190,18 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 [opa.docker]: https://hub.docker.com/r/cloudkats/opa
 
 [trg.badge]: https://github.com/cloudkats/docker-tools/workflows/iac.terragrunt/badge.svg
-[trg.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform
+[trg.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terragurnt
 [trg.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [trg.docker.size]: https://img.shields.io/docker/image-size/cloudkats/terragrunt
 [trg.docker.version]: https://img.shields.io/docker/v/cloudkats/terragrunt?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [trg.docker]: https://hub.docker.com/r/cloudkats/terragrunt
+
+[tfm.badge]: https://github.com/cloudkats/docker-tools/workflows/iac.terraform/badge.svg
+[tfm.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Aiac.terraform
+[tfm.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[tfm.docker.size]: https://img.shields.io/docker/image-size/cloudkats/terraform
+[tfm.docker.version]: https://img.shields.io/docker/v/cloudkats/terraform?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[tfm.docker]: https://hub.docker.com/r/cloudkats/terraform
 
 [k8s-tools.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/k8s.tools.yaml/badge.svg
 [k8s-tools.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.tools
@@ -209,3 +216,10 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 [helm.docker.size]: https://img.shields.io/docker/image-size/cloudkats/helm
 [helm.docker.version]: https://img.shields.io/docker/v/cloudkats/helm?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [helm.docker]: https://hub.docker.com/r/cloudkats/helm
+
+[k8ctl.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/k8s.kubectl.yaml/badge.svg
+[k8ctl.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Ak8s.kubectl
+[k8ctl.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/kubectl?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[k8ctl.docker.size]: https://img.shields.io/docker/image-size/cloudkats/kubectl
+[k8ctl.docker.version]: https://img.shields.io/docker/v/cloudkats/kubectl?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[k8ctl.docker]: https://hub.docker.com/r/cloudkats/kubectl
