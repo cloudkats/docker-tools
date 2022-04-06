@@ -1,5 +1,5 @@
 # hadolint ignore=DL3006
-FROM selenium/standalone-chrome:99.0
+FROM selenium/standalone-chrome:100.0
 
 # hadolint ignore=DL3002
 USER root
