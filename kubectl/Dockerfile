@@ -6,7 +6,7 @@
 ###
 FROM alpine:3.15
 
-# renovate: datasource=github-releases depName=kubernetes/kubectl
+# renovate: datasource=github-tags depName=kubernetes/kubectl
 ENV KUBECTL_VERSION=v0.23.4
 
 # hadolint ignore=DL3018,DL3013
