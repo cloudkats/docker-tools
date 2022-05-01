@@ -8,9 +8,10 @@ on:
   workflow_dispatch:
     inputs:
       push:
-        description: Push to docker registy
+        description: Push to docker registry
         required: true
-        default: "false"
+        default: false
+        type: boolean
 
 env:
   WORKSPACE: gatling
