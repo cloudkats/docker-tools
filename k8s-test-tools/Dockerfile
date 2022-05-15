@@ -7,7 +7,7 @@
 FROM alpine:3.15 as builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubectl
-ARG K8S_VERSION=1.17.9
+ARG K8S_VERSION=v1.24.0
 
 # hadolint ignore=DL3018,DL3019
 RUN apk add --no-cache git ca-certificates bash curl gettext \
