@@ -4,7 +4,6 @@ set -ex
 
 : "${IMAGE}"
 : "${CREATED}"
-: "${CREATED}"
 : "${BUILD_URL}"
 
 docker build -t "${IMAGE}" . \
