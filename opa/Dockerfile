@@ -1,7 +1,7 @@
 FROM cloudkats/terragrunt:0.36.8
 
 # renovate: datasource=github-releases depName=open-policy-agent/opa
-ARG OPA_VERSION=0.39.0
+ARG OPA_VERSION=0.40.0
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
