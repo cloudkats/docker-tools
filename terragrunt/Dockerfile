@@ -9,7 +9,7 @@
 ###
 FROM hashicorp/terraform:1.2.1 as terraform
 
-FROM alpine:3.15
+FROM alpine:3.16
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
