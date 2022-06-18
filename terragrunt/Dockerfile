@@ -33,7 +33,7 @@ RUN apk update && apk add -Uuv --no-cache --update \
   && ln -sv /usr/bin/python3 /usr/bin/python
 
 # renovate: datasource=github-releases depName=gruntwork-io/terragrunt
-ENV TERRAGRUNT_VERSION=0.37.4
+ENV TERRAGRUNT_VERSION=0.38.0
 
 ADD https://github.com/gruntwork-io/terragrunt/releases/download/v${TERRAGRUNT_VERSION}/terragrunt_linux_amd64 /usr/bin/terragrunt
 
