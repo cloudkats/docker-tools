@@ -4,8 +4,8 @@
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
-ARG VERSION
-FROM node:${VERSION}-alpine3.11
+ARG NJS_VERSION=14
+FROM node:${NJS_VERSION}-alpine3.11
 
 LABEL vendor="cloud kats" \
 	maintainer="cloudkats@gmail.com" \
