@@ -110,8 +110,8 @@
 
 |  Name    | Badges  | Version |
 |:---------|:----------|:-----------|
-| [NodeJS](nodejs) | [![](https://github.com/cloudkats/docker-tools/workflows/node.12.app/badge.svg)](https://github.com/cloudkats/docker-tools/actions?query=workflow%3Anode.12.app) [![](https://img.shields.io/docker/pulls/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square)](https://hub.docker.com/r/cloudkats/node)  | [![][opa.version]](https://hub.docker.com/r/cloudkats/node) |
-|   |   |
+| [NodeJS 12](nodejs) | [![][njs12.badge]][njs12.badge.yml] [![][njs12.docker.pulls]][njs12.docker] ![][njs12.docker.size]  | [![][njs12.docker.version]][njs12.docker] |
+| [NodeJS 14](nodejs) | [![][njs14.badge]][njs14.badge.yml] [![][njs14.docker.pulls]][njs14.docker] ![][njs14.docker.size]  | [![][njs14.docker.version]][njs14.docker] |
 
 ## Tips and Tricks
 
@@ -223,3 +223,19 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 [k8ctl.docker.size]: https://img.shields.io/docker/image-size/cloudkats/kubectl
 [k8ctl.docker.version]: https://img.shields.io/docker/v/cloudkats/kubectl?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [k8ctl.docker]: https://hub.docker.com/r/cloudkats/kubectl
+
+[njs12.badge]: https://github.com/cloudkats/docker-tools/workflows/node.12.app/badge.svg
+[njs12.badge.yml]: https://github.com/cloudkats/docker-tools/actions?query=workflow%3Anode.12.app
+[ngj12.version]: https://img.shields.io/docker/v/cloudkats/nodejs?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[njs12.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[njs12.docker.size]: https://img.shields.io/docker/image-size/cloudkats/node
+[njs12.docker.version]: https://img.shields.io/docker/v/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[njs12.docker]: https://hub.docker.com/r/cloudkats/node
+
+[njs14.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/lang.node-14.yaml/badge.svg
+[njs14.badge.yml]: https://github.com/cloudkats/docker-tools/actions/workflows/lang.node-14.yaml
+[ngj14.version]: https://img.shields.io/docker/v/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[njs14.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[njs14.docker.size]: https://img.shields.io/docker/image-size/cloudkats/node
+[njs14.docker.version]: https://img.shields.io/docker/v/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[njs14.docker]: https://hub.docker.com/r/cloudkats/node
