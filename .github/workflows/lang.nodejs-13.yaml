@@ -5,10 +5,10 @@ on:
   push:
     paths:
       - nodejs/**
-      - .github/workflows/nodejs.yaml
+      - .github/workflows/lang.nodejs-13.yaml
 
 env:
-  WORKSPACE: nodejs
+  WORKSPACE: nodejs/13/
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: node
 

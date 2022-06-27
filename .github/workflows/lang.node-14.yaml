@@ -1,11 +1,11 @@
-name: node.12.app
+name: node.14
 # This workflow is triggered on pushes to the repository.
 
 on:
   push:
     paths:
-      - nodejs/12/app/**
-      - .github/workflows/lang.node-12.app.yaml
+      - nodejs/14/**
+      - .github/workflows/lang.node-14.yaml
   workflow_dispatch:
     inputs:
       push:
@@ -15,7 +15,7 @@ on:
         type: boolean
 
 env:
-  WORKSPACE: nodejs/12/app
+  WORKSPACE: nodejs/14/
   DOCKER_REPO: cloudkats
   DOCKER_IMAGE: node
   PURPOSE: app
