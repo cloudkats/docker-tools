@@ -1,4 +1,4 @@
-ARG NJS_VERSION=13.6.0-alpine3.11
+ARG NJS_VERSION=13.14.0-alpine3.11
 FROM node:${NJS_VERSION}
 
 LABEL vendor="cloud kats" \
