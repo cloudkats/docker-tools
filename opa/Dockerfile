@@ -1,4 +1,4 @@
-FROM cloudkats/terragrunt:0.38.3
+FROM cloudkats/terragrunt:0.38.4
 
 # renovate: datasource=github-releases depName=open-policy-agent/opa
 ARG OPA_VERSION=0.42.0
