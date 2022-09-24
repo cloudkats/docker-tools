@@ -7,7 +7,7 @@
 FROM alpine:3.16
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
-ENV KUBECTL_VERSION=v0.25.1
+ENV KUBECTL_VERSION=v0.25.2
 
 # hadolint ignore=DL3018,DL3013
 RUN apk add --no-cache ca-certificates bash \
