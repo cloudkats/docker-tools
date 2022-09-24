@@ -10,7 +10,7 @@ docker build -t "${IMAGE}" . \
   --label "org.opencontainers.image.created=${CREATED}" \
   --label "org.opencontainers.image.build-url=${BUILD_URL}"
 
-# Revisit all label
+# Revisit all labels
 # org.opencontainers.image.created=${{ steps.prep.outputs.created }}
 # org.opencontainers.image.source=${{ github.repositoryUrl }}
 # org.opencontainers.image.version=${{ steps.prep.outputs.version }}

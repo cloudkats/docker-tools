@@ -4,7 +4,7 @@ FROM python:3.9-slim as cloudmapper
 # renovate: datasource=github-releases depName=duo-labs/cloudmapper
 ARG CLOUDMAPPER_VERSION=2.10.0
 ENV BUILD_PACKAGES='build-essential autoconf automake libtool'
-ENV ESSTENTIAL_PACKAGES='python3-tk jq awscli git'
+ENV ESSTENTIAL_PACKAGES='python3-tk jq awscli git bash'
 ENV GIT_CLONE_CMD="--branch ${CLOUDMAPPER_VERSION} --depth 1 https://github.com/duo-labs/cloudmapper.git"
 WORKDIR /opt/cloudmapper
 # hadolint ignore=DL3008,DL3013
@@ -17,8 +17,6 @@ RUN apt-get update -y --no-install-recommends \
   && git clone ${GIT_CLONE_CMD} /opt/cloudmapper \
   && pip3 install --no-cache-dir -r requirements.txt \
   && pip3 install --no-cache-dir --upgrade yq awscli pip
-
-EXPOSE 8000
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
