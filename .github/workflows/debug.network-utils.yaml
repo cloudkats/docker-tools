@@ -17,7 +17,7 @@ on:
 env:
   WORKSPACE: network-utils
   DOCKER_REPO: cloudkats
-  DOCKER_IMAGE: terraform
+  DOCKER_IMAGE: network-utils
 
 jobs:
   buildonpush:

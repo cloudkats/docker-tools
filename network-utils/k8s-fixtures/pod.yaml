@@ -1,0 +1,46 @@
+---
+apiVersion: v1
+kind: Pod
+metadata:
+  name: utils
+  namespace: apps
+  labels:
+    name: utils
+spec:
+  containers:
+  - name: utils
+    image: cloudkats/network-utils
+    command:
+    - "sleep"
+    - "9999999"
+    resources:
+      limits:
+        cpu: 100m
+        memory: 100Mi
+      requests:
+        cpu: 100m
+        memory: 100Mi
+  tolerations:
+# cluster resources
+    # - effect: NoSchedule
+    #   key: dedicated
+    #   operator: Equal
+    #   value: cluster-resources
+    # - effect: NoExecute
+    #   key: dedicated
+    #   operator: Equal
+    #   value: cluster-resources
+    # - key: "apm"
+    #   operator: "Equal"
+    #   value: "enabled"
+    #   effect: "NoSchedule"
+    # - key: "apm"
+    #   operator: "Equal"
+    #   value: "enabled"
+    #   effect: "NoExecute"
+
+# k exec -it utils -- /bin/bash
+# k apply -f ./network-utils/k8s-fixtures/pod.yaml
+# k delete -f ./network-utils/k8s-fixtures/pod.yaml
+
+# kubectl exec -i -t utils -- nc -v -w 5 rds-db-api.cyxxunzcvzge.eu-west-1.rds.amazonaws.com 5432
