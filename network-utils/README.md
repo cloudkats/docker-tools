@@ -17,8 +17,8 @@
 
 ## Docs
 
-- [basic-networking](./basic-networking.md)
-- [dns-test](./dns-test.md)
+- [basic-networking](https://github.com/cloudkats/docker-tools/blob/master/network-utils/basic-networking.md)
+- [dns-test](https://github.com/cloudkats/docker-tools/blob/master/network-utils/dns-test.md)
 - [dns stuff](https://www.dnsstuff.com/subnet-ip-subnetting-guide)
 
 ## Tools installed
