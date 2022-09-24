@@ -24,6 +24,7 @@
   - [Cyber Security](#cyber-security)
   - [Git Security](#git-security)
   - [Languages](#languages)
+  - [Debug Infrastructure](#debug-infrastructure)
 - [Tips and Tricks](#tips-and-tricks)
   - [Create Locally](#create-locally)
   - [Image Hardening](#image-hardening)
@@ -113,6 +114,12 @@
 | [NodeJS 12](nodejs) | [![][njs12.badge]][njs12.badge.yml] [![][njs12.docker.pulls]][njs12.docker] ![][njs12.docker.size]  | [![][njs12.docker.version]][njs12.docker] |
 | [NodeJS 14](nodejs) | [![][njs14.badge]][njs14.badge.yml] [![][njs14.docker.pulls]][njs14.docker] ![][njs14.docker.size]  | [![][njs14.docker.version]][njs14.docker] |
 
+### Debug Infrastructure
+
+|  Name    | Badges  | Version |
+|:---------|:----------|:-----------|
+| [Network Utils](nutils) | [![][nutils.badge]][nutils.badge.yml] [![][nutils.docker.pulls]][nutils.docker] ![][nutils.docker.size]  | [![][nutils.docker.version]][nutils.docker] |
+
 ## Tips and Tricks
 
 ### Create Locally
@@ -176,10 +183,10 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 1. [ ] Fix broken links
 1. [ ] Unify container labels
 1. [ ] Link to source code on main page
-1. [ ] Link back to project from Docker Hub
-1. [ ] Renovate configuration
+1. [X] Link back to project from Docker Hub
+1. [X] Renovate configuration
 1. [ ] Use `requirementes.txt` file with python packages
-1. [ ] Review missing images
+1. [X] Review missing images
 
 <!-- resources -->
 [opa.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yaml/badge.svg
@@ -239,3 +246,11 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 [njs14.docker.size]: https://img.shields.io/docker/image-size/cloudkats/node
 [njs14.docker.version]: https://img.shields.io/docker/v/cloudkats/node?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
 [njs14.docker]: https://hub.docker.com/r/cloudkats/node
+
+[nutils.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/debug.network-utils/badge.svg
+[nutils.badge.yml]: https://github.com/cloudkats/docker-tools/actions/workflows/debug.network-utils.yaml
+[nutils.version]: https://img.shields.io/docker/v/cloudkats/network-utils?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[nutils.docker.pulls]: https://img.shields.io/docker/pulls/cloudkats/network-utils?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[nutils.docker.size]: https://img.shields.io/docker/image-size/cloudkats/network-utils
+[nutils.docker.version]: https://img.shields.io/docker/v/cloudkats/network-utils?color=green&logo=docker&logoColor=#aae5ed&style=flat-square
+[nutils.docker]: https://hub.docker.com/r/cloudkats/network-utils
