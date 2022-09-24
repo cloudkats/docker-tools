@@ -1,4 +1,4 @@
-name: iac.terraform
+name: debug.network-utils
 # This workflow is triggered on pushes to the repository.
 
 on:
