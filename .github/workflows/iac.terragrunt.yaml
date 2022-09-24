@@ -69,6 +69,7 @@ jobs:
           IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
         run: |
           ../bin/build.sh
+          ./test.sh
           ../bin/push.sh
 
       - name: docker hub description
@@ -127,3 +128,4 @@ jobs:
           IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
         run: |
           ../bin/build.sh
+          ./test.sh
