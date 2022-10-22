@@ -1,4 +1,4 @@
-FROM node:18
+FROM node:19
 
 # renovate: datasource=github-releases depName=microsoft/appcenter-cli
 ARG APPCENTER_VERSION=2.11.0
