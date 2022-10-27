@@ -1,7 +1,7 @@
 FROM python:3.10-slim
 
 # renovate: datasource=github-releases depName=trufflesecurity/truffleHog
-ARG PACKAGE_VERSION=3.14.0
+ARG PACKAGE_VERSION=3.16.0
 
 ENV APT_PACKAGES="bash jq git"
 ENV PYTHON_PACKAGES="yq pip truffleHog"
