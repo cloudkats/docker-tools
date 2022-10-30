@@ -1,4 +1,4 @@
-FROM python:3.10-slim
+FROM python:3.11-slim
 
 ENV BUILD_PACKAGES='build-essential autoconf automake libtool'
 ENV ESSTENTIAL_PACKAGES='python3-tk jq git bash curl wget unzip'
