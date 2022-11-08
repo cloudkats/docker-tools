@@ -26,7 +26,7 @@ RUN curl -L -o /usr/local/bin/kubectx ${GITHUB_RAW}/ahmetb/kubectx/v${KUBE_CTX_V
 	&& chmod +x /usr/local/bin/kubens \
   && git clone https://github.com/bats-core/bats-core.git /bats;
 
-FROM bash:5.2.2
+FROM bash:5.2.9
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
