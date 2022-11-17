@@ -6,7 +6,7 @@
 ###
 FROM cloudkats/k8s-test-tools:1.17.9 as tools
 FROM cloudkats/helm:3.10.1 as helm
-FROM alpine:3.16 as downloader
+FROM alpine:3.17 as downloader
 
 # hadolint ignore=DL3018,DL3019
 RUN apk update && apk add --no-cache ca-certificates \
@@ -28,7 +28,7 @@ ARG YQ_BINARY=yq_linux_amd64
 RUN wget --progress=dot:giga https://github.com/mikefarah/yq/releases/download/v${YQ_VERSION}/${YQ_BINARY} -O /usr/bin/yq &&\
   chmod +x /usr/bin/yq
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
