@@ -1,5 +1,5 @@
 # https://github.com/aws-samples/amazon-ecs-windows-authentication-blog/blob/main/kerberos-renewal-sidecar/Dockerfile
-FROM amazonlinux:2022
+FROM amazonlinux:2023
 
 ADD renew.sh /
 ADD krb5.conf /etc/krb5.conf
