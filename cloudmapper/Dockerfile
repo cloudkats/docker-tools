@@ -1,5 +1,5 @@
 # https://github.com/duo-labs/cloudmapper
-FROM python:3.9-slim as cloudmapper
+FROM python:3.11-slim as cloudmapper
 
 # renovate: datasource=github-releases depName=duo-labs/cloudmapper
 ARG CLOUDMAPPER_VERSION=2.10.0
