@@ -4,7 +4,7 @@
 # Run:
 # docker run --rm -it kubectl /bin/bash
 ###
-FROM alpine:3.16
+FROM alpine:3.17
 
 # renovate: datasource=github-tags depName=kubernetes/kubectl
 ENV KUBECTL_VERSION=v0.25.3
