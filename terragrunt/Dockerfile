@@ -7,9 +7,9 @@
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
-FROM hashicorp/terraform:1.3.9 as terraform
+FROM hashicorp/terraform:1.4.6 as terraform
 
-FROM alpine:3.16
+FROM alpine:3.17
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
