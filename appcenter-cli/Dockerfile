@@ -1,7 +1,7 @@
 FROM node:20
 
 # renovate: datasource=github-releases depName=microsoft/appcenter-cli
-ARG APPCENTER_VERSION=2.13.6
+ARG APPCENTER_VERSION=2.13.7
 # hadolint ignore=DL3016
 RUN npm install -g appcenter-cli
 
