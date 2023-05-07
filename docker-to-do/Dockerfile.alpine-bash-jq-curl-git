@@ -1,0 +1,4 @@
+# https://gitlab.com/gitlab-org/gitlab-build-images/-/blob/master/Dockerfile.alpine-bash-jq-curl-git
+FROM alpine:latest
+
+RUN apk --no-cache add bash jq curl git

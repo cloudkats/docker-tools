@@ -1,0 +1,19 @@
+# https://gitlab.com/gitlab-org/gitlab-build-images/-/blob/master/Dockerfile.kaniko
+FROM gcr.io/kaniko-project/executor:debug-v1.3.0 AS kaniko
+
+FROM alpine/git
+
+# See https://github.com/GoogleContainerTools/kaniko/blob/master/deploy/Dockerfile#L65-L70
+COPY --from=kaniko /kaniko/ /kaniko/
+COPY --from=kaniko /etc/nsswitch.conf /etc/nsswitch.conf
+
+RUN apk --no-cache add curl jq skopeo
+
+ENV HOME /root
+ENV USER root
+ENV PATH /usr/local/bin:/kaniko:$PATH
+ENV SSL_CERT_DIR=/kaniko/ssl/certs
+ENV DOCKER_CONFIG /kaniko/.docker/
+ENV DOCKER_CREDENTIAL_GCR_CONFIG /kaniko/.config/gcloud/docker_credential_gcr_config.json
+
+ENTRYPOINT ["/kaniko/executor"]

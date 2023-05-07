@@ -1,0 +1,4 @@
+# https://gitlab.com/gitlab-org/gitlab-build-images/-/blob/master/Dockerfile.sitespeed-gitlab
+FROM sitespeedio/sitespeed.io
+
+COPY /assets/gitlab.txt $HOME/sitespeed.io/gitlab.txt

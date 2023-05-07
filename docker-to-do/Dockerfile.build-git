@@ -1,0 +1,10 @@
+# https://gitlab.com/gitlab-org/gitlab-build-images/-/blob/master/Dockerfile.build-git
+FROM gcc:latest
+
+ADD / /
+
+# Install prereqs for building Git
+
+RUN apt-get update && apt-get install -y gettext
+
+RUN /scripts/install-pcre2 && pcre2-config --version

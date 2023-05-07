@@ -1,0 +1,32 @@
+# https://gitlab.com/gitlab-org/gitlab-build-images/-/blob/master/Dockerfile.danger
+FROM ruby:2.7.5-buster
+MAINTAINER GitLab Quality Team
+
+# Danger manipulates git diff output. When a unicode char is present in the diff, it chokes with
+# (Danger::DSLError) [!] Invalid `Dangerfile` file: invalid byte sequence in US-ASCII
+# eg. https://gitlab.com/gitlab-org/gitlab-foss/-/jobs/275286625
+ENV LC_ALL "C.UTF-8"
+
+ENV NODE_VERSION=16.14.2
+ENV YARN_VERSION=1.22.17
+ENV GITLAB_GEM_VERSION=4.18.0
+ENV DANGER_GEM_VERSION=8.4.5
+ENV DANGER_GITLAB_GEM_VERSION=8.0.0
+
+ADD /scripts/ /scripts/
+
+RUN apt-get update \
+    && apt-get install -y git \
+    && /scripts/install-node ${NODE_VERSION} ${YARN_VERSION} \
+    && yarn global add alex@9 \
+    && yarn cache clean \
+    && apt-get autoremove -yq \
+    && apt-get clean -yqq \
+    && rm -rf /var/lib/apt/lists/* \
+    && gem install gitlab --version ${GITLAB_GEM_VERSION} --no-document \
+    && gem install danger --version ${DANGER_GEM_VERSION} --no-document \
+    && gem install danger-gitlab --version ${DANGER_GITLAB_GEM_VERSION} --no-document \
+    && git version \
+    && echo "node version " $(node --version) \
+    && echo "yarn version " $(yarn --version) \
+    && echo "Danger version " $(danger --version)
