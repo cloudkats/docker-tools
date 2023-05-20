@@ -1,5 +1,5 @@
 # https://gitlab.com/gitlab-org/gitlab-build-images/-/blob/master/Dockerfile.danger
-FROM ruby:2.7.5-buster
+FROM ruby:3.2.2-buster
 MAINTAINER GitLab Quality Team
 
 # Danger manipulates git diff output. When a unicode char is present in the diff, it chokes with
