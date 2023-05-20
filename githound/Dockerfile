@@ -9,7 +9,7 @@ RUN wget -q -O "/go/bin/git-hound" \
   "https://github.com/ezekg/git-hound/releases/download/${PACKAGE_VERSION}/git-hound_linux_amd64" \
   && chmod +x /go/bin/git-hound
 
-FROM alpine:3.17
+FROM alpine:3.18
 
 ENV APT_PACKAGES="git bash"
 
