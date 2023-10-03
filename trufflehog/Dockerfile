@@ -1,4 +1,4 @@
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # renovate: datasource=github-releases depName=trufflesecurity/truffleHog
 ARG PACKAGE_VERSION=3.34.0
