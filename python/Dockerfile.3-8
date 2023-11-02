@@ -1,5 +1,5 @@
 # For development/testing purposes
-ARG python_version=3.11
+ARG python_version=3.12
 FROM python:${python_version}
 ARG USERID=1000
 RUN set -ex && \
