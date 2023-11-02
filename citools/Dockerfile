@@ -4,7 +4,7 @@
 # Run:
 # docker run --rm -it test /bin/bash
 ###
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 ENV APT_PACKAGES="bash curl zip jq tree git make ca-certificates netcat"
 ENV PYTHON_PACKAGES="yq pip python-nmap pyyaml boto3 awscli"
