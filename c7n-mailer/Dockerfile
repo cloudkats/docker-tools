@@ -1,5 +1,5 @@
 # FROM python:3.8.7-alpine3.11
-FROM python:3.11-slim
+FROM python:3.12-slim
 
 # renovate: datasource=github-releases depName=cloud-custodian/cloud-custodian
 ARG PACKAGE_VERSION=0.9.1.0
