@@ -1,7 +1,7 @@
 # renovate: datasource=github-releases depName=ezekg/git-hound
 ARG PACKAGE_VERSION=1.0.0
 
-FROM golang:1.20 as builder
+FROM golang:1.21 as builder
 
 ARG PACKAGE_VERSION
 
