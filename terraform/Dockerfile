@@ -2,7 +2,7 @@
 ARG TERRAFORM_VERSION=1.6.4
 
 FROM hashicorp/terraform:${TERRAFORM_VERSION} as source
-FROM alpine:3.18
+FROM alpine:3.19
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
