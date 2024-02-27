@@ -1,7 +1,7 @@
 #
 # The recommended shebang is #!/usr/bin/env bash, not #!/bin/bash
 #
-FROM alpine:3.18 as first
+FROM alpine:3.19 as first
 
 # renovate: datasource=github-releases depName=helm/helm
 ARG HELM_VERSION=3.13.3
@@ -16,7 +16,7 @@ RUN apk add --no-cache ca-certificates \
   && apk del --purge deps \
   && rm -f /helm-v${HELM_VERSION}-linux-amd64.tar.gz
 
-FROM alpine:3.18
+FROM alpine:3.19
 
 # Metadata
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
