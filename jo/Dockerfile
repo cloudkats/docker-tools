@@ -1,6 +1,6 @@
 # docker build --no-cache -t test .
 # docker run --rm -it test /bin/bash
-FROM ubuntu:22.04@sha256:2b7412e6465c3c7fc5bb21d3e6f1917c167358449fecac8176c6e496e5c1f05f
+FROM ubuntu:22.04@sha256:77906da86b60585ce12215807090eb327e7386c8fafb5402369e421f44eff17e
 
 # renovate: datasource=github-releases depName=jpmens/jo
 ARG JO_VERSION=1.4
