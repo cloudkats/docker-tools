@@ -11,4 +11,12 @@ FROM python:3.11.1-alpine3.17
   # && addgroup -S node -g 999 \
   # && adduser -S -g node -u 999 node
 
+# RUN export GUID_TO_SET=100 && \
+#     export UID_TO_SET=66666 && \
+#     export USER=youruser && \
+#     echo "${USER}:x:${UID_TO_SET}:${GUID_TO_SET}:Linux User,,,:/home/${USER}:/bin/sh" >> /etc/passwd && \
+#     echo "${USER}:!:$(($(date +%s) / 60 / 60 / 24)):0:99999:7:::" >> /etc/shadow && \
+#     mkdir /home/${USER} && \
+#     chown ${USER}:${GUID_TO_SET} /home/${USER}
+
 ENTRYPOINT [ "/bin/sh", "-c" ]
