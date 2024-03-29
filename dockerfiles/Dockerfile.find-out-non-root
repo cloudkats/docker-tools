@@ -1,0 +1,14 @@
+FROM python:3.11.1-alpine3.17
+
+# cat /etc/groups > groups
+# cat /etc/passwd > users
+# cat /etc/shadow
+# id -u && whoami
+# RUN groupmod -g 999 node && usermod -u 999 -g 999 node
+# RUN usermod -d /home/myapp -l myapp node
+# UN deluser --remove-home node \
+  # && delgroup node \
+  # && addgroup -S node -g 999 \
+  # && adduser -S -g node -u 999 node
+
+ENTRYPOINT [ "/bin/sh", "-c" ]
