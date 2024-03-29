@@ -1,0 +1,53 @@
+FROM confluentinc/cp-kafka-connect-base:7.0.1
+# Update log4j properties
+RUN whoami
+# COPY --chown=appuser:appuser connect-log4j.properties /etc/kafka
+
+# Add connectors and software
+# https://docs.confluent.io/platform/current/installation/docker/development.html#add-connectors-or-software
+# RUN confluent-hub install --no-prompt confluentinc/kafka-connect-jdbc:latest &&
+#   curl -o /usr/share/confluent-hub-components/confluentinc-kafka-connect-jdbc/lib/jt400-jdk9-10.4.jar -k -SL "https://repo1.maven.org/maven2/net/sf/jt400/jt400-jdk9/10.4/jt400-jdk9-10.4.jar"
+
+# new cp-kafka-connect-base contains couple log libraries, one of them has to be deleted
+# RUN rm /usr/share/java/cp-base-new/slf4j-log4j12-*.jar
+
+# https://stackoverflow.com/questions/41807026/cant-add-a-user-with-a-high-uid-in-docker-alpine
+
+EXPOSE 8083
+
+# USER 1000
+USER root
+ENV UID=12345
+ENV GID=2000
+ENV APP_USER 1001
+ENV GROUPNAME=$APP_USER
+# RUN groupadd -g $GID -S $APP_USER
+# RUN groupadd -g $GID --system $APP_USER
+# RUN adduser -u $APP_USER -S $APP_USER -G $APP_USER
+# RUN adduser -G appuser -U --system 1001
+
+# USER $APP_USER
+# USER appuser
+# RUN chown -R appuser:appuser /.local
+# cat /etc/shadow
+# make sure permissions are set
+USER appuser
+RUN chown -R appuser:appuser /etc/kafka
+
+USER root
+
+# cat /etc/group
+RUN echo "1001:x:1001:1001::/home/1001:/bin/sh" >>/etc/passwd
+RUN echo "1001:x:1001:" >>/etc/group
+
+# usermod -aG docker $USER
+
+USER $APP_USER:1000
+
+# USER root
+
+# USER $APP_USER
+
+ENTRYPOINT [ "/bin/sh", "-c" ]
+# Build: docker build . --tag kafka
+# Exec: docker run --rm -it kafka -- /bin/sh

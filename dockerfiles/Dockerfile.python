@@ -1,0 +1,52 @@
+# docker build . --tag python-app -f Dockerfile
+# docker run --rm -it -p 8080:1025 python-app
+# docker run --rm -it python-app /bin/sh
+# switch https://github.com/GoogleContainerTools/distroless
+FROM python:3.11.1-alpine3.17
+
+RUN mkdir -p /.local
+
+# Add non-root user
+# WORKDIR /app
+# ENV APP_USER 999
+# RUN adduser -D -u 999 appworker
+# cat /etc/groups > groups
+# cat /etc/passwd > users
+# getent passwd > list linux users
+# id -u && whoami
+# groups
+ENV UID=12345
+ENV GID=2000
+ENV APP_USER 1001
+ENV GROUPNAME=$APP_USER
+RUN addgroup -g $GID -S $APP_USER
+RUN adduser -u $APP_USER -S $APP_USER -G $APP_USER
+
+# RUN chown -R ${APP_USER}:${APP_USER} /.local
+
+USER $APP_USER
+
+# USER root
+# USER 65534
+WORKDIR /app
+
+RUN pip install --user pipenv
+ENV PATH="/home/${APP_USER}/.local/bin:${PATH}"
+
+COPY --chown=$APP_USER:$APP_USER requirements.txt requirements.txt
+RUN pip install --user --no-cache-dir -r requirements.txt
+
+RUN pip freeze
+
+ARG DEPLOY_VERSION
+ENV DEPLOY_VERSION=$DEPLOY_VERSION
+
+COPY --chown=$APP_USER:$APP_USER . .
+# EXPOSE 80
+ENV PORT 1025
+
+RUN id && whoami && cat /etc/passwd
+
+ENTRYPOINT ["python"]
+CMD ["app/app.py"]
+# ENTRYPOINT ["/bin/sh"]
