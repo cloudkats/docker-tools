@@ -19,4 +19,11 @@ FROM python:3.11.1-alpine3.17
 #     mkdir /home/${USER} && \
 #     chown ${USER}:${GUID_TO_SET} /home/${USER}
 
+# RUN usermod -aG root $APP_USER
+# RUN useradd -ou 0 -g 0 $APP_USER
+
+# RUN echo "$APP_USER:x:$APP_USER:$APP_USER::/home/$APP_USER:/bin/sh" >>/etc/passwd
+# RUN echo "$APP_GROUP:x:$APP_USER:" >>/etc/group
+# USER $APP_USER:$APP_GROUP
+
 ENTRYPOINT [ "/bin/sh", "-c" ]
