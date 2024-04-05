@@ -1,0 +1,43 @@
+# COMMANDS
+# docker build . -t ik-nodejs
+# docker run -it --rm ik-nodejs
+
+FROM node:18.19.1-slim
+
+RUN apt-get update && \
+    apt-get install -y git curl dumb-init && \
+    rm -rf /var/lib/apt/lists/*
+
+ARG APP_VERSION
+ENV APP_VERSION=$APP_VERSION
+
+WORKDIR /usr/src/app
+
+COPY package.json ./
+COPY ./src ./src
+COPY ./node_modules ./node_modules
+
+USER root
+# https://github.com/kubernetes/kubernetes/blob/5648200571889140ad246feb82c8f80a5946f167/pkg/kubelet/kuberuntime/security_context.go#L89
+# https://github.com/kubernetes/kubernetes/issues/40958
+#assign permissions for numerical user to their home
+# RUN chown -R $APP_USER:$NODE_USER_GROUP /home/node
+# RUN chown -R $APP_USER:$NODE_USER_GROUP /usr/src/app
+RUN chown -R node:node /usr/src/app
+
+#OS wont let us create numerical user with useradd command
+# RUN echo "$APP_USER:x:$APP_USER:$APP_USER::/home/node:/bin/sh" >>/etc/passwd
+# RUN echo "$APP_USER:x:$APP_USER:" >>/etc/group
+
+# ENV NODE_PATH=/usr/src/app
+
+# Any non-zero number will do, and unfortunately a named user will not, as k8s
+# pod securityContext runAsNonRoot can't resolve the user ID:
+# https://github.com/kubernetes/kubernetes/issues/40958.
+# cat /etc/passwd
+ARG USER=1000:node
+USER ${USER}
+
+CMD [ "dumb-init", "npm", "run", "start" ]
+
+# ENTRYPOINT ["/bin/sh"]

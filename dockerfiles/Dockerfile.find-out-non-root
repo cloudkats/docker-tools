@@ -25,5 +25,11 @@ FROM python:3.11.1-alpine3.17
 # RUN echo "$APP_USER:x:$APP_USER:$APP_USER::/home/$APP_USER:/bin/sh" >>/etc/passwd
 # RUN echo "$APP_GROUP:x:$APP_USER:" >>/etc/group
 # USER $APP_USER:$APP_GROUP
+# RUN groupadd --system $APP_GROUP && useradd --system -s /bin/false -g $APP_GROUP -u $APP_USER $APP_USER --badname
+
+# Any non-zero number will do, and unfortunately a named user will not, as k8s
+# pod securityContext runAsNonRoot can't resolve the user ID:
+# https://github.com/kubernetes/kubernetes/issues/40958.
 
 ENTRYPOINT [ "/bin/sh", "-c" ]
+
