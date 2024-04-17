@@ -2,7 +2,7 @@
 # docker run --rm -it -p 8080:1025 python-app
 # docker run --rm -it python-app /bin/sh
 # switch https://github.com/GoogleContainerTools/distroless
-FROM python:3.11.1-alpine3.17
+FROM python:3.11.7-alpine3.17
 
 RUN mkdir -p /.local
 
