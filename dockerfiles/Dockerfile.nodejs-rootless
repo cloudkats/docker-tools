@@ -2,7 +2,7 @@
 # docker build . -t ik-nodejs
 # docker run -it --rm ik-nodejs
 
-FROM node:18.19.1-slim
+FROM node:18.20.2-slim
 
 RUN apt-get update && \
     apt-get install -y git curl dumb-init && \
