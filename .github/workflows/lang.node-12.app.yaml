@@ -28,7 +28,7 @@ jobs:
       github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'true'
       || github.event_name == 'push' && (github.event.created == false && github.event.forced == false)
     steps:
-      - uses: actions/checkout@v4.1.1
+      - uses: actions/checkout@v4.1.5
 
       - name: Build the Docker image
         working-directory: ${{ env.WORKSPACE }}
