@@ -2,7 +2,7 @@
 # Smaller images without npm/yarn
 # If you want to achieve an even smaller image size than the -alpine, you can omit the npm/yarn like this:
 
-ARG ALPINE_VERSION=3.19
+ARG ALPINE_VERSION=3.20
 
 FROM node:18-alpine${ALPINE_VERSION} AS builder
 WORKDIR /build-stage
