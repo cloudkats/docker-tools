@@ -1,8 +1,8 @@
 # renovate: datasource=github-releases depName=hashicorp/terraform
-ARG TERRAFORM_VERSION=1.7.5
+ARG TERRAFORM_VERSION=1.8.4
 
 FROM hashicorp/terraform:${TERRAFORM_VERSION} as source
-FROM alpine:3.19
+FROM alpine:3.20
 
 LABEL org.opencontainers.image.authors="cloudkats@gmail.com" \
   org.opencontainers.image.vendor="https://github.com/cloudkats" \
