@@ -4,7 +4,7 @@
 FROM alpine:3.20 as first
 
 # renovate: datasource=github-releases depName=helm/helm
-ARG HELM_VERSION=3.14.3
+ARG HELM_VERSION=3.15.1
 
 # hadolint ignore=DL3018
 RUN apk add --no-cache ca-certificates \
