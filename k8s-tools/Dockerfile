@@ -5,7 +5,7 @@
 # docker run --rm -it test /bin/bash
 ###
 FROM cloudkats/k8s-test-tools:v1.29.3 as tools
-FROM cloudkats/helm:3.14.3 as helm
+FROM cloudkats/helm:3.15.1 as helm
 FROM alpine:3.20 as downloader
 
 # hadolint ignore=DL3018,DL3019
