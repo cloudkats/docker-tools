@@ -187,6 +187,7 @@ docker run --rm test "kubectl version --short --client=true" | awk '{print $3}' 
 1. [X] Renovate configuration
 1. [ ] Use `requirementes.txt` file with python packages
 1. [X] Review missing images
+1. [ ] Build node images `node`
 
 <!-- resources -->
 [opa.badge]: https://github.com/cloudkats/docker-tools/actions/workflows/policy.opa.yaml/badge.svg
