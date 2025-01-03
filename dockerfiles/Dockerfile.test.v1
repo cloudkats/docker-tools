@@ -1,11 +1,11 @@
-FROM golang:1.22 as builder
+FROM golang:1.23 as builder
 COPY . /code
 WORKDIR /code
 RUN unset GOPATH  && go test -v ./... && \
     CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o out/check ./cmd/check && \
     CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o out/in ./cmd/in && \
     CGO_ENABLED=0 GOOS=linux go build -a -installsuffix cgo -o out/out ./cmd/out
-FROM alpine:3.20
+FROM alpine:3.21
 RUN mkdir -p /opt/resource
 COPY --from=builder /code/out/* /opt/resource/
 ENV VERSION_FILE  /opt/resource/version
