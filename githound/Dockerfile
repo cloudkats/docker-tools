@@ -1,7 +1,7 @@
 # renovate: datasource=github-releases depName=ezekg/git-hound
 ARG PACKAGE_VERSION=1.0.0
 
-FROM golang:1.22 as builder
+FROM golang:1.23 as builder
 
 ARG PACKAGE_VERSION
 
@@ -9,7 +9,7 @@ RUN wget -q -O "/go/bin/git-hound" \
   "https://github.com/ezekg/git-hound/releases/download/${PACKAGE_VERSION}/git-hound_linux_amd64" \
   && chmod +x /go/bin/git-hound
 
-FROM alpine:3.20
+FROM alpine:3.21
 
 ENV APT_PACKAGES="git bash"
 
