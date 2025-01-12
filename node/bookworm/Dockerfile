@@ -1,6 +1,6 @@
 # docker build -t node-local .
 # docker run --rm -it --entrypoint /bin/sh node-local
-FROM node:20-bookworm-slim
+FROM node:22-bookworm-slim
 
 # Setting working directory. All the path will be relative to WORKDIR
 WORKDIR /usr/src/app
