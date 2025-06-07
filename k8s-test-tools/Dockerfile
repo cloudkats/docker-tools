@@ -4,7 +4,7 @@
 # Run:
 # docker run --rm -it test-image /bin/bash
 ###
-FROM alpine:3.21 as builder
+FROM alpine:3.22 as builder
 
 # renovate: datasource=github-releases depName=kubernetes/kubectl
 ARG K8S_VERSION=v1.30.1
