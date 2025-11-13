@@ -2,7 +2,7 @@
 # notes from https://snyk.io/blog/10-best-practices-to-containerize-nodejs-web-applications-with-docker/
 
 # --------------> The build image
-FROM node:20.19.2-bookworm-slim AS build
+FROM node:22.16.0-bookworm-slim AS build
 RUN apt-get update && apt-get install -y --no-install-recommends dumb-init
 
 ARG APP_VERSION
@@ -35,7 +35,7 @@ COPY package*.json ./
 RUN --mount=type=secret,mode=0644,id=npmrc,target=/usr/src/app/.npmrc npm ci --only=production
 
 # --------------> The production image__
-FROM node:20.19.2-bookworm-slim AS production
+FROM node:22.16.0-bookworm-slim AS production
 
 ENV APP_VERSION=$APP_VERSION
 ENV APP_USER 999
