@@ -1,0 +1,128 @@
+name: fastly.falco
+
+on:
+  push:
+    paths:
+      - gatling/*
+      - .github/workflows/fastly-falco.yaml
+  workflow_dispatch:
+    inputs:
+      push:
+        description: Push to docker registry
+        required: true
+        default: false
+        type: boolean
+
+env:
+  WORKSPACE: fastly-falco
+  DOCKER_REPO: cloudkats
+  DOCKER_IMAGE: fastly-falco
+  GREP_VERSION: "FALCO_VERSION="
+
+jobs:
+  buildonpush:
+    name: BuildOnPush
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'true'
+      || github.event_name == 'push' && (github.event.created == false && github.event.forced == false)
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - name: Login to Registry
+        run: |
+          echo "${DOCKER_PASSWORD}" | docker login -u ${DOCKER_USERNAME} --password-stdin
+        env:
+          DOCKER_USERNAME: ${{ secrets.DOCKERHUB_USERNAME }}
+          DOCKER_PASSWORD: ${{ secrets.DOCKERHUB_TOKEN }}
+
+      - name: prepare
+        id: prep
+        working-directory: ${{ env.WORKSPACE }}
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+
+          echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
+          echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "FALCO_VERSION=" | tr "=" " " | awk '{print $3}')"
+
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tag_date::$(date -u +'%Y-%m')
+          echo ::set-output name=sha::${GITHUB_SHA::8}
+          echo ::set-output name=image_id::${IMAGE_ID}
+
+      - name: build & push docker image
+        working-directory: ${{ env.WORKSPACE }}
+        env:
+          IMAGE_ID: ${{ steps.prep.outputs.image_id }}
+          IMAGE: ${{ env.DOCKER_IMAGE }}
+          TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
+          TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
+          TAG_VERSION: ${{ steps.prep.outputs.version }}
+          CREATED: ${{ steps.prep.outputs.tag_date }}
+          BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
+          IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
+        run: |
+          ../bin/build.sh
+          ../bin/push.sh
+
+      - name: docker hub description
+        uses: peter-evans/dockerhub-description@v4.0.2
+        with:
+          username: ${{ secrets.DOCKERHUB_USERNAME }}
+          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
+          readme-filepath: ${{ env.WORKSPACE }}/README.md
+          short-description: "Unoficial Docker image with Fastly Falco, a VCL testing tooling"
+
+  build-on-merge-request:
+    name: build-on-merge-request
+    runs-on: ubuntu-latest
+    if: >-
+      github.event_name == 'workflow_dispatch' && github.event.inputs.push == 'false'
+      || github.event_name == 'push' && (github.event.created == true || github.event.forced == true)
+    steps:
+      - uses: actions/checkout@v4.2.2
+
+      - uses: brpaz/hadolint-action@v1.5.0
+        env:
+          XDG_CONFIG_HOME: ${{ env.WORKSPACE }}/hadolint.yaml
+        with:
+          dockerfile: ${{ env.WORKSPACE }}/Dockerfile
+
+      - name: prepare
+        id: prep
+        working-directory: ${{ env.WORKSPACE }}
+        run: |
+          VERSION=$(echo "${{ github.ref }}" | sed -e 's,.*/\(.*\),\1,')
+          # Strip "v" prefix from tag name
+          [[ "${{ github.ref }}" == "refs/tags/"* ]] && VERSION=$(echo $VERSION | sed -e 's/^v//')
+
+          IMAGE_ID="${DOCKER_REPO}/${DOCKER_IMAGE}"
+
+          echo "::set-output name=ACTION_RUN_URL::https://github.com/${{github.repository}}/actions/runs/${{github.run_id}}"
+          echo "::set-output name=ACTION_WORKFLOW_URL::https://github.com/${{github.repository}}/actions/workflows/${{github.action}}.yml"
+          echo "::set-output name=DOCKER_VERSION::$(cat Dockerfile | grep "$GREP_VERSION" | tr "=" " " | awk '{print $3}')"
+
+          echo ::set-output name=version::${VERSION}
+          echo ::set-output name=tag_date::$(date -u +'%Y-%m')
+          echo ::set-output name=sha::${GITHUB_SHA::8}
+          echo ::set-output name=image_id::${IMAGE_ID}
+
+      - name: build
+        working-directory: ${{ env.WORKSPACE }}
+        env:
+          IMAGE_ID: ${{ steps.prep.outputs.image_id }}
+          IMAGE: ${{ env.DOCKER_IMAGE }}
+          TAG_VERSION_DATE: ${{ steps.prep.outputs.tag_date }}
+          TAG_VERSION_SHA: ${{ steps.prep.outputs.sha }}
+          TAG_VERSION: ${{ steps.prep.outputs.version }}
+          CREATED: ${{ steps.prep.outputs.tag_date }}
+          BUILD_URL: ${{ steps.prep.outputs.action_run_url }}
+          IMAGE_VERSION: ${{ steps.prep.outputs.docker_version }}
+        run: |
+          ../bin/build.sh
