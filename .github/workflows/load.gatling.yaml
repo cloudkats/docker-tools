@@ -74,7 +74,7 @@ jobs:
         uses: peter-evans/dockerhub-description@v4.0.2
         with:
           username: ${{ secrets.DOCKERHUB_USERNAME }}
-          password: ${{ secrets.DOCKERHUB_PASSWORD }}
+          password: ${{ secrets.DOCKERHUB_TOKEN }}
           repository: ${{ env.DOCKER_REPO }}/${{ env.DOCKER_IMAGE }}
           readme-filepath: ${{ env.WORKSPACE }}/README.md
           short-description: "Unoficial Docker image with Gatling, a load testing tooling"
